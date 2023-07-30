@@ -1,10 +1,9 @@
 import React from 'react';
 // import { Route, Routes, useNavigate } from 'react-router-dom';
+import Header from '../Header/Header';
 
 export default function App() {
   return (
-    <div className="App">
-
-    </div>
+    <Header />
   );
 }
