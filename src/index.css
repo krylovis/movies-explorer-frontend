@@ -6,3 +6,6 @@
 
 /* --------------- root --------------- */
 @import './blocks/root/root.css';
+
+/* --------------- root --------------- */
+@import './components/Header/Header.css';
