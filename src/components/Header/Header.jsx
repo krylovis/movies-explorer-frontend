@@ -15,7 +15,9 @@ export default function Header() {
 
         <nav className="header__links-container">
           <NavLink className="link header__link" to="/signup">Регистрация</NavLink>
-          <NavLink className="link header__link" to="/signin">Войти</NavLink>
+          <NavLink className="link header__link" to="/signin">
+            <button className="button header__button" type="button" aria-label="Войти в систему">Войти</button>
+          </NavLink>
         </nav>
       </div>
     </header>

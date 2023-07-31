@@ -28,6 +28,14 @@
   line-height: 16px;
 }
 
+.header__button {
+  width: 76px;
+  height: 32px;
+  color: black;
+  border-radius: 3px;
+  background-color: #3DDC84;
+}
+
 .header__links-container {
   display: flex;
   align-items: center;
