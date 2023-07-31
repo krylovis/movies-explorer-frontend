@@ -1,9 +1,23 @@
 import logo from '../../images/logo.svg';
-import { Routes, Route, NavLink, useNavigate } from 'react-router-dom';
+import { Routes, Route, NavLink, useNavigate, useLocation } from 'react-router-dom';
 
 export default function Header() {
+  const { pathname } = useLocation();
+  const isResultLanding = pathname === '/';
+  const headerClassName = `header ${isResultLanding ? 'header_type_main-page' : ''}`;
 
   return (
-    <div className='header__container'></div>
+    <header className={headerClassName}>
+      <div className='header__container'>
+        <NavLink to="/">
+          <img src={logo} alt="Логотип: Movies Explorer" className="header__logo" />
+        </NavLink>
+
+        <nav className="header__links-container">
+          <NavLink className="link header__link" to="/signup">Регистрация</NavLink>
+          <NavLink className="link header__link" to="/signin">Войти</NavLink>
+        </nav>
+      </div>
+    </header>
   )
 }

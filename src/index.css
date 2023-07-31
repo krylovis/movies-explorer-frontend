@@ -7,5 +7,8 @@
 /* --------------- root --------------- */
 @import './blocks/root/root.css';
 
-/* --------------- root --------------- */
+/* --------------- link --------------- */
+@import './blocks/link/link.css';
+
+/* --------------- Header --------------- */
 @import './components/Header/Header.css';
