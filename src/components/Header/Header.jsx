@@ -4,7 +4,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import logo from '../../images/logo.svg';
 
 export default function Header(props) {
-  const { loggedIn = false } = props;
+  const { loggedIn = true } = props;
 
   const [isMobile, setIsMobile] = React.useState(false);
   const [isOpen, setIsOpen] = React.useState(false);
@@ -39,10 +39,10 @@ export default function Header(props) {
       return (
         <>
           <div className="header__movies-container">
-            <NavLink className="link header__link header__movies-item" to="/movies">Фильмы</NavLink>
-            <NavLink className="link header__link header__movies-item" to="/saved-movies">Сохранённые фильмы</NavLink>
+            <NavLink className="link header__movies-item" to="/movies">Фильмы</NavLink>
+            <NavLink className="link header__movies-item" to="/saved-movies">Сохранённые фильмы</NavLink>
           </div>
-          <NavLink className="link header__link header__link_type_profile" to="/profile">
+          <NavLink className="link header__profile-link" to="/profile">
             Аккаунт
             <span className="header__profile-icon" />
           </NavLink>
