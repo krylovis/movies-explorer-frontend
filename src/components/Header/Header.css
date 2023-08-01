@@ -106,15 +106,6 @@
   background-image: url(../../images/interface/icon-menu.svg);
 }
 
-.header__menu-button_type_closed {
-  margin: 0;
-  padding: 0;
-  width: 22px;
-  height: 22px;
-  background-size: 28px;
-  background-image: url(../../images/interface/icon-close.svg);
-}
-
 @media screen and (max-width: 768px) {
   .header__container {
     padding: 0 30px;

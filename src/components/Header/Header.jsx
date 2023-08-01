@@ -4,10 +4,9 @@ import { NavLink, useLocation } from 'react-router-dom';
 import logo from '../../images/logo.svg';
 
 export default function Header(props) {
-  const { loggedIn = true } = props;
+  const { loggedIn = false, handleOpenMenu, handleCloseMenu } = props;
 
   const [isMobile, setIsMobile] = React.useState(false);
-  const [isOpen, setIsOpen] = React.useState(false);
 
   const { pathname } = useLocation();
   const isResultLanding = pathname === '/';
@@ -21,18 +20,14 @@ export default function Header(props) {
       if (mobileWidth) {
         setIsMobile(true);
       } else {
-        setIsOpen(false);
+        handleCloseMenu();
         setIsMobile(false);
       }
     };
     resize();
     window.addEventListener('resize', resize);
     return () => window.removeEventListener("resize", resize);
-  }, [setIsMobile]);
-
-  const toggleMenu = () => setIsOpen(isOpen => !isOpen);
-
-  const menuButtonClassName = `button header__menu-button ${isOpen ? 'header__menu-button_type_closed' : ''}`;
+  }, [setIsMobile, handleCloseMenu]);
 
   const navLinks = () => {
     if (loggedIn) {
@@ -63,11 +58,11 @@ export default function Header(props) {
   const menuButton = () => {
     return (
       <button
-        className={menuButtonClassName}
+        className="button header__menu-button"
         type="button"
-        title={isOpen ? 'Закрыть меню' : 'Открыть меню'}
+        title="Открыть меню"
         aria-label="Кнопка меню"
-        onClick={toggleMenu}
+        onClick={handleOpenMenu}
       />
     )
   };
