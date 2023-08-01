@@ -43,7 +43,7 @@ export default function Header(props) {
     <header className={headerClassName}>
       <div className="header__container">
         <NavLink to="/">
-          <img src={logo} alt="Логотип: Movies Explorer" className="header__logo" />
+          <img src={logo} alt="Логотип: Movies Explorer" title="Главная страница" className="header__logo" />
         </NavLink>
 
         <nav className={linksContainerClassName}>
