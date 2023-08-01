@@ -24,8 +24,21 @@
 
 .header__link {
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 16px;
+}
+
+.header__movies-item.active {
+  font-weight: 500;
+}
+
+.header__link_type_profile {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: 500;
 }
 
 .header__button {
@@ -40,4 +53,28 @@
   display: flex;
   align-items: center;
   gap: 30px;
+}
+
+.header__links-container_type_logged {
+  width: 100%;
+  justify-content: space-between;
+  padding-left: 44px;
+}
+
+.header__movies-container {
+  display: flex;
+  gap: 16px;
+}
+
+.header__profile-icon {
+  display: block;
+  width: 26px;
+  height: 26px;
+  border-radius: 50px;
+
+  background-image: url(../../images/icon-main-profile.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 10px 10px;
+  background-color: #313131;
 }
