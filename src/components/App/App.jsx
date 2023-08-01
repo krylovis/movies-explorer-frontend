@@ -1,7 +1,7 @@
 import React from 'react';
-import { Route, Routes, useNavigate, useLocation } from 'react-router-dom';
+import { Route, Routes, } from 'react-router-dom';
 import Header from '../Header/Header';
-
+import Navigation from '../Navigation/Navigation';
 
 export default function App() {
   const [menuIsOpen, setMenuIsOpen] = React.useState(false);
@@ -16,10 +16,14 @@ export default function App() {
   const pathsForHeader = ["/", "/movies", "/saved-movies", "/profile"];
 
   return (
-    <Routes>
-      {pathsForHeader.map((path) => <Route key={path} path={path} element={
-        <Header handleOpenMenu={handleOpenMenu} handleCloseMenu={handleCloseMenu} />
-      } />)}
-    </Routes>
+    <>
+      <Routes>
+        {pathsForHeader.map((path) => <Route key={path} path={path} element={
+          <Header handleOpenMenu={handleOpenMenu} handleCloseMenu={handleCloseMenu} />
+        } />)}
+      </Routes>
+
+      {menuIsOpen && <Navigation handleCloseMenu={handleCloseMenu} />}
+    </>
   );
 }

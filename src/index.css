@@ -15,3 +15,6 @@
 
 /* --------------- Header --------------- */
 @import './components/Header/Header.css';
+
+/* --------------- Navigation --------------- */
+@import './components/Navigation/Navigation.css';
