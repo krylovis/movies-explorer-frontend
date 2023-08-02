@@ -18,6 +18,10 @@
 }
 
 .navigation__container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   position: absolute;
   padding: 29px;
   background-color: #202020;
@@ -52,29 +56,47 @@
 }
 
 .navigation__link-item {
+  position: relative;
   font-size: 18px;
   font-weight: 500;
   line-height: normal;
 }
 
 .navigation__link-item.active::after {
+  position: absolute;
   content: '';
   width: 100%;
   height: 2px;
   background-color: white;
   display: block;
-  margin-top: 4px;
+  bottom: -8px;
 }
 
 .navigation__footer {
   display: flex;
   justify-content: center;
-  padding-bottom: 93px;
+  padding-bottom: 65px;
+  padding-left: 11px;
 }
 
 @media screen and (max-width: 600px) {
   .navigation__container {
     width: auto;
     left: 0;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .navigation__container {
+    padding: 20px;
+  }
+
+  .navigation__links-container {
+    gap: 25px;
+    padding-top: 108px;
+  }
+
+  .navigation__footer {
+    padding-bottom: 30px;
   }
 }
