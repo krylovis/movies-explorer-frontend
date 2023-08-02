@@ -1,0 +1,1 @@
+export const pathsForHeader = ["/", "/movies", "/saved-movies", "/profile"];
