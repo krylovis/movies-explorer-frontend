@@ -1,0 +1,22 @@
+.link-to-profile {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  line-height: 12px;
+  font-weight: 500;
+  padding-right: 3px;
+}
+
+.link-to-profile__icon {
+  display: block;
+  width: 26px;
+  height: 26px;
+  border-radius: 50px;
+
+  background-image: url(../../images/interface/icon-main-profile.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 10px 10px;
+  background-color: #313131;
+}

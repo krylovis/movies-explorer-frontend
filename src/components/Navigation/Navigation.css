@@ -44,6 +44,7 @@
 
 .navigation__links-container {
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: 28px;
   align-items: center;
@@ -63,4 +64,10 @@
   background-color: white;
   display: block;
   margin-top: 4px;
+}
+
+.navigation__footer {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 93px;
 }

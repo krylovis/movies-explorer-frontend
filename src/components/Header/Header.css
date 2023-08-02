@@ -82,19 +82,6 @@
   gap: 16px;
 }
 
-.header__profile-icon {
-  display: block;
-  width: 26px;
-  height: 26px;
-  border-radius: 50px;
-
-  background-image: url(../../images/interface/icon-main-profile.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 10px 10px;
-  background-color: #313131;
-}
-
 .header__menu-button {
   margin-right: 8px;
   background-repeat: no-repeat;

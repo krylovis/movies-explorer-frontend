@@ -1,10 +1,11 @@
 import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 
+import LinkToProfile from '../../components/LinkToProfile/LinkToProfile';
 import logo from '../../images/logo.svg';
 
 export default function Header(props) {
-  const { loggedIn = false, handleOpenMenu, handleCloseMenu } = props;
+  const { loggedIn = true, handleOpenMenu, handleCloseMenu } = props;
 
   const [isMobile, setIsMobile] = React.useState(false);
 
@@ -37,10 +38,7 @@ export default function Header(props) {
             <NavLink className="link header__movies-item" to="/movies">Фильмы</NavLink>
             <NavLink className="link header__movies-item" to="/saved-movies">Сохранённые фильмы</NavLink>
           </div>
-          <NavLink className="link header__profile-link" to="/profile">
-            Аккаунт
-            <span className="header__profile-icon" />
-          </NavLink>
+          <LinkToProfile />
         </>
       )
     } else {

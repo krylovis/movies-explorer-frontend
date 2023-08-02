@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+import LinkToProfile from '../../components/LinkToProfile/LinkToProfile';
 import usePopupClose from '../../hooks/useMenuClose';
 
 export default function Navigation(props) {
@@ -25,6 +26,10 @@ export default function Navigation(props) {
           <NavLink className="link navigation__link-item" to="/movies">Фильмы</NavLink>
           <NavLink className="link navigation__link-item" to="/saved-movies">Сохранённые фильмы</NavLink>
         </nav >
+
+        <nav className="navigation__footer">
+          <LinkToProfile />
+        </nav>
       </div>
     </section>
   )
