@@ -71,3 +71,10 @@
   justify-content: center;
   padding-bottom: 93px;
 }
+
+@media screen and (max-width: 600px) {
+  .navigation__container {
+    width: auto;
+    left: 0;
+  }
+}
