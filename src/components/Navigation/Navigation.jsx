@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 import LinkToProfile from '../../components/LinkToProfile/LinkToProfile';
 import usePopupClose from '../../hooks/useMenuClose';
@@ -7,6 +7,12 @@ import usePopupClose from '../../hooks/useMenuClose';
 export default function Navigation(props) {
   const { menuIsOpen, handleCloseMenu } = props;
   usePopupClose(menuIsOpen, handleCloseMenu);
+
+  const location = useLocation();
+
+  React.useEffect(() => {
+    handleCloseMenu();
+  }, [location]);
 
   return (
     <section className={`navigation ${menuIsOpen ? "navigation_opened" : ""}`}>
