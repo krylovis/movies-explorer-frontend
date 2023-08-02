@@ -7,6 +7,14 @@
   width: 100%;
   background-color: rgba(0, 0, 0, .3);
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  transition: visibility 0.2s, all 0.2s linear;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.navigation_opened {
+  visibility: visible;
+  opacity: 1;
 }
 
 .navigation__container {

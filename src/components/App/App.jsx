@@ -23,7 +23,7 @@ export default function App() {
         } />)}
       </Routes>
 
-      {menuIsOpen && <Navigation handleCloseMenu={handleCloseMenu} />}
+      <Navigation menuIsOpen={menuIsOpen} handleCloseMenu={handleCloseMenu} />
     </>
   );
 }

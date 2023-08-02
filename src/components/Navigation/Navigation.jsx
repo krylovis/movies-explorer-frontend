@@ -1,10 +1,10 @@
 import React from 'react';
 
 export default function Navigation(props) {
-  const { handleCloseMenu } = props;
+  const { menuIsOpen, handleCloseMenu } = props;
 
   return (
-    <section className="navigation">
+    <section className={`navigation ${menuIsOpen ? "navigation_opened" : ""}`}>
       <div className="navigation__container">
         <div className="navigation__header">
           <button
