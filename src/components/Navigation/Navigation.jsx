@@ -1,7 +1,9 @@
 import React from 'react';
+import usePopupClose from '../../hooks/useMenuClose';
 
 export default function Navigation(props) {
   const { menuIsOpen, handleCloseMenu } = props;
+  usePopupClose(menuIsOpen, handleCloseMenu);
 
   return (
     <section className={`navigation ${menuIsOpen ? "navigation_opened" : ""}`}>
