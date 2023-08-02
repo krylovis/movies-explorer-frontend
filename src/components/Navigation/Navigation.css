@@ -41,3 +41,26 @@
   height: 18px;
   background-image: url(../../images/interface/icon-close.svg);
 }
+
+.navigation__links-container {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  align-items: center;
+  padding-top: 112px;
+}
+
+.navigation__link-item {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.navigation__link-item.active::after {
+  content: '';
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  display: block;
+  margin-top: 4px;
+}

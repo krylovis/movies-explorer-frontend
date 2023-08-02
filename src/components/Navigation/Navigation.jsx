@@ -1,4 +1,6 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
+
 import usePopupClose from '../../hooks/useMenuClose';
 
 export default function Navigation(props) {
@@ -17,6 +19,12 @@ export default function Navigation(props) {
             onClick={handleCloseMenu}
           />
         </div>
+
+        <nav className="navigation__links-container">
+          <NavLink className="link navigation__link-item" to="/">Главная</NavLink>
+          <NavLink className="link navigation__link-item" to="/movies">Фильмы</NavLink>
+          <NavLink className="link navigation__link-item" to="/saved-movies">Сохранённые фильмы</NavLink>
+        </nav >
       </div>
     </section>
   )
