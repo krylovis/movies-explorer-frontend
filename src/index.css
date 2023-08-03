@@ -16,6 +16,9 @@
 /* --------------- link --------------- */
 @import './blocks/link/link.css';
 
+/* --------------- NotFoundPage --------------- */
+@import './components/NotFoundPage/NotFoundPage.css';
+
 /* --------------- Header --------------- */
 @import './components/Header/Header.css';
 
