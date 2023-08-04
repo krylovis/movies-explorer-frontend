@@ -24,3 +24,12 @@
 
 /* --------------- Navigation --------------- */
 @import './components/Navigation/Navigation.css';
+
+/* --------------- AuthContainer --------------- */
+@import './components/auth/AuthContainer/AuthContainer.css';
+
+/* --------------- SigninPage --------------- */
+@import './components/auth/SigninPage/SigninPage.css';
+
+/* --------------- SignupPage --------------- */
+@import './components/auth/SignupPage/SignupPage.css';
