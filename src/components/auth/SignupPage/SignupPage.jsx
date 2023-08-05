@@ -1,9 +1,9 @@
 // import { useNavigate } from 'react-router-dom';
 
 import FormContainer from '../FormContainer/FormContainer';
+import InputTypeName from '../../inputs/InputTypeName';
 import InputTypeEmail from '../../inputs/InputTypeEmail';
 import InputTypePassword from '../../inputs/InputTypePassword';
-import InputTypeName from '../../inputs/InputTypeName';
 import { useForm } from '../../../hooks/useForm';
 
 export default function SignupPage() {

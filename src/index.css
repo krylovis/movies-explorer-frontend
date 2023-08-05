@@ -22,6 +22,9 @@
 /* --------------- NotFoundPage --------------- */
 @import './components/NotFoundPage/NotFoundPage.css';
 
+/* --------------- ProfilePage --------------- */
+@import './components/ProfilePage/ProfilePage.css';
+
 /* --------------- Header --------------- */
 @import './components/Header/Header.css';
 
