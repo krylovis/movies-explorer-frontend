@@ -1,3 +1,5 @@
+import React from 'react';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 // import { useNavigate } from 'react-router-dom';
 
 import InputTypeName from '../../components/inputs/InputTypeName';
@@ -5,8 +7,11 @@ import InputTypeEmail from '../../components/inputs/InputTypeEmail';
 import { useForm } from '../../hooks/useForm';
 
 export default function ProfilePage() {
+  const currentUser = React.useContext(CurrentUserContext);
   const { values, handleChange } = useForm({ email: '', password: '' });
   // const navigate = useNavigate();
+
+  const { name, email } = currentUser;
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -15,7 +20,7 @@ export default function ProfilePage() {
 
   return (
     <section className="profile">
-      <h2 className="profile__title">Привет, Виталий!</h2>
+      <h2 className="profile__title">{`Привет, ${name}!`}</h2>
 
       <form
         action="profileAction"

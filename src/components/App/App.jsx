@@ -1,6 +1,8 @@
 import React from 'react';
 import { Route, Routes, } from 'react-router-dom';
 
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+
 import { pathsForHeader } from '../../utils/constants';
 import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
@@ -10,12 +12,13 @@ import ProfilePage from '../ProfilePage/ProfilePage';
 import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
 export default function App() {
+  const [currentUser, setCurrentUser] = React.useState({ name: 'Иван', email: 'pochta@yandex.ru' });
   const [menuIsOpen, setMenuIsOpen] = React.useState(false);
   const handleOpenMenu = () => setMenuIsOpen(true);
   const handleCloseMenu = () => setMenuIsOpen(false);
 
   return (
-    <>
+    <CurrentUserContext.Provider value={currentUser}>
       <Routes>
         {pathsForHeader.map((path) => <Route key={path} path={path} element={
           <Header handleOpenMenu={handleOpenMenu} handleCloseMenu={handleCloseMenu} />
@@ -32,6 +35,6 @@ export default function App() {
       </Routes>
 
       <Navigation menuIsOpen={menuIsOpen} handleCloseMenu={handleCloseMenu} />
-    </>
+    </CurrentUserContext.Provider>
   );
 }
