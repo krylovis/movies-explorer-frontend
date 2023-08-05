@@ -3,10 +3,8 @@
 import AuthContainer from '../AuthContainer/AuthContainer';
 import InputTypeEmail from '../../inputs/InputTypeEmail';
 import InputTypePassword from '../../inputs/InputTypePassword';
-
 import { useForm } from '../../../hooks/useForm';
 
-// авторизация
 export default function SigninPage() {
   const { values, handleChange } = useForm({ email: '', password: '' });
   // const navigate = useNavigate();
@@ -23,6 +21,7 @@ export default function SigninPage() {
       formName="signin"
       buttonText="Войти"
     >
+
       <InputTypeEmail values={values} handleChange={handleChange} />
       <InputTypePassword values={values} handleChange={handleChange} />
 

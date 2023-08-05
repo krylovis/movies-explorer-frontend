@@ -4,10 +4,8 @@ import AuthContainer from '../AuthContainer/AuthContainer';
 import InputTypeEmail from '../../inputs/InputTypeEmail';
 import InputTypePassword from '../../inputs/InputTypePassword';
 import InputTypeName from '../../inputs/InputTypeName';
-
 import { useForm } from '../../../hooks/useForm';
 
-// регистрация
 export default function SignupPage() {
   const { values, handleChange } = useForm({ name: '', email: '', password: '' });
   // const navigate = useNavigate();
@@ -24,6 +22,7 @@ export default function SignupPage() {
       formName="signup"
       buttonText="Зарегистрироваться"
     >
+
       <InputTypeName values={values} handleChange={handleChange} />
       <InputTypeEmail values={values} handleChange={handleChange} />
       <InputTypePassword values={values} handleChange={handleChange} />
