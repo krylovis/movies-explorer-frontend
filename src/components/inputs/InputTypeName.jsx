@@ -14,7 +14,7 @@ export default function InputTypeName(props) {
         maxLength="40"
         required
       />
-      <span className="input__error-message inputTypeName-error"></span>
+      <span className="input__error-message inputTypeName-error" />
     </label>
   )
 }

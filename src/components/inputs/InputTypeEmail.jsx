@@ -17,7 +17,7 @@ export default function InputTypeEmail(props) {
         maxLength="40"
         required
       />
-      <span className="input__error-message inputTypeEmail-error"></span>
+      <span className="input__error-message inputTypeEmail-error" />
     </label>
   )
 }

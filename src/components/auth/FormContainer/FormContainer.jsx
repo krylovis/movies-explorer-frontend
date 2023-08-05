@@ -11,13 +11,13 @@ export default function FormContainer(props) {
 
   const getFooter = () => {
     const isSignin = pathname === "/signin";
-    const footerText = isSignin ? "Ещё не зарегистрированы?" : "Уже зарегистрированы";
+    const footerText = isSignin ? "Ещё не зарегистрированы?" : "Уже зарегистрированы?";
     const footerLink = isSignin ? "Регистрация" : "Войти";
     const linkTo = isSignin ? "signup" : "/signin";
 
     return (
       <>
-        <span className="form-container__footer-text">{footerText}</span>
+        <span className="form-container__text">{footerText}</span>
         <NavLink className="link form-container__link" to={linkTo}>{footerLink}</NavLink>
       </>
     )
@@ -29,23 +29,21 @@ export default function FormContainer(props) {
         <img src={logo} alt="Логотип: Movies Explorer" className="form-container__logo" />
         <h2 className="form-container__title">{formTitle}</h2>
       </div>
-      <div className="form-container__content">
-        <form
-          action={`${formName}Action`}
-          onSubmit={onSubmit}
-          name={formName}
-          className="form-container__form"
+      <form
+        action={`${formName}Action`}
+        onSubmit={onSubmit}
+        name={formName}
+        className="form-container__content"
+      >
+        {children}
+        <button
+          className={btnClassName}
+          type="submit"
+          aria-label={buttonText}
         >
-          {children}
-          <button
-            className={btnClassName}
-            type="submit"
-            aria-label={buttonText}
-          >
-            {buttonText}
-          </button>
-        </form>
-      </div>
+          {buttonText}
+        </button>
+      </form>
       <div className="form-container__footer">
         {getFooter()}
       </div>

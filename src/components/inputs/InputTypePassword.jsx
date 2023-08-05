@@ -14,7 +14,7 @@ export default function InputTypePassword(props) {
         maxLength="200"
         required
       />
-      <span className="input__error-message inputTypePassword-error"></span>
+      <span className="input__error-message inputTypePassword-error">Что-то пошло не так...</span>
     </label>
   )
 }
