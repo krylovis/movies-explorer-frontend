@@ -4,6 +4,7 @@ export default function InputTypeEmail(props) {
   const { values, handleChange } = props;
   return (
     <label className="input__label" htmlFor="inputTypeEmail">
+      E-mail
       <input
         className="input input_email"
         id="inputTypeEmail"

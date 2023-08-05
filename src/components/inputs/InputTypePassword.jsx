@@ -2,6 +2,7 @@ export default function InputTypePassword(props) {
   const { values, handleChange } = props;
   return (
     <label className="input__label" htmlFor="inputTypePassword">
+      Пароль
       <input
         className="input input_password"
         id="inputTypePassword"

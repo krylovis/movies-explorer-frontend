@@ -2,6 +2,7 @@ export default function InputTypeName(props) {
   const { values, handleChange } = props;
   return (
     <label className="input__label" htmlFor="inputTypeName">
+      Имя
       <input
         className="input input_name"
         id="inputTypeName"
