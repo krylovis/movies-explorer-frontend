@@ -25,8 +25,8 @@
 /* --------------- Navigation --------------- */
 @import './components/Navigation/Navigation.css';
 
-/* --------------- AuthContainer --------------- */
-@import './components/auth/AuthContainer/AuthContainer.css';
+/* --------------- FormContainer --------------- */
+@import './components/auth/FormContainer/FormContainer.css';
 
 /* --------------- SigninPage --------------- */
 @import './components/auth/SigninPage/SigninPage.css';

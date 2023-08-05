@@ -1,6 +1,6 @@
 // import { useNavigate } from 'react-router-dom';
 
-import AuthContainer from '../AuthContainer/AuthContainer';
+import FormContainer from '../FormContainer/FormContainer';
 import InputTypeEmail from '../../inputs/InputTypeEmail';
 import InputTypePassword from '../../inputs/InputTypePassword';
 import { useForm } from '../../../hooks/useForm';
@@ -15,9 +15,9 @@ export default function SigninPage() {
   };
 
   return (
-    <AuthContainer
+    <FormContainer
       onSubmit={handleSubmit}
-      authTitle="Рады видеть!"
+      formTitle="Рады видеть!"
       formName="signin"
       buttonText="Войти"
     >
@@ -25,6 +25,6 @@ export default function SigninPage() {
       <InputTypeEmail values={values} handleChange={handleChange} />
       <InputTypePassword values={values} handleChange={handleChange} />
 
-    </AuthContainer>
+    </FormContainer>
   )
 }

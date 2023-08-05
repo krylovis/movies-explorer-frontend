@@ -1,6 +1,6 @@
 // import { useNavigate } from 'react-router-dom';
 
-import AuthContainer from '../AuthContainer/AuthContainer';
+import FormContainer from '../FormContainer/FormContainer';
 import InputTypeEmail from '../../inputs/InputTypeEmail';
 import InputTypePassword from '../../inputs/InputTypePassword';
 import InputTypeName from '../../inputs/InputTypeName';
@@ -16,9 +16,9 @@ export default function SignupPage() {
   };
 
   return (
-    <AuthContainer
+    <FormContainer
       onSubmit={handleSubmit}
-      authTitle="Добро пожаловать!"
+      formTitle="Добро пожаловать!"
       formName="signup"
       buttonText="Зарегистрироваться"
     >
@@ -27,6 +27,6 @@ export default function SignupPage() {
       <InputTypeEmail values={values} handleChange={handleChange} />
       <InputTypePassword values={values} handleChange={handleChange} />
 
-    </AuthContainer>
+    </FormContainer>
   )
 }
