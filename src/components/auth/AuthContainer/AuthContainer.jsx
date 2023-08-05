@@ -8,7 +8,6 @@ export default function AuthContainer(props) {
 
   const location = useLocation();
   const { pathname } = location;
-  console.log(pathname);
 
   const getFooter = () => {
     const isSignin = pathname === "/signin";
