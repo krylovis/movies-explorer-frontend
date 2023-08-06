@@ -4,8 +4,8 @@
 /* --------------- fonts --------------- */
 @import './fonts/fonts.css';
 
-/* --------------- root --------------- */
-@import './blocks/root/root.css';
+/* --------------- app --------------- */
+@import './blocks/app/app.css';
 
 /* --------------- button --------------- */
 @import './blocks/button/button.css';
