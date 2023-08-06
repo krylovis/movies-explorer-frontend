@@ -3,7 +3,6 @@ import { Route, Routes } from 'react-router-dom';
 
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-import { pathsForHeader } from '../../utils/constants';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
