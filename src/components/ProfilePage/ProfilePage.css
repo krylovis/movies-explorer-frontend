@@ -6,7 +6,7 @@
   justify-content: space-between;
 
   margin: 0 auto;
-  padding: 74px 0;
+  padding: 74px 0 70px;
 
   width: 410px;
 }
@@ -33,4 +33,27 @@
   flex: 1;
   padding-top: 123px;
   gap: 24px;
+}
+
+.profile__submit-button {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: normal;
+  color: white;
+
+  padding-bottom: 14px;
+  margin-top: auto;
+  border-radius: 3px;
+  background-color: transparent;
+}
+
+.profile__logout-button {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: normal;
+  color: #EE3465;
+
+  margin-top: auto;
+  border-radius: 3px;
+  background-color: transparent;
 }
