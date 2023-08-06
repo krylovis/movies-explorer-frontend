@@ -6,9 +6,9 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
+import ProfilePage from '../ProfilePage/ProfilePage';
 import SignupPage from '../auth/SignupPage/SignupPage';
 import SigninPage from '../auth/SigninPage/SigninPage';
-import ProfilePage from '../ProfilePage/ProfilePage';
 import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
 export default function App() {
@@ -19,9 +19,9 @@ export default function App() {
       <Routes>
 
         <Route path='/' element={<Main />} >
-          <Route path='/profile' element={<ProfilePage />} />
           <Route path='/movies' element={<Movies />} />
           <Route path='/saved-movies' element={<SavedMovies />} />
+          <Route path='/profile' element={<ProfilePage />} />
         </Route>
 
         <Route exact path='/signup' element={<SignupPage />} />
