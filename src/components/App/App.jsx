@@ -12,7 +12,7 @@ import SigninPage from '../auth/SigninPage/SigninPage';
 import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
 export default function App() {
-  const [currentUser, setCurrentUser] = React.useState({ name: 'Иван', email: 'pochta@yandex.ru' });
+  const [currentUser, setCurrentUser] = React.useState({ name: 'Виталий', email: 'pochta@yandex.ru' });
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

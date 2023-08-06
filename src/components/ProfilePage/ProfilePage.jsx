@@ -8,10 +8,10 @@ import { useForm } from '../../hooks/useForm';
 
 export default function ProfilePage() {
   const currentUser = React.useContext(CurrentUserContext);
-  const { values, handleChange } = useForm({ email: '', password: '' });
+  const { name, email } = currentUser;
+  const { values, handleChange } = useForm(currentUser);
   // const navigate = useNavigate();
 
-  const { name, email } = currentUser;
 
   function handleSubmit(e) {
     e.preventDefault();
