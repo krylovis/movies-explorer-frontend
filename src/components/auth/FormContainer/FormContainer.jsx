@@ -13,7 +13,7 @@ export default function FormContainer(props) {
     const isSignin = pathname === "/signin";
     const footerText = isSignin ? "Ещё не зарегистрированы?" : "Уже зарегистрированы?";
     const footerLink = isSignin ? "Регистрация" : "Войти";
-    const linkTo = isSignin ? "signup" : "/signin";
+    const linkTo = isSignin ? "/signup" : "/signin";
 
     return (
       <>
