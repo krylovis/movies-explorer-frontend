@@ -25,6 +25,12 @@
 /* --------------- Main --------------- */
 @import './components/Main/Main.css';
 
+/* --------------- Movies --------------- */
+@import './components/Movies/Movies.css';
+
+/* --------------- SavedMovies --------------- */
+@import './components/SavedMovies/SavedMovies.css';
+
 /* --------------- ProfilePage --------------- */
 @import './components/ProfilePage/ProfilePage.css';
 
