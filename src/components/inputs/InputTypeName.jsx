@@ -1,10 +1,13 @@
 export default function InputTypeName(props) {
-  const { values, handleChange } = props;
+  const { values, handleChange, isProfile } = props;
+  const labelClass = `input__label ${isProfile ? 'input__label_type_profile' : ''}`;
+  const inputClass = `input ${isProfile ? 'input_type_profile' : ''}`;
+
   return (
-    <label className="input__label" htmlFor="inputTypeName">
+    <label className={labelClass} htmlFor="inputTypeName">
       Имя
       <input
-        className="input input_name"
+        className={inputClass}
         id="inputTypeName"
         type="text"
         name="name"

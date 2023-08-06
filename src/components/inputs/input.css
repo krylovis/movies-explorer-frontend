@@ -11,6 +11,15 @@
   margin: 0 0 16px;
 }
 
+.input_type_profile {
+  margin: 0;
+  border: none;
+  height: auto;
+  text-align: end;
+
+  font-size: 11px;
+}
+
 .input__label {
   position: relative;
   display: flex;
@@ -22,6 +31,25 @@
   line-height: normal;
 
   padding-bottom: 5px;
+}
+
+.input__label_type_profile {
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+
+  color: #fff;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.input__label_type_profile:first-child::after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 1px;
+  bottom: -10px;
+  background-color: #424242;
 }
 
 .input__error-message {

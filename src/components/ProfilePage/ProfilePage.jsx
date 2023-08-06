@@ -28,8 +28,10 @@ export default function ProfilePage() {
         name="profile"
         className="profile__content"
       >
-        <InputTypeName values={values} handleChange={handleChange} />
-        <InputTypeEmail values={values} handleChange={handleChange} />
+        <div className="profile__input-container">
+          <InputTypeName values={values} handleChange={handleChange} isProfile={true} />
+          <InputTypeEmail values={values} handleChange={handleChange} isProfile={true} />
+        </div>
 
         <button className="button profile__submit-button" type="submit" aria-label="Редактировать">Редактировать</button>
       </form>

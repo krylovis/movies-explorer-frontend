@@ -1,12 +1,15 @@
 import { emailPattern } from '../../utils/constants';
 
 export default function InputTypeEmail(props) {
-  const { values, handleChange } = props;
+  const { values, handleChange, isProfile } = props;
+  const labelClass = `input__label ${isProfile ? 'input__label_type_profile' : ''}`;
+  const inputClass = `input ${isProfile ? 'input_type_profile' : ''}`;
+
   return (
-    <label className="input__label" htmlFor="inputTypeEmail">
+    <label className={labelClass} htmlFor="inputTypeEmail">
       E-mail
       <input
-        className="input input_email"
+        className={inputClass}
         id="inputTypeEmail"
         type="email"
         name="email"
