@@ -103,4 +103,9 @@
   .header__container {
     padding: 0 14px;
   }
+
+  .header__menu-button {
+    width: 22px;
+    height: 21px;
+  }
 }
