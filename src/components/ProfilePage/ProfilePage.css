@@ -35,25 +35,62 @@
   gap: 24px;
 }
 
-.profile__submit-button {
+.profile__button {
   font-size: 13px;
-  font-weight: 400;
   line-height: normal;
-  color: white;
-
-  padding-bottom: 14px;
-  margin-top: auto;
   border-radius: 3px;
   background-color: transparent;
 }
 
-.profile__logout-button {
-  font-size: 13px;
-  font-weight: 500;
-  line-height: normal;
-  color: #EE3465;
-
+.profile__button_type_submit {
+  font-weight: 400;
+  color: white;
   margin-top: auto;
-  border-radius: 3px;
-  background-color: transparent;
+  padding-bottom: 14px;
+}
+
+.profile__button_type_logout {
+  font-weight: 500;
+  color: #EE3465;
+  margin-top: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .profile {
+    justify-content: center;
+    padding: 40px 0 70px;
+  }
+
+  .profile__content {
+    flex: none;
+  }
+
+  .profile__input-container {
+    padding-top: 96px;
+    padding-bottom: 210px;
+  }
+
+  .profile__button_type_logout {
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .profile {
+    justify-content: space-between;
+    padding: 70px 30px 40px;
+    width: 100%;
+  }
+
+  .profile__content {
+    flex: 1;
+  }
+
+  .profile__input-container {
+    padding-top: 80px;
+  }
+
+  .profile__button {
+    font-size: 12px;
+  }
 }

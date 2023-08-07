@@ -33,10 +33,10 @@ export default function ProfilePage() {
           <InputTypeEmail values={values} handleChange={handleChange} isProfile={true} />
         </div>
 
-        <button className="button profile__submit-button" type="submit" aria-label="Редактировать">Редактировать</button>
+        <button className="button profile__button profile__button_type_submit" type="submit" aria-label="Редактировать">Редактировать</button>
       </form>
 
-      <button className="button profile__logout-button" type="button" aria-label="Выйти из аккаунта">Выйти из аккаунта</button>
+      <button className="button profile__button profile__button_type_logout" type="button" aria-label="Выйти из аккаунта">Выйти из аккаунта</button>
     </section >
   )
 }
