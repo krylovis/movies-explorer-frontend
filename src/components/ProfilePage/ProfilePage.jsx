@@ -1,6 +1,6 @@
 import React from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import InputTypeName from '../../components/inputs/InputTypeName';
 import InputTypeEmail from '../../components/inputs/InputTypeEmail';
@@ -10,12 +10,17 @@ export default function ProfilePage() {
   const currentUser = React.useContext(CurrentUserContext);
   const { name, email } = currentUser;
   const { values, handleChange } = useForm(currentUser);
-  // const navigate = useNavigate();
-
+  const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
     console.log('values', values);
+  };
+
+  function handleLogout(e) {
+    e.preventDefault();
+    navigate('/signin');
+    console.log('handleLogout');
   };
 
   return (
@@ -33,10 +38,21 @@ export default function ProfilePage() {
           <InputTypeEmail values={values} handleChange={handleChange} isProfile={true} />
         </div>
 
-        <button className="button profile__button profile__button_type_submit" type="submit" aria-label="Редактировать">Редактировать</button>
+        <button
+          className="button profile__button profile__button_type_submit"
+          aria-label="Редактировать"
+          type="submit"
+        >Редактировать
+        </button>
       </form>
 
-      <button className="button profile__button profile__button_type_logout" type="button" aria-label="Выйти из аккаунта">Выйти из аккаунта</button>
+      <button
+        className="button profile__button profile__button_type_logout"
+        aria-label="Выйти из аккаунта"
+        type="button"
+        onClick={handleLogout}>
+        Выйти из аккаунта
+      </button>
     </section >
   )
 }
