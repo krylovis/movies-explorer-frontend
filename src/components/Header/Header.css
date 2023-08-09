@@ -105,6 +105,25 @@
     padding: 0 14px;
   }
 
+  .header__links-container {
+    gap: 14px;
+  }
+
+  .header__link {
+    font-size: 10px;
+  }
+
+  .header__button {
+    font-size: 10px;
+    line-height: 16px;
+    font-weight: 500;
+
+    width: 54px;
+    height: 26px;
+    color: black;
+    border-radius: 3px;
+  }
+
   .header__menu-button {
     width: 22px;
     height: 21px;
