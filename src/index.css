@@ -25,6 +25,12 @@
 /* --------------- Main --------------- */
 @import './components/Main/Main.css';
 
+/* --------------- Promo --------------- */
+@import './components/Promo/Promo.css';
+
+/* --------------- AboutProject --------------- */
+@import './components/AboutProject/AboutProject.css';
+
 /* --------------- Movies --------------- */
 @import './components/Movies/Movies.css';
 
