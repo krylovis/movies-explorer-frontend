@@ -10,6 +10,9 @@
 /* --------------- button --------------- */
 @import './blocks/button/button.css';
 
+/* --------------- list --------------- */
+@import './blocks/list/list.css';
+
 /* --------------- linkToProfile --------------- */
 @import './components/LinkToProfile/LinkToProfile.css';
 

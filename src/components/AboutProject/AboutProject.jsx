@@ -42,11 +42,11 @@ export default function AboutProject() {
     <AboutContainer title={title}>
       <div className="about-project">
 
-        <ul className='about-project__list'>
+        <ul className='list about-project__list'>
           {listItems}
         </ul>
 
-        <ul className="about-project__timeline">
+        <ul className="list about-project__timeline">
           {timelineItems}
         </ul>
 
