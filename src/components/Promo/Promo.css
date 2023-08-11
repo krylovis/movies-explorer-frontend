@@ -6,6 +6,7 @@
 .promo__container {
   position: relative;
   margin: 0 auto;
+  max-width: 1140px;
 
   background-image: url(../../images/landing-logo.svg);
   background-position: bottom right;
