@@ -25,11 +25,17 @@
 /* --------------- Main --------------- */
 @import './components/Main/Main.css';
 
+/* --------------- AboutProjectPage --------------- */
+@import './components/AboutProjectPage/AboutProjectPage.css';
+
+/* --------------- AboutContainer --------------- */
+@import './components/AboutContainer/AboutContainer.css';
+
 /* --------------- Promo --------------- */
 @import './components/Promo/Promo.css';
 
-/* --------------- AboutProjectPage --------------- */
-@import './components/AboutProjectPage/AboutProjectPage.css';
+/* --------------- AboutProject --------------- */
+@import './components/AboutProject/AboutProject.css';
 
 /* --------------- Movies --------------- */
 @import './components/Movies/Movies.css';
