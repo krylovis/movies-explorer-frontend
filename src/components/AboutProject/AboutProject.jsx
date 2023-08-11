@@ -13,6 +13,17 @@ export default function AboutProject() {
     }
   ];
 
+  const timelineList = [
+    {
+      title: '1 неделя',
+      text: 'Back-end',
+    },
+    {
+      title: '4 недели',
+      text: 'Front-end',
+    }
+  ];
+
   const listItems = aboutProjectList.map((item, index) =>
     <li key={index} className='about-project__item'>
       <h3 className='about-project__item-title'>{item.title}</h3>
@@ -20,12 +31,25 @@ export default function AboutProject() {
     </li>
   );
 
+  const timelineItems = timelineList.map((timelineItem, index) =>
+    <li key={index} className='about-project__timeline-item'>
+      <h3 className='about-project__timeline-item-title'>{timelineItem.title}</h3>
+      <p className='about-project__timeline-item-text'>{timelineItem.text}</p>
+    </li>
+  );
+
   return (
     <AboutContainer title={title}>
       <div className="about-project">
+
         <ul className='about-project__list'>
           {listItems}
         </ul>
+
+        <ul className="about-project__timeline">
+          {timelineItems}
+        </ul>
+
       </div >
     </AboutContainer>
   )
