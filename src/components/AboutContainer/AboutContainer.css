@@ -5,4 +5,17 @@
 .about-container__content {
   max-width: 1140px;
   margin: 0 auto;
+  padding: 100px 0;
+}
+
+.about-project__title {
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.88px;
+
+  margin: 0;
+  padding-bottom: 23px;
+  border-bottom: 1px solid #DADADA;
 }

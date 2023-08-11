@@ -1,10 +1,10 @@
 import AboutContainer from '../AboutContainer/AboutContainer';
 
 export default function AboutProject() {
-  const headerText = 'О проекте';
+  const title = 'О проекте';
 
   return (
-    <AboutContainer headerText={headerText}>
+    <AboutContainer title={title}>
       <div className="about-project"></div >
     </AboutContainer>
   )
