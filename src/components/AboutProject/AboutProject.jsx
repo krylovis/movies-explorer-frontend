@@ -31,12 +31,17 @@ export default function AboutProject() {
     </li>
   );
 
-  const timelineItems = timelineList.map((timelineItem, index) =>
-    <li key={index} className='about-project__timeline-item'>
-      <h3 className='about-project__timeline-item-title'>{timelineItem.title}</h3>
-      <p className='about-project__timeline-item-text'>{timelineItem.text}</p>
-    </li>
-  );
+  const timelineItems = timelineList.map((timelineItem, index) => {
+    const titleStyle = `about-project__timeline-title ${index === 0 ? 'about-project__timeline-title_type_first_item' : ''}`;
+    const itemStyle = `about-project__timeline-item ${index === 0 ? 'about-project__timeline-item_type_first_item' : ''}`;
+
+    return (
+      <li key={index} className={itemStyle}>
+        <h3 className={titleStyle}>{timelineItem.title}</h3>
+        <p className='about-project__timeline-text'>{timelineItem.text}</p>
+      </li>
+    )
+  });
 
   return (
     <AboutContainer title={title}>
