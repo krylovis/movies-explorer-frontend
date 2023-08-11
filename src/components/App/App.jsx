@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 import Main from '../Main/Main';
-import AboutProject from '../AboutProject/AboutProject';
+import AboutProjectPage from '../AboutProjectPage/AboutProjectPage';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import ProfilePage from '../ProfilePage/ProfilePage';
@@ -20,7 +20,7 @@ export default function App() {
       <Routes>
 
         <Route path='/' element={<Main />} >
-          <Route path='/' element={<AboutProject />} />
+          <Route path='/' element={<AboutProjectPage />} />
           <Route path='/movies' element={<Movies />} />
           <Route path='/saved-movies' element={<SavedMovies />} />
           <Route path='/profile' element={<ProfilePage />} />

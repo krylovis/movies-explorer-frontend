@@ -28,8 +28,8 @@
 /* --------------- Promo --------------- */
 @import './components/Promo/Promo.css';
 
-/* --------------- AboutProject --------------- */
-@import './components/AboutProject/AboutProject.css';
+/* --------------- AboutProjectPage --------------- */
+@import './components/AboutProjectPage/AboutProjectPage.css';
 
 /* --------------- Movies --------------- */
 @import './components/Movies/Movies.css';
