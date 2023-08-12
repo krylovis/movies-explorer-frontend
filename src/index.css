@@ -34,17 +34,20 @@
 /* --------------- AboutContainer --------------- */
 @import './components/AboutContainer/AboutContainer.css';
 
+/* --------------- Promo --------------- */
+@import './components/Promo/Promo.css';
+
+/* --------------- AboutProject --------------- */
+@import './components/AboutProject/AboutProject.css';
+
 /* --------------- Techs --------------- */
 @import './components/Techs/Techs.css';
 
 /* --------------- AboutMe --------------- */
 @import './components/AboutMe/AboutMe.css';
 
-/* --------------- Promo --------------- */
-@import './components/Promo/Promo.css';
-
-/* --------------- AboutProject --------------- */
-@import './components/AboutProject/AboutProject.css';
+/* --------------- Portfolio --------------- */
+@import './components/Portfolio/Portfolio.css';
 
 /* --------------- Movies --------------- */
 @import './components/Movies/Movies.css';
