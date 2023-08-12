@@ -34,6 +34,9 @@
 /* --------------- AboutContainer --------------- */
 @import './components/AboutContainer/AboutContainer.css';
 
+/* --------------- Techs --------------- */
+@import './components/Techs/Techs.css';
+
 /* --------------- Promo --------------- */
 @import './components/Promo/Promo.css';
 
