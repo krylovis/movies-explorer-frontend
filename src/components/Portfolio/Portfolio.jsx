@@ -17,20 +17,21 @@ export default function Portfolio() {
 
   const linkItem = portfolioLinks.map((item, index) =>
     <li key={index} className="portfolio__item">
-      <a href={item.link} target="_blank" className="portfolio__link" rel="noreferrer">
+      <a href={item.link} target="_blank" className="link portfolio__link" rel="noreferrer">
         {item.name}
-        <img src={iconLink} alt="link icon" />
+        <img className="portfolio__link-icon" src={iconLink} alt="link icon" />
       </a>
     </li>);
 
   return (
     <section className="portfolio">
-      <h3 className="portfolio__title">Портфолио</h3>
+      <div className="portfolio__container">
+        <h3 className="portfolio__title">Портфолио</h3>
 
-      <ul className="list portfolio__list">
-        {linkItem}
-      </ul>
-
+        <ul className="list portfolio__list">
+          {linkItem}
+        </ul>
+      </div>
     </section>
   )
 }
