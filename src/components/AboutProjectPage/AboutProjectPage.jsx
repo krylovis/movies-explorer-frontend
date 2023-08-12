@@ -4,9 +4,10 @@ import Techs from '../Techs/Techs';
 
 export default function AboutProjectPage() {
   return (
-    <section className="about-project-page">
+    <main className="about-project-page">
       <Promo />
       <AboutProject />
       <Techs />
+    </main>
   )
 }
