@@ -49,6 +49,9 @@
 /* --------------- Portfolio --------------- */
 @import './components/Portfolio/Portfolio.css';
 
+/* --------------- Footer --------------- */
+@import './components/Footer/Footer.css';
+
 /* --------------- Movies --------------- */
 @import './components/Movies/Movies.css';
 
