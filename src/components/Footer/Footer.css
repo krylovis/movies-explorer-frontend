@@ -1,11 +1,43 @@
 .footer {}
 
-.footer__container {}
+.footer__container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 70px 20px;
+}
 
-.footer__title {}
+.footer__title {
+  color: #8B8B8B;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
 
-.footer__nav-container {}
+  margin: 0;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #424242;
+}
 
-.footer__date {}
+.footer__nav-container {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+}
 
-.footer__links {}
+.footer__date {
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.footer__links {
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+  display: flex;
+  gap: 20px;
+}
