@@ -25,8 +25,8 @@
 /* --------------- NotFoundPage --------------- */
 @import './components/NotFoundPage/NotFoundPage.css';
 
-/* --------------- AboutProjectPage --------------- */
-@import './components/AboutProjectPage/AboutProjectPage.css';
+/* --------------- main --------------- */
+@import './blocks/main/main.css';
 
 /* --------------- AboutContainer --------------- */
 @import './components/AboutContainer/AboutContainer.css';

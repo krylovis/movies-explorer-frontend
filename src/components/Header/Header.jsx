@@ -5,7 +5,7 @@ import LinkToProfile from '../../components/LinkToProfile/LinkToProfile';
 import logo from '../../images/logo.svg';
 
 export default function Header(props) {
-  const { loggedIn = false, handleOpenMenu, handleCloseMenu } = props;
+  const { loggedIn = true, handleOpenMenu, handleCloseMenu } = props;
 
   const [isMobile, setIsMobile] = React.useState(false);
 

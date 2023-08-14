@@ -7,7 +7,7 @@ import Footer from '../Footer/Footer';
 
 export default function AboutProjectPage() {
   return (
-    <main className="about-project-page">
+    <main className="main">
       <Promo />
       <AboutProject />
       <Techs />
