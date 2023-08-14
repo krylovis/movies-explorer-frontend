@@ -1,4 +1,6 @@
-.footer {}
+.footer {
+  margin-top: auto;
+}
 
 .footer__container {
   max-width: 1140px;
