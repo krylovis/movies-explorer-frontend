@@ -44,12 +44,16 @@ export default function SearchForm() {
           >
             Найти
           </button>
+        </form>
 
+        <div className="search-form__switch-container">
           <label className="search-form__switch">
             <input className="search-form__checkbox" type="checkbox" checked={isShortFilm} onChange={checkboxChange} />
             <span className="search-form__slider" />
           </label>
-        </form>
+
+          <span className="search-form__text">Короткометражки</span>
+        </div>
       </div>
     </section>
   )
