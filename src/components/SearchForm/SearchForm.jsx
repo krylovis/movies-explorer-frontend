@@ -3,9 +3,13 @@ import { useForm } from '../../hooks/useForm';
 export default function SearchForm() {
   const { values, handleChange } = useForm({ query: "" });
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  function handleSubmit(event) {
+    event.preventDefault();
     console.log('values', values);
+  };
+
+  function checkboxChange(event) {
+    console.log('checked', event.target.checked);
   };
 
   return (
@@ -34,11 +38,13 @@ export default function SearchForm() {
             className="button search-form__button"
             aria-label="Найти фильм"
             type="submit"
-          >Найти
+          >
+            Найти
           </button>
+
           <label class="search-form__switch">
-            <input className="search-form__checkbox" type="checkbox" role="switch" />
-            <span class="search-form__slider"></span>
+            <input className="search-form__checkbox" type="checkbox" onChange={checkboxChange} />
+            <span class="search-form__slider" />
           </label>
         </form>
       </div>
