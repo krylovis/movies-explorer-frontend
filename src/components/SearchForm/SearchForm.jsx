@@ -36,7 +36,10 @@ export default function SearchForm() {
             type="submit"
           >Найти
           </button>
-          <input className="search-form__switch" type="checkbox" role="switch" />
+          <label class="search-form__switch">
+            <input className="search-form__checkbox" type="checkbox" role="switch" />
+            <span class="search-form__slider"></span>
+          </label>
         </form>
       </div>
     </section>
