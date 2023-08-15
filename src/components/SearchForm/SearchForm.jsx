@@ -34,7 +34,6 @@ export default function SearchForm() {
               onChange={handleChange}
               placeholder="Фильм"
             />
-            <span className="input__error-message inputTypeQuery-error" />
           </label>
 
           <button
