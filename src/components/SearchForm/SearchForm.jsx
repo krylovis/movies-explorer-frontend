@@ -1,7 +1,9 @@
+import React from 'react';
 import { useForm } from '../../hooks/useForm';
 
 export default function SearchForm() {
   const { values, handleChange } = useForm({ query: "" });
+  const [isShortFilm, setIsShortFilm] = React.useState(false);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -9,6 +11,7 @@ export default function SearchForm() {
   };
 
   function checkboxChange(event) {
+    setIsShortFilm(event.target.checked);
     console.log('checked', event.target.checked);
   };
 
@@ -42,9 +45,9 @@ export default function SearchForm() {
             Найти
           </button>
 
-          <label class="search-form__switch">
-            <input className="search-form__checkbox" type="checkbox" onChange={checkboxChange} />
-            <span class="search-form__slider" />
+          <label className="search-form__switch">
+            <input className="search-form__checkbox" type="checkbox" checked={isShortFilm} onChange={checkboxChange} />
+            <span className="search-form__slider" />
           </label>
         </form>
       </div>
