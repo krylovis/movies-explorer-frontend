@@ -12,7 +12,7 @@ export default function Header(props) {
   const { pathname } = useLocation();
   const isResultLanding = pathname === '/';
 
-  const headerClassName = `header ${isResultLanding ? 'header_type_main-page' : ''}`;
+  const headerClassName = `header section-container ${isResultLanding ? 'header_type_main-page' : ''}`;
   const linksContainerClassName = `header__links-container ${loggedIn ? 'header__links-container_type_logged' : ''}`;
 
   React.useEffect(() => {
@@ -67,7 +67,7 @@ export default function Header(props) {
 
   return (
     <header className={headerClassName}>
-      <div className="header__container">
+      <div className="header__container section-container__wrapper">
         <NavLink className="header__link-logo" to="/">
           <img src={logo} alt="Логотип: Movies Explorer" title="Главная страница" className="header__logo" />
         </NavLink>

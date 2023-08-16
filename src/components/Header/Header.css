@@ -1,9 +1,6 @@
 .header {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  min-height: 74px;
-  height: 74px;
+  padding-top: 18px;
+  padding-bottom: 18px;
 }
 
 .header_type_main-page {
@@ -12,9 +9,6 @@
 
 .header__container {
   display: flex;
-  width: 1140px;
-  margin: 0 auto;
-  padding: 0 70px;
   justify-content: space-between;
   align-items: center;
 }
@@ -95,17 +89,7 @@
   background-image: url(../../images/interface/icon-menu.svg);
 }
 
-@media screen and (max-width: 768px) {
-  .header__container {
-    padding: 0 30px;
-  }
-}
-
 @media screen and (max-width: 320px) {
-  .header__container {
-    padding: 0 14px;
-  }
-
   .header__links-container {
     gap: 14px;
   }
