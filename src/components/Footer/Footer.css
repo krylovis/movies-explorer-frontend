@@ -9,12 +9,15 @@
   padding: 0 70px;
 }
 
-.footer__title {
-  color: #8B8B8B;
+.footer__text {
   font-size: 13px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+.footer__title {
+  color: #8B8B8B;
   text-align: center;
 
   margin: 0;
@@ -28,19 +31,7 @@
   padding-top: 20px;
 }
 
-.footer__date {
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
-
 .footer__links {
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-
   display: flex;
   gap: 20px;
 }
@@ -64,20 +55,18 @@
     gap: 30px;
   }
 
-  .footer__title {
+  .footer__text {
     font-size: 12px;
   }
 
   .footer__links {
     flex-direction: column;
     align-items: center;
-    font-size: 12px;
     gap: 12px;
   }
 
   .footer__date {
     order: 1;
-    font-size: 12px;
     color: #8B8B8B;
   }
 }
