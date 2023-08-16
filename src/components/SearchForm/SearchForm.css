@@ -1,10 +1,10 @@
 .search-form {
-  padding: 80px 70px;
+  /* display: flex; */
+  /* padding: 80px 70px; */
 }
 
 .search-form__container {
   display: flex;
-  align-items: center;
   box-sizing: border-box;
   max-width: 1140px;
   margin: 0 auto;
@@ -12,6 +12,7 @@
   border-bottom: 1px solid #424242;
   padding: 19px;
   border-radius: 9px;
+  width: 100%;
 }
 
 .search-form__form {
@@ -19,7 +20,12 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  /* border-right: 1px solid #505050; */
+}
+
+.search-form__line {
+  width: 1px;
+  margin: 0 19px;
+  background-color: #505050;
 }
 
 .search-form__label {
@@ -48,6 +54,7 @@
 
 .search-form__switch-container {
   display: flex;
+  align-items: center;
   gap: 15px;
 }
 

@@ -45,9 +45,16 @@ export default function SearchForm() {
           </button>
         </form>
 
+        <span className="search-form__line"></span>
+
         <div className="search-form__switch-container">
           <label className="search-form__switch">
-            <input className="search-form__checkbox" type="checkbox" checked={isShortFilm} onChange={checkboxChange} />
+            <input
+              className="search-form__checkbox"
+              type="checkbox"
+              checked={isShortFilm}
+              onChange={checkboxChange}
+            />
             <span className="search-form__slider" />
           </label>
 
