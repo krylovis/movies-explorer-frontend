@@ -65,6 +65,5 @@ export default function SearchForm() {
       </div>
 
     </SectionContainer>
-    // <section className="search-form"></section>
   )
 }
