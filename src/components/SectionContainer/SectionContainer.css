@@ -8,3 +8,9 @@
   margin: 0 auto;
   padding: 0 70px;
 }
+
+@media screen and (max-width: 768px) {
+  .section-container__wrapper {
+    padding: 0 30px;
+  }
+}
