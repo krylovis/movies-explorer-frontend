@@ -1,16 +1,16 @@
 .section-container {
+  box-sizing: border-box;
+  padding: 0 70px;
   width: 100%;
 }
 
 .section-container__wrapper {
   max-width: 1140px;
-
   margin: 0 auto;
-  padding: 0 70px;
 }
 
 @media screen and (max-width: 768px) {
-  .section-container__wrapper {
+  .section-container {
     padding: 0 30px;
   }
 }
