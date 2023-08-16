@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from '../../hooks/useForm';
+import SectionContainer from '../../components/SectionContainer/SectionContainer';
 
 export default function SearchForm() {
   const { values, handleChange } = useForm({ query: "" });
@@ -16,7 +17,8 @@ export default function SearchForm() {
   };
 
   return (
-    <section className="search-form">
+    <SectionContainer type="type_search-form">
+
       <div className="search-form__container">
         <form
           action="queryAction"
@@ -61,6 +63,8 @@ export default function SearchForm() {
           <span className="search-form__text">Короткометражки</span>
         </div>
       </div>
-    </section>
+
+    </SectionContainer>
+    // <section className="search-form"></section>
   )
 }
