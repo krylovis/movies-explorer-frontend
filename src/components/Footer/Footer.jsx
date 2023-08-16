@@ -2,8 +2,8 @@ export default function Footer() {
   const fullYear = new Date().getFullYear();
 
   return (
-    <footer className="footer">
-      <div className="footer__container">
+    <footer className="footer section-container">
+      <div className="section-container__wrapper">
         <h4 className="footer__title footer__text">Учебный проект Яндекс.Практикум х BeatFilm.</h4>
         <div className="footer__nav-container">
           <span className="footer__date footer__text">© {fullYear}</span>
