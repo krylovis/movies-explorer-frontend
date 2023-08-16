@@ -28,6 +28,9 @@
 /* --------------- main --------------- */
 @import './blocks/main/main.css';
 
+/* --------------- SectionContainer --------------- */
+@import './components/SectionContainer/SectionContainer.css';
+
 /* --------------- AboutContainer --------------- */
 @import './components/AboutContainer/AboutContainer.css';
 
