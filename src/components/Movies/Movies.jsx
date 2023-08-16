@@ -3,9 +3,9 @@ import Footer from '../Footer/Footer';
 
 export default function Movies() {
   return (
-    <section className="main">
+    <main className="main">
       <SearchForm />
       <Footer />
-    </section>
+    </main>
   )
 }
