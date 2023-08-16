@@ -3,8 +3,9 @@ import { useForm } from '../../hooks/useForm';
 import SectionContainer from '../../components/SectionContainer/SectionContainer';
 
 export default function SearchForm() {
-  const { values, handleChange } = useForm({ query: "" });
+  const { values, handleChange } = useForm({ query: '' });
   const [isShortFilm, setIsShortFilm] = React.useState(false);
+  const [isMobile, setIsMobile] = React.useState(false);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -15,6 +16,36 @@ export default function SearchForm() {
     setIsShortFilm(event.target.checked);
     console.log('checked', event.target.checked);
   };
+
+  React.useEffect(() => {
+    const resize = () => {
+      const mobileWidth = document.body.clientWidth <= 585;
+      if (mobileWidth) {
+        setIsMobile(true);
+      } else {
+        setIsMobile(false);
+      }
+    };
+    resize();
+    window.addEventListener('resize', resize);
+    return () => window.removeEventListener("resize", resize);
+  }, [setIsMobile]);
+
+  const switchContainer = () => (
+    <div className="search-form__switch-container">
+      <label className="search-form__switch">
+        <input
+          className="search-form__checkbox"
+          type="checkbox"
+          checked={isShortFilm}
+          onChange={checkboxChange}
+        />
+        <span className="search-form__slider" />
+      </label>
+
+      <span className="search-form__text">Короткометражки</span>
+    </div>
+  );
 
   return (
     <SectionContainer type="type_search-form">
@@ -47,23 +78,11 @@ export default function SearchForm() {
           </button>
         </form>
 
-        <span className="search-form__line"></span>
-
-        <div className="search-form__switch-container">
-          <label className="search-form__switch">
-            <input
-              className="search-form__checkbox"
-              type="checkbox"
-              checked={isShortFilm}
-              onChange={checkboxChange}
-            />
-            <span className="search-form__slider" />
-          </label>
-
-          <span className="search-form__text">Короткометражки</span>
-        </div>
+        {!isMobile && <span className="search-form__line" />}
+        {!isMobile && switchContainer()}
       </div>
 
+      {isMobile && switchContainer()}
     </SectionContainer>
   )
 }
