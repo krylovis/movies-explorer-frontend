@@ -19,7 +19,7 @@ export default function SearchForm() {
   return (
     <SectionContainer type="type_search-form">
 
-      <div className="search-form__container">
+      <div className="search-form">
         <form
           action="queryAction"
           onSubmit={handleSubmit}

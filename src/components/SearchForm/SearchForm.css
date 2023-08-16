@@ -1,18 +1,13 @@
 .search-form {
-  /* display: flex; */
-  /* padding: 80px 70px; */
-}
-
-.search-form__container {
   display: flex;
-  box-sizing: border-box;
-  max-width: 1140px;
-  margin: 0 auto;
   background-color: #2F2F2F;
-  border-bottom: 1px solid #424242;
   padding: 19px;
   border-radius: 9px;
-  width: 100%;
+}
+
+.section-container__wrapper_type_search-form {
+  padding: 70px 0 69px;
+  border-bottom: 1px solid #424242;
 }
 
 .search-form__form {
