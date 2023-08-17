@@ -52,3 +52,22 @@
   width: 20px;
   padding-right: 6px;
 }
+
+@media screen and (max-width: 768px) {
+  .portfolio {
+    padding-bottom: 85px;
+  }
+
+  .portfolio__container {
+    padding: 0 50px;
+  }
+
+  .portfolio__title {
+    padding: 0 0 50px;
+  }
+
+  .portfolio__link {
+    font-size: 28px;
+    letter-spacing: -1.1px;
+  }
+}

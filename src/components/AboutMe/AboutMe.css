@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   padding-top: 65px;
+  gap: 49px;
 }
 
 .about-me__info {
@@ -36,7 +37,6 @@
   font-weight: 400;
   line-height: 22px;
 
-  max-width: 600px;
   margin: 0;
 }
 
@@ -52,4 +52,30 @@
 .about-me__photo {
   width: 270px;
   object-fit: cover;
+}
+
+@media screen and (max-width: 768px) {
+  .about-me__info {
+    max-width: 360px;
+  }
+
+  .about-me__title {
+    font-size: 40px;
+    line-height: 40px;
+  }
+
+  .about-me__subtitle {
+    font-size: 12px;
+    line-height: 18px;
+    padding: 16px 0 20px;
+  }
+
+  .about-me__text {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .about-me__photo {
+    width: 255px;
+  }
 }

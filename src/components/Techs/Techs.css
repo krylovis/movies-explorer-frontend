@@ -1,6 +1,7 @@
 .techs {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 100px;
   padding-top: 90px;
 }
@@ -37,9 +38,13 @@
   display: flex;
   justify-content: center;
   gap: 10px;
+
+  width: 100%;
+  max-width: 690px;
 }
 
 .techs__item {
+  flex: 1;
   text-align: center;
   font-size: 14px;
   font-style: normal;
@@ -48,7 +53,31 @@
   letter-spacing: -0.56px;
 
   padding: 22px 0;
-  min-width: 90px;
   border-radius: 10px;
   background-color: #303030;
+}
+
+@media screen and (max-width: 768px) {
+  .techs {
+    gap: 80px;
+    padding-top: 80px;
+  }
+
+  .techs__info {
+    gap: 24px;
+  }
+
+  .techs__text {
+    font-size: 12px;
+    line-height: 18px;
+    max-width: 440px;
+  }
+
+  .techs__list {
+    max-width: 650px;
+  }
+
+  .techs__item {
+    font-size: 12px;
+  }
 }

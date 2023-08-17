@@ -84,3 +84,17 @@
   padding-top: 14px;
   margin: 0;
 }
+
+@media screen and (max-width: 768px) {
+  .about-project__list {
+    padding: 70px 0 90px;
+    gap: 35px;
+  }
+
+  .about-project__item-text {
+    font-size: 12px;
+    line-height: 18px;
+
+    padding-top: 22px;
+  }
+}
