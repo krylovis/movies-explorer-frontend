@@ -17,8 +17,20 @@
   padding-bottom: 100px;
 }
 
+@media screen and (max-width: 555px) {
+  .about-container_type_techs {
+    background-color: #202020;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .about-container__content {
     padding: 90px 50px;
+  }
+}
+
+@media screen and (max-width: 555px) {
+  .about-container__content {
+    padding: 70px 18px;
   }
 }

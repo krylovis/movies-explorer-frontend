@@ -98,3 +98,44 @@
     padding-top: 22px;
   }
 }
+
+@media screen and (max-width: 555px) {
+  .about-project__title {
+    font-size: 18px;
+    letter-spacing: -0.72px;
+  }
+
+  .about-project__title_type_techs {
+    border-color: #000;
+  }
+
+  .about-project__list {
+    flex-direction: column;
+    padding: 70px 0 65px;
+    gap: 55px;
+  }
+
+  .about-project__timeline-item_type_first_item {
+    flex: 0 1 35%;
+  }
+
+  .about-project__item-title {
+    font-size: 18px;
+    letter-spacing: -0.72px;
+  }
+
+  .about-project__item-text {
+    font-size: 11px;
+    line-height: 16px;
+    padding-top: 16px;
+  }
+
+  .about-project__timeline-title {
+    font-size: 11px;
+  }
+
+  .about-project__timeline-text {
+    font-size: 11px;
+    padding-top: 10px;
+  }
+}

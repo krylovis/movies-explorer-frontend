@@ -81,3 +81,33 @@
     font-size: 12px;
   }
 }
+
+@media screen and (max-width: 555px) {
+  .techs {
+    gap: 50px;
+    padding-top: 50px;
+  }
+
+  .techs__title {
+    font-size: 30px;
+    letter-spacing: -1.2px;
+  }
+
+  .techs__info {
+    gap: 10px;
+  }
+
+  .techs__list {
+    grid-template-columns: 1fr 1fr;
+    display: grid;
+    padding: 0 51px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .techs__text {
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: -0.44px;
+  }
+}
