@@ -33,4 +33,8 @@
   .about-container__content {
     padding: 70px 18px;
   }
+
+  .about-container__content_type_about-me {
+    padding: 65px 14px;
+  }
 }

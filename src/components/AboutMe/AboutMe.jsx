@@ -5,7 +5,7 @@ export default function AboutMe() {
   const title = 'Студент';
 
   return (
-    <AboutContainer title={title}>
+    <AboutContainer type="about-me" title={title}>
       <div className="about-me">
         <div className="about-me__info">
           <h3 className="about-me__title">Виталий</h3>
