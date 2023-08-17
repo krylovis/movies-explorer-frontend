@@ -8,6 +8,7 @@
 .techs__info {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 26px;
 }
 
@@ -29,6 +30,7 @@
   font-weight: 400;
   line-height: 20px;
   letter-spacing: -0.56px;
+  max-width: 460px;
 }
 
 .techs__list {
@@ -45,7 +47,8 @@
   line-height: normal;
   letter-spacing: -0.56px;
 
-  padding: 22px 32px;
+  padding: 22px 0;
+  min-width: 90px;
   border-radius: 10px;
   background-color: #303030;
 }

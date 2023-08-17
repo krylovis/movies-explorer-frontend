@@ -1,12 +1,13 @@
 .about-me {
   display: flex;
   justify-content: space-between;
-  padding-top: 66px;
+  padding-top: 65px;
 }
 
 .about-me__info {
   display: flex;
   flex-direction: column;
+  max-width: 595px;
 }
 
 .about-me__title {
