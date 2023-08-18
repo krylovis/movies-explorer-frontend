@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from '../../hooks/useForm';
 import SectionContainer from '../../components/SectionContainer/SectionContainer';
+import iconSearch from '../../images/interface/icon-search.svg';
 
 export default function SearchForm() {
   const { values, handleChange } = useForm({ query: '' });
@@ -58,6 +59,7 @@ export default function SearchForm() {
           className="search-form__form"
         >
           <label className="search-form__label" htmlFor="inputTypeQuery">
+            <img className="search-form__input-icon" src={iconSearch} alt="Иконка поиска" />
             <input
               className="input search-form__input"
               id="inputTypeQuery"
