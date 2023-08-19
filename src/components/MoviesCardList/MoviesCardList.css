@@ -1,1 +1,5 @@
-.movies-list {}
+.section-container_type_movies-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
