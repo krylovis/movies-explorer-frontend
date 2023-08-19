@@ -15,7 +15,7 @@ export default function MoviesCard({ card, onBtnClick }) {
       <div className="movies-card__container">
         <h3 className="movies-card__title">{name}</h3>
         <button
-          className={`movies-card__button ${like ? 'active' : ''}`}
+          className={`button movies-card__button ${like ? 'active' : ''}`}
           type="button"
           aria-label={btnTitle}
           title={btnTitle}
