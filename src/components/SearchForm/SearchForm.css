@@ -140,4 +140,12 @@
   .section-container_type_search-form {
     padding: 0 10px;
   }
+
+  .search-form {
+    padding: 19px 20px 19px 20px;
+  }
+
+  .search-form__input::placeholder {
+    font-size: 14px;
+  }
 }
