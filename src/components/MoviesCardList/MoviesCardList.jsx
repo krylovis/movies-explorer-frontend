@@ -9,7 +9,7 @@ export default function MoviesCardList() {
 
   return (
     <SectionContainer type="type_movies-list">
-      <ul className="list type_movies-list__list">
+      <ul className="list movies-list__list">
         {cardList.map((card) => (
           <MoviesCard key={card._id}
             card={card}
@@ -19,7 +19,7 @@ export default function MoviesCardList() {
       </ul>
 
       <button
-        className="button type_movies-list__button"
+        className="button movies-list__button"
         type="button"
         aria-label="Показать больше фильмов"
         title="Показать больше фильмов"

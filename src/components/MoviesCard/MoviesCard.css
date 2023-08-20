@@ -56,5 +56,12 @@
 
   border-top: 1px solid #424242;
   margin-top: auto;
+  padding-top: 5px;
   padding-bottom: 25px;
+}
+
+@media screen and (max-width: 768px) {
+  .movies-card {
+    min-height: 295px;
+  }
 }
