@@ -1,7 +1,27 @@
 .section-container__wrapper_type_movies-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.type_movies-list__list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 
   padding-top: 80px;
+}
+
+.type_movies-list__button {
+  color: white;
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+
+  width: 28%;
+  border-radius: 6px;
+  background: #2F2F2F;
+  padding: 11px 0 9px;
+  margin: 35px auto 80px auto;
 }

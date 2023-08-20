@@ -1,6 +1,7 @@
 .movies-card {
   display: flex;
   flex-direction: column;
+  min-height: 250px;
 }
 
 .movies-card__poster {
@@ -14,7 +15,7 @@
   align-items: center;
   gap: 20px;
 
-  padding: 10px 0 30px;
+  padding: 10px 0 13px;
 }
 
 .movies-card__title {
@@ -55,5 +56,5 @@
 
   border-top: 1px solid #424242;
   margin-top: auto;
-  padding-bottom: 18px;
+  padding-bottom: 25px;
 }
