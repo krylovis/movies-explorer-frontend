@@ -10,7 +10,7 @@ export default function MoviesCard({ card, onBtnClick }) {
   const btnTitle = `${isMovies ? btnLikeText : btnLDeleteText}`;
 
   return (
-    <div className="movies-card">
+    <li className="movies-card">
       <img className="movies-card__poster" src={poster} alt={`Кадр из фильма: ${name}`} />
       <div className="movies-card__container">
         <h3 className="movies-card__title">{name}</h3>
@@ -23,6 +23,6 @@ export default function MoviesCard({ card, onBtnClick }) {
         />
       </div>
       <span className="movies-card__duration">{duration}</span>
-    </div>
+    </li>
   )
 }

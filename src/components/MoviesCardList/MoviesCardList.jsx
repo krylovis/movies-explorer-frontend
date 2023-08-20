@@ -9,14 +9,14 @@ export default function MoviesCardList() {
 
   return (
     <SectionContainer type="type_movies-list">
-      <div className="type_movies-list__list">
+      <ul className="list type_movies-list__list">
         {cardList.map((card) => (
           <MoviesCard key={card._id}
             card={card}
             onBtnClick={toggleCardLike}
           />
         ))}
-      </div>
+      </ul>
 
       <button
         className="button type_movies-list__button"
