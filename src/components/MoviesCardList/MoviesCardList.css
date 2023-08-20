@@ -46,5 +46,17 @@
 @media screen and (max-width: 500px) {
   .movies-list__list {
     grid-template-columns: repeat(1, 1fr);
+    padding-top: 50px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .section-container_type_movies-list {
+    padding: 0 10px;
+  }
+
+  .movies-list__button {
+    width: 80%;
+    margin: 35px auto 110px auto;
   }
 }
