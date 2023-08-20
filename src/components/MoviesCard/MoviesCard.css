@@ -38,11 +38,25 @@
   background-size: auto;
 
   transition: all .3s linear;
+}
+
+.movies-card__button_type_like {
   background-image: url(../../images/interface/icon-like.svg);
 }
 
-.movies-card__button.active {
+.movies-card__button_type_like.active {
   background-image: url(../../images/interface/icon-like-active.svg);
+}
+
+.movies-button_type_delete {
+  background-image: url(../../images/interface/icon-close.svg);
+  background-size: 12px;
+
+  opacity: 0;
+}
+
+.movies-button_type_delete:hover {
+  opacity: 1;
 }
 
 .movies-card__duration {
