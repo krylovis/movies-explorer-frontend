@@ -116,6 +116,6 @@
 
   .about-me__photo {
     order: 1;
-    min-width: 100%;
+    max-width: 100%;
   }
 }
