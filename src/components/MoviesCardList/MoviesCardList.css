@@ -3,7 +3,7 @@
   flex-direction: column;
 }
 
-.movies-list__list {
+.movies-list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
@@ -27,13 +27,13 @@
 }
 
 @media screen and (max-width: 990px) {
-  .movies-list__list {
+  .movies-list {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media screen and (max-width: 768px) {
-  .movies-list__list {
+  .movies-list {
     grid-template-columns: repeat(2, 1fr);
     gap: 1px 30px;
   }
@@ -44,7 +44,7 @@
 }
 
 @media screen and (max-width: 500px) {
-  .movies-list__list {
+  .movies-list {
     grid-template-columns: repeat(1, 1fr);
     padding-top: 50px;
   }
@@ -55,7 +55,7 @@
     padding: 0 10px;
   }
 
-  .movies-list__list {
+  .movies-list {
     gap: 8px 30px;
   }
 

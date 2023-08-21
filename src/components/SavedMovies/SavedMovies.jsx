@@ -11,7 +11,7 @@ export default function SavedMovies() {
     <main className="main">
       <SearchForm />
       <SectionContainer type="type_movies-list">
-        <ul className="list movies-list__list">
+        <ul className="list movies-list">
           {cardList.map((card) => (
             <MoviesCard key={card._id}
               card={card}
