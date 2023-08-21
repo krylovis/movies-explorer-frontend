@@ -68,6 +68,7 @@ export default function SearchForm() {
               value={values.query}
               onChange={handleChange}
               placeholder="Фильм"
+              required
             />
           </label>
 

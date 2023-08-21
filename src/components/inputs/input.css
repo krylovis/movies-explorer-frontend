@@ -11,6 +11,10 @@
   margin: 0 0 16px;
 }
 
+button:focus {
+  font-weight: 500;
+}
+
 .input_type_profile {
   margin: 0;
   border: none;
