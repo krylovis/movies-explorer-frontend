@@ -72,14 +72,9 @@ export default function Header(props) {
           <img src={logo} alt="Логотип: Movies Explorer" title="Главная страница" className="header__logo" />
         </NavLink>
 
-        {(isMobile && (!isResultLanding || loggedIn)) && menuButton()}
+        {(isMobile && loggedIn) && menuButton()}
 
-        {(!isMobile && !isResultLanding) &&
-          <nav className={linksContainerClassName}>
-            {navLinks()}
-          </nav >}
-
-        {(isResultLanding) &&
+        {(!isMobile || !loggedIn) &&
           <nav className={linksContainerClassName}>
             {navLinks()}
           </nav >}
