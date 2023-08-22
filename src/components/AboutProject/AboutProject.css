@@ -1,0 +1,127 @@
+.about-project__list {
+  display: flex;
+  padding: 70px 0 110px;
+  gap: 55px;
+}
+
+.about-project__item {}
+
+.about-project__item-title {
+  font-size: 20px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.8px;
+
+  margin: 0;
+}
+
+.about-project__item-text {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  font-style: normal;
+
+  padding-top: 26px;
+  margin: 0;
+}
+
+
+/* timeline */
+.about-project__timeline {
+  display: flex;
+  width: 100%;
+}
+
+.about-project__timeline-item {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  text-align: center;
+}
+
+.about-project__timeline-item_type_first_item {
+  flex: 0 1 20%;
+}
+
+.about-project__timeline-title {
+  font-size: 14px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+
+  background-color: #303030;
+  padding: 9px 0;
+  margin: 0;
+}
+
+.about-project__timeline-title_type_first_item {
+  color: #000;
+  background-color: #3DDC84;
+}
+
+.about-project__timeline-text {
+  color: #8B8B8B;
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 17px;
+
+  padding-top: 14px;
+  margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .about-project__list {
+    padding: 70px 0 90px;
+    gap: 35px;
+  }
+
+  .about-project__item-text {
+    font-size: 12px;
+    line-height: 18px;
+
+    padding-top: 22px;
+  }
+}
+
+@media screen and (max-width: 555px) {
+  .about-container__title {
+    font-size: 18px;
+    letter-spacing: -0.72px;
+  }
+
+  .about-container__title_type_techs {
+    border-color: #000;
+  }
+
+  .about-project__list {
+    flex-direction: column;
+    padding: 70px 0 65px;
+    gap: 55px;
+  }
+
+  .about-project__timeline-item_type_first_item {
+    flex: 0 1 35%;
+  }
+
+  .about-project__item-title {
+    font-size: 18px;
+    letter-spacing: -0.72px;
+  }
+
+  .about-project__item-text {
+    font-size: 11px;
+    line-height: 16px;
+    padding-top: 16px;
+  }
+
+  .about-project__timeline-title {
+    font-size: 11px;
+  }
+
+  .about-project__timeline-text {
+    font-size: 11px;
+    padding-top: 10px;
+  }
+}

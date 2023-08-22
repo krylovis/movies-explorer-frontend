@@ -1,0 +1,86 @@
+/* --------------- vendor --------------- */
+@import './vendor/normalize.css';
+
+/* --------------- fonts --------------- */
+@import './fonts/fonts.css';
+
+/* --------------- app --------------- */
+@import './blocks/app/app.css';
+
+/* --------------- button --------------- */
+@import './blocks/button/button.css';
+
+/* --------------- list --------------- */
+@import './blocks/list/list.css';
+
+/* --------------- linkToProfile --------------- */
+@import './components/LinkToProfile/LinkToProfile.css';
+
+/* --------------- link --------------- */
+@import './blocks/link/link.css';
+
+/* --------------- input --------------- */
+@import './components/inputs/input.css';
+
+/* --------------- NotFoundPage --------------- */
+@import './components/NotFoundPage/NotFoundPage.css';
+
+/* --------------- main --------------- */
+@import './blocks/main/main.css';
+
+/* --------------- SectionContainer --------------- */
+@import './components/SectionContainer/SectionContainer.css';
+
+/* --------------- AboutContainer --------------- */
+@import './components/AboutContainer/AboutContainer.css';
+
+/* --------------- Promo --------------- */
+@import './components/Promo/Promo.css';
+
+/* --------------- AboutProject --------------- */
+@import './components/AboutProject/AboutProject.css';
+
+/* --------------- Techs --------------- */
+@import './components/Techs/Techs.css';
+
+/* --------------- AboutMe --------------- */
+@import './components/AboutMe/AboutMe.css';
+
+/* --------------- Portfolio --------------- */
+@import './components/Portfolio/Portfolio.css';
+
+/* --------------- Footer --------------- */
+@import './components/Footer/Footer.css';
+
+/* --------------- Movies --------------- */
+@import './components/Movies/Movies.css';
+
+/* --------------- MoviesCardList --------------- */
+@import './components/MoviesCardList/MoviesCardList.css';
+
+/* --------------- MoviesCard --------------- */
+@import './components/MoviesCard/MoviesCard.css';
+
+/* --------------- SearchForm --------------- */
+@import './components/SearchForm/SearchForm.css';
+
+/* --------------- SavedMovies --------------- */
+@import './components/SavedMovies/SavedMovies.css';
+
+/* --------------- ProfilePage --------------- */
+@import './components/ProfilePage/ProfilePage.css';
+
+/* --------------- Header --------------- */
+@import './components/Header/Header.css';
+
+/* --------------- Navigation --------------- */
+@import './components/Navigation/Navigation.css';
+
+/* --------------- FormContainer --------------- */
+@import './components/auth/FormContainer/FormContainer.css';
+
+/* --------------- SigninPage --------------- */
+@import './components/auth/SigninPage/SigninPage.css';
+
+/* --------------- SignupPage --------------- */
+@import './components/auth/SignupPage/SignupPage.css';
