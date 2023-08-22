@@ -2,6 +2,18 @@
   width: 100%;
 }
 
+.about-container__title {
+  font-size: 22px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.88px;
+
+  margin: 0;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #DADADA;
+}
+
 .about-container__content {
   max-width: 1140px;
   margin: 0 auto;
