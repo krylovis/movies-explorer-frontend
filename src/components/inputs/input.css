@@ -11,7 +11,7 @@
   margin: 0 0 16px;
 }
 
-button:focus {
+input:focus {
   font-weight: 500;
 }
 
