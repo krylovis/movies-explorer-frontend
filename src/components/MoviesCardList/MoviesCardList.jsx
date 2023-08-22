@@ -19,7 +19,7 @@ export default function MoviesCardList() {
       </ul>
 
       <button
-        className="button movies-list__button"
+        className="button section-container__button"
         type="button"
         aria-label="Показать больше фильмов"
         title="Показать больше фильмов"

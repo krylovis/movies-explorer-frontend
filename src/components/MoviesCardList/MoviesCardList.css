@@ -11,21 +11,6 @@
   padding-top: 80px;
 }
 
-.movies-list__button {
-  color: white;
-  text-align: center;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-
-  width: 28%;
-  border-radius: 6px;
-  background: #2F2F2F;
-  padding: 11px 0 9px;
-  margin: 35px auto 100px auto;
-}
-
 @media screen and (max-width: 990px) {
   .movies-list {
     grid-template-columns: repeat(3, 1fr);
@@ -36,10 +21,6 @@
   .movies-list {
     grid-template-columns: repeat(2, 1fr);
     gap: 1px 30px;
-  }
-
-  .movies-list__button {
-    width: 45%;
   }
 }
 
@@ -57,10 +38,5 @@
 
   .movies-list {
     gap: 8px 30px;
-  }
-
-  .movies-list__button {
-    width: 80%;
-    margin: 35px auto 110px auto;
   }
 }
