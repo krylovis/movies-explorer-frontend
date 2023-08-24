@@ -3,6 +3,7 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { tokenVerification } from '../../utils/Auth';
+import { mainApi } from '../../utils/MainApi';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import Main from '../Main/Main';
@@ -18,6 +19,13 @@ export default function App() {
   const [loggedIn, setLoggedIn] = React.useState(false);
   const handleSetLoggedIn = () => setLoggedIn(true);
   const handleSetLoggedOut = () => setLoggedIn(false);
+
+  function onUpdateUser(userInfo) {
+    mainApi
+      .editUserInfo(userInfo)
+      .then(setCurrentUser)
+      .catch(console.error);
+  };
 
   React.useEffect(() => {
     handleTokenCheck();
@@ -51,8 +59,9 @@ export default function App() {
             element={() => (
               <Main
                 loggedIn={loggedIn}
-                handleSetLoggedOut={handleSetLoggedOut}
                 setCurrentUser={setCurrentUser}
+                onUpdateUser={onUpdateUser}
+                handleSetLoggedOut={handleSetLoggedOut}
               />
             )} />} />
 

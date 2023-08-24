@@ -9,7 +9,7 @@ import { useForm } from '../../hooks/useForm';
 import { logout } from '../../utils/Auth';
 
 export default function ProfilePage(props) {
-  const { handleSetLoggedOut, setCurrentUser } = props;
+  const { setCurrentUser, onUpdateUser, handleSetLoggedOut } = props;
 
   const currentUser = React.useContext(CurrentUserContext);
   const { name, email } = currentUser;
@@ -21,7 +21,13 @@ export default function ProfilePage(props) {
     console.log('values', values);
   };
 
+  function handleOnUpdateUser(e) {
+    e.preventDefault();
+    onUpdateUser(values);
+  };
+
   function handleLogout(e) {
+    e.preventDefault();
     logout()
       .then((user) => {
         setCurrentUser(user);
@@ -50,7 +56,9 @@ export default function ProfilePage(props) {
           className="button profile__button profile__button_type_submit"
           aria-label="Редактировать"
           type="submit"
-        >Редактировать
+          onClick={handleOnUpdateUser}
+        >
+          Редактировать
         </button>
       </form>
 
@@ -58,7 +66,8 @@ export default function ProfilePage(props) {
         className="button profile__button profile__button_type_logout"
         aria-label="Выйти из аккаунта"
         type="button"
-        onClick={handleLogout}>
+        onClick={handleLogout}
+      >
         Выйти из аккаунта
       </button>
     </section >

@@ -20,6 +20,16 @@ class Api {
     })
   }
 
+  editUserInfo(body) {
+    const { name, email } = body;
+    return this._request(this._baseUrl + '/users/me', {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({ name, email }),
+      credentials: 'include',
+    })
+  }
+
   getFilms() {
     return this._request(this._baseUrl + '/movies', {
       headers: this._headers,
