@@ -17,7 +17,7 @@ export default function SigninPage(props) {
       .then((data) => {
         setCurrentUser(data);
         handleSetLoggedIn();
-        navigate('/');
+        navigate('/movies');
       })
       .catch(err => {
         console.log(err)
