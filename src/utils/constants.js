@@ -1,2 +1,2 @@
 export const pathsForHeader = ["/", "/movies", "/saved-movies", "/profile"];
-export const emailPattern = '[a-zA-Z0-9._\\-]{3,}@[a-zA-Z0-9.\\-]{3,}\\.[a-zA-Z]{2,4}';
+export const emailPattern = '[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}';
