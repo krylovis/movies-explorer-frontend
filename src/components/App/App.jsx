@@ -4,11 +4,8 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { tokenVerification } from '../../utils/Auth';
 
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import Main from '../Main/Main';
-import AboutProjectPage from '../AboutProjectPage/AboutProjectPage';
-import Movies from '../Movies/Movies';
-import SavedMovies from '../SavedMovies/SavedMovies';
-import ProfilePage from '../ProfilePage/ProfilePage';
 import SignupPage from '../auth/SignupPage/SignupPage';
 import SigninPage from '../auth/SigninPage/SigninPage';
 import NotFoundPage from '../NotFoundPage/NotFoundPage';
@@ -47,12 +44,17 @@ export default function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <Routes>
 
-        <Route path='/' element={<Main loggedIn={loggedIn} />} >
-          <Route path='/' element={<AboutProjectPage />} />
-          <Route path='/movies' element={<Movies />} />
-          <Route path='/saved-movies' element={<SavedMovies />} />
-          <Route path='/profile' element={<ProfilePage handleSetLoggedOut={handleSetLoggedOut} setCurrentUser={setCurrentUser} />} />
-        </Route>
+        <Route
+          path="/*"
+          element={<ProtectedRoute
+            loggedIn={loggedIn}
+            element={() => (
+              <Main
+                loggedIn={loggedIn}
+                handleSetLoggedOut={handleSetLoggedOut}
+                setCurrentUser={setCurrentUser}
+              />
+            )} />} />
 
         <Route exact path='/signup' element={<SignupPage />} />
         <Route exact path='/signin' element={<SigninPage handleSetLoggedIn={handleSetLoggedIn} setCurrentUser={setCurrentUser} />} />
