@@ -13,7 +13,14 @@ import SigninPage from '../auth/SigninPage/SigninPage';
 import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
 export default function App() {
-  const [currentUser, setCurrentUser] = React.useState({ name: 'Виталий', email: 'pochta@yandex.ru' });
+  const [currentUser, setCurrentUser] = React.useState({ name: '', email: '' });
+
+  const navigate = useNavigate();
+
+  const [loggedIn, setLoggedIn] = React.useState(false);
+  const handleSetLoggedIn = () => setLoggedIn(true);
+  const handleSetLoggedOut = () => setLoggedIn(false);
+
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -23,7 +30,7 @@ export default function App() {
           <Route path='/' element={<AboutProjectPage />} />
           <Route path='/movies' element={<Movies />} />
           <Route path='/saved-movies' element={<SavedMovies />} />
-          <Route path='/profile' element={<ProfilePage />} />
+          <Route path='/profile' element={<ProfilePage handleSetLoggedOut={handleSetLoggedOut} setCurrentUser={setCurrentUser} />} />
         </Route>
 
         <Route exact path='/signup' element={<SignupPage />} />

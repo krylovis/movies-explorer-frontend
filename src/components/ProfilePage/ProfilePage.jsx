@@ -6,7 +6,11 @@ import InputTypeName from '../../components/inputs/InputTypeName';
 import InputTypeEmail from '../../components/inputs/InputTypeEmail';
 import { useForm } from '../../hooks/useForm';
 
-export default function ProfilePage() {
+import { logout } from '../../utils/Auth';
+
+export default function ProfilePage(props) {
+  const { handleSetLoggedOut, setCurrentUser } = props;
+
   const currentUser = React.useContext(CurrentUserContext);
   const { name, email } = currentUser;
   const { values, handleChange } = useForm(currentUser);
@@ -18,9 +22,13 @@ export default function ProfilePage() {
   };
 
   function handleLogout(e) {
-    e.preventDefault();
-    navigate('/signin');
-    console.log('handleLogout');
+    logout()
+      .then((user) => {
+        setCurrentUser(user);
+        handleSetLoggedOut();
+        navigate('/signin');
+      })
+      .catch(err => console.log(err));
   };
 
   return (
