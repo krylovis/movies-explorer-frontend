@@ -47,7 +47,7 @@ export default function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <Routes>
 
-        <Route path='/' element={<Main />} >
+        <Route path='/' element={<Main loggedIn={loggedIn} />} >
           <Route path='/' element={<AboutProjectPage />} />
           <Route path='/movies' element={<Movies />} />
           <Route path='/saved-movies' element={<SavedMovies />} />

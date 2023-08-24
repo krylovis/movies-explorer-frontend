@@ -6,7 +6,8 @@ import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
 import Footer from '../Footer/Footer';
 
-export default function Main() {
+export default function Main(props) {
+  const { loggedIn } = props;
 
   const [menuIsOpen, setMenuIsOpen] = React.useState(false);
   const handleOpenMenu = () => setMenuIsOpen(true);
@@ -17,7 +18,7 @@ export default function Main() {
 
   return (
     <>
-      <Header handleOpenMenu={handleOpenMenu} handleCloseMenu={handleCloseMenu} />
+      <Header loggedIn={loggedIn} handleOpenMenu={handleOpenMenu} handleCloseMenu={handleCloseMenu} />
       <Outlet />
       {!isProfilePage && <Footer />}
       <Navigation menuIsOpen={menuIsOpen} handleCloseMenu={handleCloseMenu} />
