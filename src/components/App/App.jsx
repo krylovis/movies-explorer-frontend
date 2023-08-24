@@ -55,7 +55,7 @@ export default function App() {
         </Route>
 
         <Route exact path='/signup' element={<SignupPage />} />
-        <Route exact path='/signin' element={<SigninPage />} />
+        <Route exact path='/signin' element={<SigninPage handleSetLoggedIn={handleSetLoggedIn} setCurrentUser={setCurrentUser} />} />
 
         <Route exact path='*' element={<NotFoundPage />} />
       </Routes>

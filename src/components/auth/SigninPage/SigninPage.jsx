@@ -1,17 +1,27 @@
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import FormContainer from '../FormContainer/FormContainer';
 import InputTypeEmail from '../../inputs/InputTypeEmail';
 import InputTypePassword from '../../inputs/InputTypePassword';
 import { useForm } from '../../../hooks/useForm';
+import { authorize } from '../../../utils/Auth';
 
-export default function SigninPage() {
+export default function SigninPage(props) {
+  const { handleSetLoggedIn, setCurrentUser } = props;
   const { values, handleChange } = useForm({ email: '', password: '' });
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log('values', values);
+    authorize(values)
+      .then((data) => {
+        setCurrentUser(data);
+        handleSetLoggedIn();
+        navigate('/');
+      })
+      .catch(err => {
+        console.log(err)
+      });
   };
 
   return (
