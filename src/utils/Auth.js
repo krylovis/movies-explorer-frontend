@@ -1,4 +1,4 @@
-// const BASE_URL = 'https://api.krylovis.students.nomoredomains.xyz';
+// const BASE_URL = 'api.movies.krylovis.nomoreparties.sbs';
 const BASE_URL = 'http://localhost:3002';
 
 const headers = {
