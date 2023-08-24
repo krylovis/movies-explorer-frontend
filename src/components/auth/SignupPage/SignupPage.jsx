@@ -1,5 +1,5 @@
-// import { useNavigate } from 'react-router-dom';
-
+import { register } from '../../../utils/Auth';
+import { useNavigate } from 'react-router-dom';
 import FormContainer from '../FormContainer/FormContainer';
 import InputTypeName from '../../inputs/InputTypeName';
 import InputTypeEmail from '../../inputs/InputTypeEmail';
@@ -8,11 +8,15 @@ import { useForm } from '../../../hooks/useForm';
 
 export default function SignupPage() {
   const { values, handleChange } = useForm({ name: '', email: '', password: '' });
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log('values', values);
+    register(values)
+      .then((data) => {
+        navigate('/signin');
+      })
+      .catch(console.error);
   };
 
   return (
