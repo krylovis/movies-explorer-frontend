@@ -1,15 +1,19 @@
 import React from 'react';
-import { useForm } from '../../hooks/useForm';
+import { useFormWithValidator } from '../../hooks/useForm';
 import SectionContainer from '../../components/SectionContainer/SectionContainer';
 import iconSearch from '../../images/interface/icon-search.svg';
 
-export default function SearchForm() {
-  const { values, handleChange } = useForm({ query: '' });
+export default function SearchForm(props) {
+  const { getAndSetMovies } = props;
+
+  const { values, handleChange } = useFormWithValidator({ query: '' });
+
   const [isShortFilm, setIsShortFilm] = React.useState(false);
   const [isMobile, setIsMobile] = React.useState(false);
 
   function handleSubmit(event) {
     event.preventDefault();
+    getAndSetMovies();
     console.log('values', values);
   };
 
