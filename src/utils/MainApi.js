@@ -1,3 +1,4 @@
+import { MAIN_BASE_URL } from '../utils/constants';
 class Api {
   constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
@@ -38,14 +39,11 @@ class Api {
   }
 }
 
-// const baseUrl = 'https://api.movies.krylovis.nomoreparties.sbs';
-const baseUrl = 'http://localhost:3002';
-
 const headers = {
   'Content-Type': 'application/json',
 };
 
 export const mainApi = new Api({
-  baseUrl: baseUrl,
+  baseUrl: MAIN_BASE_URL,
   headers: headers,
 });
