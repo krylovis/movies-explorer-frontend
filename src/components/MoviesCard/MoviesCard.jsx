@@ -1,9 +1,12 @@
 import { useLocation } from 'react-router-dom';
+import { MOVIES_BASE_URL } from '../../utils/constants';
 
 export default function MoviesCard({ card, onBtnClick }) {
-  const { poster, name, duration, like } = card;
+  const { image, nameRU, duration, like } = card;
   const { pathname } = useLocation();
   const isMovies = pathname === '/movies';
+
+  const moviePosterUrl = `${MOVIES_BASE_URL}${image.url}`;
 
   const likeBtnClass = `button movies-card__button movies-card__button_type_like ${like ? 'active' : ''}`;
   const deleteBtnClass = `button  movies-card__button movies-button_type_delete`;
@@ -13,9 +16,9 @@ export default function MoviesCard({ card, onBtnClick }) {
 
   return (
     <li className="movies-card">
-      <img className="movies-card__poster" src={poster} alt={`Кадр из фильма: ${name}`} />
+      <img className="movies-card__poster" src={moviePosterUrl} alt={`Кадр из фильма: ${nameRU}`} />
       <div className="movies-card__container">
-        <h3 className="movies-card__title">{name}</h3>
+        <h3 className="movies-card__title">{nameRU}</h3>
         <button
           className={isMovies ? likeBtnClass : deleteBtnClass}
           type="button"
