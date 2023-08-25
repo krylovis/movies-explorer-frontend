@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import { MoviesContext } from '../../contexts/MoviesContext';
+import { MoviesListContext } from '../../contexts/MoviesListContext';
 import { tokenVerification } from '../../utils/Auth';
 import { mainApi } from '../../utils/MainApi';
 import { getMoviesApi } from '../../utils/MoviesApi';
@@ -61,7 +61,7 @@ export default function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <MoviesContext.Provider value={moviesList}>
+      <MoviesListContext.Provider value={moviesList}>
         <Routes>
 
           <Route
@@ -83,7 +83,7 @@ export default function App() {
 
           <Route exact path='*' element={<NotFoundPage />} />
         </Routes>
-      </MoviesContext.Provider>
+      </MoviesListContext.Provider>
     </CurrentUserContext.Provider>
   );
 }
