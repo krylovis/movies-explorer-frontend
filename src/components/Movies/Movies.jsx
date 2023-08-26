@@ -9,7 +9,7 @@ export default function Movies(props) {
   // const { } = props;
 
   const [moviesList, setMoviesList] = React.useState([]);
-  const { values, handleChange } = useFormWithValidator({ query: '' });
+  const { values, setValues, handleChange } = useFormWithValidator({ query: '' });
   const [isShortFilm, setIsShortFilm] = React.useState(false);
   const [howMuchToAdd, setHowMuchToAdd] = React.useState(0);
   const [partOfMoviesList, setPartOfMoviesList] = React.useState([]);
@@ -56,6 +56,13 @@ export default function Movies(props) {
   };
 
   React.useEffect(() => {
+    const lastQuery = JSON.parse(localStorage.getItem('last-query'));
+    const lastIsShortFilm = JSON.parse(localStorage.getItem('is-short-film'));
+    if (lastQuery) setValues(lastQuery);
+    if (lastIsShortFilm) setIsShortFilm(lastIsShortFilm);
+  }, [setValues]);
+
+  React.useEffect(() => {
     setPartOfMoviesList(filterMoviesList.slice(0, defaultMoviesCounter));
   }, [moviesList, defaultMoviesCounter, filterMoviesList]);
 
@@ -63,12 +70,12 @@ export default function Movies(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     getAndSetMovies();
-    console.log('query', values.query);
+    localStorage.setItem('last-query', JSON.stringify(values));
+    localStorage.setItem('is-short-film', JSON.stringify(isShortFilm));
   }
 
   const checkboxChange = (event) => {
     setIsShortFilm(event.target.checked);
-    console.log(event.target.checked);
   }
 
   const showMoreMovies = () => {
