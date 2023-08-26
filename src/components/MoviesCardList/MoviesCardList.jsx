@@ -2,7 +2,6 @@ import React from 'react';
 
 import SectionContainer from '../../components/SectionContainer/SectionContainer';
 import MoviesCard from '../MoviesCard/MoviesCard';
-// import { cardList } from '../../utils/cardList';
 import { MoviesListContext } from '../../contexts/MoviesListContext';
 
 export default function MoviesCardList() {
@@ -10,11 +9,11 @@ export default function MoviesCardList() {
   const moviesList = React.useContext(MoviesListContext);
   const [partOfMoviesList, setPartOfMoviesList] = React.useState([]);
   const [howMuchToAdd, setHowMuchToAdd] = React.useState(0);
-  const [defaultMoviesСounter, setDefaultMoviesСounter] = React.useState(0);
+  const [defaultMoviesCounter, setdefaultMoviesCounter] = React.useState(0);
 
   const toggleCardLike = () => console.log('toggleCardLike');
   const showMoreMovies = () => {
-    setDefaultMoviesСounter(defaultMoviesСounter + howMuchToAdd);
+    setdefaultMoviesCounter(defaultMoviesCounter + howMuchToAdd);
   };
 
   const { clientWidth } = document.body;
@@ -25,23 +24,23 @@ export default function MoviesCardList() {
 
   React.useEffect(() => {
     if (isLargeScreen) {
-      setDefaultMoviesСounter(16);
+      setdefaultMoviesCounter(16);
       setHowMuchToAdd(4);
     } else if (isMediumScreen) {
-      setDefaultMoviesСounter(12);
+      setdefaultMoviesCounter(12);
       setHowMuchToAdd(3);
     } else if (isSmallScreen) {
-      setDefaultMoviesСounter(8);
+      setdefaultMoviesCounter(8);
       setHowMuchToAdd(2);
     } else if (issMobileScreen) {
-      setDefaultMoviesСounter(5);
+      setdefaultMoviesCounter(5);
       setHowMuchToAdd(2);
     }
-  }, [setDefaultMoviesСounter, setHowMuchToAdd, isLargeScreen, isMediumScreen, isSmallScreen, issMobileScreen]);
+  }, [setdefaultMoviesCounter, setHowMuchToAdd, isLargeScreen, isMediumScreen, isSmallScreen, issMobileScreen]);
 
   React.useEffect(() => {
-    setPartOfMoviesList(moviesList.slice(0, defaultMoviesСounter));
-  }, [moviesList, defaultMoviesСounter]);
+    setPartOfMoviesList(moviesList.slice(0, defaultMoviesCounter));
+  }, [moviesList, defaultMoviesCounter]);
 
   return (
     <SectionContainer type="type_movies-list">
