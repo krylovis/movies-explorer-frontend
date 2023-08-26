@@ -1,5 +1,5 @@
 // const BASE_URL = 'api.movies.krylovis.nomoreparties.sbs';
-const BASE_URL = 'http://localhost:3002';
+const BASE_URL = 'http://localhost:3000';
 
 const headers = {
   'Content-Type': 'application/json'
