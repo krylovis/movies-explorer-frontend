@@ -11,7 +11,7 @@ import ProfilePage from '../ProfilePage/ProfilePage';
 import Footer from '../Footer/Footer';
 
 export default function Main(props) {
-  const { loggedIn, setCurrentUser, getAndSetMovies, onUpdateUser, handleSetLoggedOut } = props;
+  const { loggedIn, setCurrentUser, onUpdateUser, handleSetLoggedOut } = props;
 
   const [menuIsOpen, setMenuIsOpen] = React.useState(false);
   const handleOpenMenu = () => setMenuIsOpen(true);
@@ -26,7 +26,7 @@ export default function Main(props) {
 
       <Routes>
         <Route exact path='/' element={<AboutProjectPage />} />
-        <Route exact path='/movies' element={<Movies getAndSetMovies={getAndSetMovies} />} />
+        <Route exact path='/movies' element={<Movies />} />
         <Route exact path='/saved-movies' element={<SavedMovies />} />
         <Route exact path='/profile' element={<ProfilePage
           handleSetLoggedOut={handleSetLoggedOut}

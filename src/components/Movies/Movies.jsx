@@ -3,16 +3,17 @@ import React from 'react';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import { useFormWithValidator } from '../../hooks/useForm';
-import { MoviesListContext } from '../../contexts/MoviesListContext';
+import { getMoviesApi } from '../../utils/MoviesApi';
 
 export default function Movies(props) {
-  const { getAndSetMovies } = props;
+  // const { } = props;
 
-  const moviesList = React.useContext(MoviesListContext);
+  const [moviesList, setMoviesList] = React.useState([]);
   const { values, handleChange } = useFormWithValidator({ query: '' });
   const [isShortFilm, setIsShortFilm] = React.useState(false);
   const [howMuchToAdd, setHowMuchToAdd] = React.useState(0);
   const [partOfMoviesList, setPartOfMoviesList] = React.useState([]);
+  const [filterMoviesList, setFilterMoviesList] = React.useState([]);
   const [defaultMoviesCounter, setdefaultMoviesCounter] = React.useState(0);
 
   const { clientWidth } = document.body;
@@ -37,15 +38,32 @@ export default function Movies(props) {
     }
   }, [setdefaultMoviesCounter, setHowMuchToAdd, isLargeScreen, isMediumScreen, isSmallScreen, issMobileScreen]);
 
+  const getAndSetMovies = () => {
+    if (!moviesList.length) {
+      getMoviesApi()
+        .then((data) => {
+          setMoviesList(data);
+          const filterData = filteringMoviesList(data, values.query, isShortFilm);
+          setFilterMoviesList(filterData);
+          setPartOfMoviesList(filterData.slice(0, defaultMoviesCounter));
+        })
+        .catch(console.error);
+    } else {
+      const filterData = filteringMoviesList(moviesList, values.query, isShortFilm);
+      setFilterMoviesList(filterData);
+      setPartOfMoviesList(filterData.slice(0, defaultMoviesCounter));
+    }
+  };
 
   React.useEffect(() => {
-    setPartOfMoviesList(moviesList.slice(0, defaultMoviesCounter));
-  }, [moviesList, defaultMoviesCounter]);
+    setPartOfMoviesList(filterMoviesList.slice(0, defaultMoviesCounter));
+  }, [moviesList, defaultMoviesCounter, filterMoviesList]);
 
 
   const handleSubmit = (event) => {
     event.preventDefault();
     getAndSetMovies();
+    console.log('query', values.query);
   }
 
   const checkboxChange = (event) => {
@@ -57,7 +75,12 @@ export default function Movies(props) {
     setdefaultMoviesCounter(defaultMoviesCounter + howMuchToAdd);
   };
 
-  const filterMoviesList = (list) => { };
+  const filteringMoviesList = (list, query, isShort) => {
+    if (isShort) return list.filter(item => item.nameRU.includes(query) && item.duration <= 40);
+    return list.filter((item) => {
+      return item.nameRU.toLowerCase().includes(query.toLowerCase());
+    });
+  };
 
   const toggleCardLike = () => console.log('toggleCardLike');
 
@@ -72,8 +95,6 @@ export default function Movies(props) {
         checkboxChange={checkboxChange}
       />
       <MoviesCardList
-        queryValue={queryValue}
-        isShortFilm={isShortFilm}
         partOfMoviesList={partOfMoviesList}
         showMoreMovies={showMoreMovies}
         toggleCardLike={toggleCardLike}
