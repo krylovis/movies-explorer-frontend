@@ -14,7 +14,7 @@ export default function Movies(props) {
   const [howMuchToAdd, setHowMuchToAdd] = React.useState(0);
   const [partOfMoviesList, setPartOfMoviesList] = React.useState([]);
   const [filterMoviesList, setFilterMoviesList] = React.useState([]);
-  const [defaultMoviesCounter, setdefaultMoviesCounter] = React.useState(0);
+  const [defaultMoviesCounter, setDefaultMoviesCounter] = React.useState(0);
 
   const { clientWidth } = document.body;
   const isLargeScreen = clientWidth > 990;
@@ -24,19 +24,19 @@ export default function Movies(props) {
 
   React.useEffect(() => {
     if (isLargeScreen) {
-      setdefaultMoviesCounter(16);
+      setDefaultMoviesCounter(16);
       setHowMuchToAdd(4);
     } else if (isMediumScreen) {
-      setdefaultMoviesCounter(12);
+      setDefaultMoviesCounter(12);
       setHowMuchToAdd(3);
     } else if (isSmallScreen) {
-      setdefaultMoviesCounter(8);
+      setDefaultMoviesCounter(8);
       setHowMuchToAdd(2);
     } else if (issMobileScreen) {
-      setdefaultMoviesCounter(5);
+      setDefaultMoviesCounter(5);
       setHowMuchToAdd(2);
     }
-  }, [setdefaultMoviesCounter, setHowMuchToAdd, isLargeScreen, isMediumScreen, isSmallScreen, issMobileScreen]);
+  }, [setDefaultMoviesCounter, setHowMuchToAdd, isLargeScreen, isMediumScreen, isSmallScreen, issMobileScreen]);
 
   const getAndSetMovies = () => {
     if (!moviesList.length) {
@@ -80,7 +80,7 @@ export default function Movies(props) {
   }
 
   const showMoreMovies = () => {
-    setdefaultMoviesCounter(defaultMoviesCounter + howMuchToAdd);
+    setDefaultMoviesCounter(defaultMoviesCounter + howMuchToAdd);
   };
 
   const filteringMoviesList = (list, query, isShort) => {
