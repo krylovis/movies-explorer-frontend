@@ -63,8 +63,9 @@ export default function Movies(props) {
   }, [setValues]);
 
   React.useEffect(() => {
-    setPartOfMoviesList(filterMoviesList.slice(0, defaultMoviesCounter));
-  }, [moviesList, defaultMoviesCounter, filterMoviesList]);
+    if (values.query) getAndSetMovies();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [values.query]);
 
 
   const handleSubmit = (event) => {
