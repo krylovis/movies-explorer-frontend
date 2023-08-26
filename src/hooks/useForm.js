@@ -7,7 +7,7 @@ export function useForm(inputValues = {}) {
 
   const handleChange = (event) => {
     const { value, name } = event.target;
-    console.log('');
+
     setValues({ ...values, [name]: value });
   };
   return { values, handleChange, setValues };

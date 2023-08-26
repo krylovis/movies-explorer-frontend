@@ -9,7 +9,7 @@ export default function Movies(props) {
   const { getAndSetMovies } = props;
 
   const moviesList = React.useContext(MoviesListContext);
-  const { queryValue, handleChange } = useFormWithValidator({ queryValue: '' });
+  const { values, handleChange } = useFormWithValidator({ query: '' });
   const [isShortFilm, setIsShortFilm] = React.useState(false);
   const [howMuchToAdd, setHowMuchToAdd] = React.useState(0);
   const [partOfMoviesList, setPartOfMoviesList] = React.useState([]);
@@ -37,9 +37,11 @@ export default function Movies(props) {
     }
   }, [setdefaultMoviesCounter, setHowMuchToAdd, isLargeScreen, isMediumScreen, isSmallScreen, issMobileScreen]);
 
+
   React.useEffect(() => {
     setPartOfMoviesList(moviesList.slice(0, defaultMoviesCounter));
   }, [moviesList, defaultMoviesCounter]);
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -63,7 +65,7 @@ export default function Movies(props) {
   return (
     <main className="main">
       <SearchForm
-        queryValue={queryValue}
+        values={values}
         isShortFilm={isShortFilm}
         handleChange={handleChange}
         handleSubmit={handleSubmit}

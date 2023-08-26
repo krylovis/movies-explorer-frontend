@@ -3,7 +3,7 @@ import SectionContainer from '../../components/SectionContainer/SectionContainer
 import iconSearch from '../../images/interface/icon-search.svg';
 
 export default function SearchForm(props) {
-  const { queryValue, isShortFilm, handleSubmit, handleChange, checkboxChange } = props;
+  const { values, isShortFilm, handleSubmit, handleChange, checkboxChange } = props;
   const [isMobile, setIsMobile] = React.useState(false);
 
   React.useEffect(() => {
@@ -53,7 +53,7 @@ export default function SearchForm(props) {
               id="inputTypeQuery"
               type="text"
               name="query"
-              value={queryValue}
+              value={values.query}
               onChange={handleChange}
               placeholder="Фильм"
               required
