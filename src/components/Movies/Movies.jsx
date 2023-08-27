@@ -58,13 +58,15 @@ export default function Movies(props) {
   React.useEffect(() => {
     const lastMoviesData = JSON.parse(localStorage.getItem('last-movies-data'));
     if (lastMoviesData && !filterMoviesList.length) {
-      const { query, isShort, filterList } = lastMoviesData;
+      const { query, isShort, list } = lastMoviesData;
 
       if (query) setValues({ query });
       if (isShort) setIsShortFilm(isShort);
-      if (filterList && filterList.length) {
-        setFilterMoviesList(filterList);
-        setPartOfMoviesList(filterList.slice(0, defaultMoviesCounter));
+      if (list && list.length) {
+        setMoviesList(list);
+        const filterData = filteringMoviesList(list, query, isShort);
+        setFilterMoviesList(filterData);
+        setPartOfMoviesList(filterData.slice(0, defaultMoviesCounter));
       };
     }
   }, [setValues, defaultMoviesCounter, filterMoviesList]);
@@ -81,7 +83,7 @@ export default function Movies(props) {
     const data = {
       query: values.query,
       isShort: isShortFilm,
-      filterList: filterMoviesList,
+      list: moviesList,
     };
     localStorage.setItem('last-movies-data', JSON.stringify(data));
   }
