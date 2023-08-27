@@ -70,7 +70,7 @@ export default function Movies(props) {
   React.useEffect(() => {
     if (values.query) getAndSetMovies();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [values.query, defaultMoviesCounter]);
+  }, [values.query, defaultMoviesCounter, isShortFilm]);
 
 
   const handleSubmit = (event) => {
@@ -86,6 +86,14 @@ export default function Movies(props) {
 
   const checkboxChange = (event) => {
     setIsShortFilm(event.target.checked);
+
+    getAndSetMovies();
+    const data = {
+      query: values.query,
+      isShort: event.target.checked,
+      list: moviesList,
+    };
+    localStorage.setItem('last-movies-data', JSON.stringify(data));
   }
 
   const showMoreMovies = () => {
