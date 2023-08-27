@@ -7,11 +7,18 @@ export default function MoviesCardList(props) {
   const { partOfMoviesList, toggleCardLike, showMoreMovies, isLoading, isError } = props;
 
   const moviesListInfo = () => {
-    const isErrorText = 'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз';
-    const isLoadingText = 'Идёт загрузка...';
+    let infoText = '';
+    if (isLoading) {
+      infoText = 'Идёт загрузка...';
+    } else if (isError) {
+      infoText = 'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз';
+    } else {
+      infoText = 'Ничего не найдено';
+    }
+
     return (
       <>
-        <p className='movies-list__info'>{isError ? isErrorText : isLoadingText}</p>
+        <p className='movies-list__info'>{infoText}</p>
       </>
     )
   };
@@ -42,7 +49,7 @@ export default function MoviesCardList(props) {
 
   return (
     <SectionContainer type="type_movies-list">
-      {(isLoading || isError) && moviesListInfo()}
+      {((partOfMoviesList.length === 0) || isLoading || isError) && moviesListInfo()}
       {((partOfMoviesList.length > 0) && (!isLoading && !isError)) && moviesList()}
     </SectionContainer>
   )
