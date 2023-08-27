@@ -53,6 +53,10 @@ input:focus {
   font-weight: 500;
 }
 
+.input__label_type_profile .input__error-message {
+  bottom: -21px;
+}
+
 .input__label_type_profile:first-child::after {
   position: absolute;
   content: '';
