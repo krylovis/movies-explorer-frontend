@@ -8,6 +8,10 @@ export default function MoviesCard({ card, onBtnClick }) {
 
   const moviePosterUrl = `${MOVIES_BASE_URL}${image.url}`;
 
+  const hours = Math.floor(duration / 60);
+  const minutes = duration % 60;
+  const movieTime = `${hours ? `${hours}ч ` : ''}${minutes}м`;
+
   const likeBtnClass = `button movies-card__button movies-card__button_type_like ${like ? 'active' : ''}`;
   const deleteBtnClass = `button  movies-card__button movies-button_type_delete`;
   const btnLikeText = 'Поставить/убрать лайк';
@@ -27,7 +31,7 @@ export default function MoviesCard({ card, onBtnClick }) {
           onClick={onBtnClick}
         />
       </div>
-      <span className="movies-card__duration">{duration}</span>
+      <span className="movies-card__duration">{movieTime}</span>
     </li>
   )
 }
