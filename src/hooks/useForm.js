@@ -34,7 +34,7 @@ export function useFormWithValidator(inputValues = {}) {
     if (isEmailInput) {
       inputErrorMessage.textContent = 'Пример почты "example@example.com"';
     } else if (isQueryInput && validationMessage) {
-      inputErrorMessage.textContent = 'Нужно ввести ключевое слово';
+      inputErrorMessage.textContent = 'Введите ключевое слово';
     } else if (isNameInput && (value.length >= 1)) {
       inputErrorMessage.textContent = 'Нужно ввести от 2 до 40 символов';
     } else if (isPasswordInput && (value.length >= 1)) {
