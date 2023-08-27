@@ -10,6 +10,8 @@ export default function Movies(props) {
 
   const [moviesList, setMoviesList] = React.useState([]);
   const { values, isValid, setValues, handleChange } = useFormWithValidator({ query: '' });
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [isError, setIsError] = React.useState(false);
   const [isShortFilm, setIsShortFilm] = React.useState(false);
   const [howMuchToAdd, setHowMuchToAdd] = React.useState(0);
   const [partOfMoviesList, setPartOfMoviesList] = React.useState([]);
@@ -39,13 +41,19 @@ export default function Movies(props) {
 
   const getAndSetMovies = () => {
     if (!moviesList.length) {
+      setIsLoading(true);
+      setIsError(false);
       getMoviesApi()
         .then((data) => {
           setMoviesList(data);
           const filterData = filteringMoviesList(data, values.query, isShortFilm);
           setPartOfMoviesList(filterData.slice(0, defaultMoviesCounter));
         })
-        .catch(console.error);
+        .catch((error) => {
+          console.error(error);
+          setIsError(true);
+        })
+        .finally(setIsLoading(false));
     } else {
       const filterData = filteringMoviesList(moviesList, values.query, isShortFilm);
       setPartOfMoviesList(filterData.slice(0, defaultMoviesCounter));
@@ -122,6 +130,8 @@ export default function Movies(props) {
       />
       <MoviesCardList
         partOfMoviesList={partOfMoviesList}
+        isLoading={isLoading}
+        isError={isError}
         showMoreMovies={showMoreMovies}
         toggleCardLike={toggleCardLike}
       />

@@ -4,10 +4,20 @@ import SectionContainer from '../../components/SectionContainer/SectionContainer
 import MoviesCard from '../MoviesCard/MoviesCard';
 
 export default function MoviesCardList(props) {
-  const { partOfMoviesList, toggleCardLike, showMoreMovies } = props;
+  const { partOfMoviesList, toggleCardLike, showMoreMovies, isLoading, isError } = props;
 
-  return (
-    <SectionContainer type="type_movies-list">
+  const moviesListInfo = () => {
+    const isErrorText = 'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз';
+    const isLoadingText = 'Идёт загрузка...';
+    return (
+      <>
+        <p className='movies-list__info'>{isError ? isErrorText : isLoadingText}</p>
+      </>
+    )
+  };
+
+  const moviesList = () => (
+    <>
       <ul className="list movies-list">
         {partOfMoviesList.map((card) => (
           <MoviesCard
@@ -27,6 +37,13 @@ export default function MoviesCardList(props) {
       >
         Ещё
       </button>
+    </>
+  );
+
+  return (
+    <SectionContainer type="type_movies-list">
+      {(isLoading || isError) && moviesListInfo()}
+      {((partOfMoviesList.length > 0) && (!isLoading && !isError)) && moviesList()}
     </SectionContainer>
   )
 }
