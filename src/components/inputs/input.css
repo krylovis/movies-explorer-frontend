@@ -12,6 +12,10 @@
   margin: 0 0 16px;
 }
 
+input:required:valid {
+  border-color: green;
+}
+
 input:focus {
   font-weight: 500;
   background-color: #424242;

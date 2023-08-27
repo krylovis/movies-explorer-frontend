@@ -30,6 +30,10 @@
   width: 100%;
 }
 
+.search-form__label .input__error-message {
+  bottom: -12px;
+}
+
 .search-form__input {
   background-color: #2F2F2F;
   border: none;
