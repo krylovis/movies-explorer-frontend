@@ -64,6 +64,7 @@ export default function SearchForm(props) {
             className="button search-form__button"
             aria-label="Найти фильм"
             type="submit"
+            disabled={!values.query}
           >
             Найти
           </button>
