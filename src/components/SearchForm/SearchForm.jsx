@@ -60,6 +60,7 @@ export default function SearchForm(props) {
               placeholder="Фильм"
               required
             />
+            <span className="input__error-message inputTypeName-error" />
           </label>
 
           <button
