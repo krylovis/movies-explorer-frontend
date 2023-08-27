@@ -13,7 +13,6 @@ export default function Movies(props) {
   const [isShortFilm, setIsShortFilm] = React.useState(false);
   const [howMuchToAdd, setHowMuchToAdd] = React.useState(0);
   const [partOfMoviesList, setPartOfMoviesList] = React.useState([]);
-  const [filterMoviesList, setFilterMoviesList] = React.useState([]);
   const [defaultMoviesCounter, setDefaultMoviesCounter] = React.useState(0);
 
   const { clientWidth } = document.body;
@@ -44,20 +43,18 @@ export default function Movies(props) {
         .then((data) => {
           setMoviesList(data);
           const filterData = filteringMoviesList(data, values.query, isShortFilm);
-          setFilterMoviesList(filterData);
           setPartOfMoviesList(filterData.slice(0, defaultMoviesCounter));
         })
         .catch(console.error);
     } else {
       const filterData = filteringMoviesList(moviesList, values.query, isShortFilm);
-      setFilterMoviesList(filterData);
       setPartOfMoviesList(filterData.slice(0, defaultMoviesCounter));
     }
   };
 
   React.useEffect(() => {
     const lastMoviesData = JSON.parse(localStorage.getItem('last-movies-data'));
-    if (lastMoviesData && !filterMoviesList.length) {
+    if (lastMoviesData) {
       const { query, isShort, list } = lastMoviesData;
 
       if (query) setValues({ query });
@@ -65,11 +62,10 @@ export default function Movies(props) {
       if (list && list.length) {
         setMoviesList(list);
         const filterData = filteringMoviesList(list, query, isShort);
-        setFilterMoviesList(filterData);
         setPartOfMoviesList(filterData.slice(0, defaultMoviesCounter));
       };
     }
-  }, [setValues, defaultMoviesCounter, filterMoviesList]);
+  }, [setValues, defaultMoviesCounter]);
 
   React.useEffect(() => {
     if (values.query) getAndSetMovies();
