@@ -78,7 +78,7 @@ export default function Movies(props) {
   React.useEffect(() => {
     if (values.query) getAndSetMovies();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [values.query, defaultMoviesCounter, isShortFilm]);
+  }, [defaultMoviesCounter, isShortFilm]);
 
 
   const handleSubmit = (event) => {
