@@ -56,11 +56,18 @@ export default function Movies(props) {
   };
 
   React.useEffect(() => {
-    const lastQuery = JSON.parse(localStorage.getItem('last-query'));
-    const lastIsShortFilm = JSON.parse(localStorage.getItem('is-short-film'));
-    if (lastQuery) setValues(lastQuery);
-    if (lastIsShortFilm) setIsShortFilm(lastIsShortFilm);
-  }, [setValues]);
+    const lastMoviesData = JSON.parse(localStorage.getItem('last-movies-data'));
+    if (lastMoviesData && !filterMoviesList.length) {
+      const { query, isShort, filterList } = lastMoviesData;
+
+      if (query) setValues({ query });
+      if (isShort) setIsShortFilm(isShort);
+      if (filterList && filterList.length) {
+        setFilterMoviesList(filterList);
+        setPartOfMoviesList(filterList.slice(0, defaultMoviesCounter));
+      };
+    }
+  }, [setValues, defaultMoviesCounter, filterMoviesList]);
 
   React.useEffect(() => {
     if (values.query) getAndSetMovies();
@@ -71,8 +78,12 @@ export default function Movies(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     getAndSetMovies();
-    localStorage.setItem('last-query', JSON.stringify(values));
-    localStorage.setItem('is-short-film', JSON.stringify(isShortFilm));
+    const data = {
+      query: values.query,
+      isShort: isShortFilm,
+      filterList: filterMoviesList,
+    };
+    localStorage.setItem('last-movies-data', JSON.stringify(data));
   }
 
   const checkboxChange = (event) => {
