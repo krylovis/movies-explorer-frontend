@@ -30,6 +30,7 @@ export default function SearchForm(props) {
           type="checkbox"
           checked={isShortFilm}
           onChange={checkboxChange}
+          disabled={!isValid}
         />
         <span className="search-form__slider" />
       </label>
