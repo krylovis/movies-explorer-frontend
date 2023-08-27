@@ -27,7 +27,7 @@ export function useFormWithValidator(inputValues = {}) {
 
     const isEmailInput = name === 'email' && validationMessage && (value.length >= 1);
     const isQueryInput = name === 'query';
-    const isNameInput = name === 'name' && (value.length >= 1);
+    const isNameInput = name === 'name' && (value.length < 2 || value.length > 40);
     const isPasswordInput = name === 'password' && (value.length < 6 || value.length > 20);
 
     const inputErrorMessage = target.closest(`[for=${id}]`).querySelector('.input__error-message');
@@ -35,7 +35,7 @@ export function useFormWithValidator(inputValues = {}) {
       inputErrorMessage.textContent = 'Пример почты "example@example.com"';
     } else if (isQueryInput && validationMessage) {
       inputErrorMessage.textContent = 'Нужно ввести ключевое слово';
-    } else if (isNameInput) {
+    } else if (isNameInput && (value.length >= 1)) {
       inputErrorMessage.textContent = 'Нужно ввести от 2 до 40 символов';
     } else if (isPasswordInput && (value.length >= 1)) {
       inputErrorMessage.textContent = 'Введите от 6 до 20 символов';

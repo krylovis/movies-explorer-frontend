@@ -9,7 +9,7 @@ export default function Movies(props) {
   // const { } = props;
 
   const [moviesList, setMoviesList] = React.useState([]);
-  const { values, setValues, handleChange } = useFormWithValidator({ query: '' });
+  const { values, isValid, setValues, handleChange } = useFormWithValidator({ query: '' });
   const [isShortFilm, setIsShortFilm] = React.useState(false);
   const [howMuchToAdd, setHowMuchToAdd] = React.useState(0);
   const [partOfMoviesList, setPartOfMoviesList] = React.useState([]);
@@ -114,6 +114,7 @@ export default function Movies(props) {
     <main className="main">
       <SearchForm
         values={values}
+        isValid={isValid}
         isShortFilm={isShortFilm}
         handleChange={handleChange}
         handleSubmit={handleSubmit}

@@ -7,7 +7,7 @@ import InputTypePassword from '../../inputs/InputTypePassword';
 import { useFormWithValidator } from '../../../hooks/useForm';
 
 export default function SignupPage() {
-  const { values, handleChange } = useFormWithValidator({ name: '', email: '', password: '' });
+  const { values, isValid, handleChange } = useFormWithValidator({ name: '', email: '', password: '' });
   const navigate = useNavigate();
 
   function handleSubmit(e) {
@@ -25,6 +25,7 @@ export default function SignupPage() {
       formTitle="Добро пожаловать!"
       formName="signup"
       buttonText="Зарегистрироваться"
+      isValid={isValid}
     >
 
       <InputTypeName values={values} handleChange={handleChange} />

@@ -3,7 +3,7 @@ import SectionContainer from '../../components/SectionContainer/SectionContainer
 import iconSearch from '../../images/interface/icon-search.svg';
 
 export default function SearchForm(props) {
-  const { values, isShortFilm, handleSubmit, handleChange, checkboxChange } = props;
+  const { values, isValid, isShortFilm, handleSubmit, handleChange, checkboxChange } = props;
   const [isMobile, setIsMobile] = React.useState(false);
 
   React.useEffect(() => {
@@ -67,7 +67,7 @@ export default function SearchForm(props) {
             className="button search-form__button"
             aria-label="Найти фильм"
             type="submit"
-            disabled={!values.query}
+            disabled={!isValid}
           >
             Найти
           </button>

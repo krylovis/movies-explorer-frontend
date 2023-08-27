@@ -8,7 +8,7 @@ import { authorize } from '../../../utils/Auth';
 
 export default function SigninPage(props) {
   const { handleSetLoggedIn, setCurrentUser } = props;
-  const { values, handleChange } = useFormWithValidator({ email: '', password: '' });
+  const { values, isValid, handleChange } = useFormWithValidator({ email: '', password: '' });
   const navigate = useNavigate();
 
   function handleSubmit(e) {
@@ -30,6 +30,7 @@ export default function SigninPage(props) {
       formTitle="Рады видеть!"
       formName="signin"
       buttonText="Войти"
+      isValid={isValid}
     >
 
       <InputTypeEmail values={values} handleChange={handleChange} />

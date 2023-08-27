@@ -13,7 +13,7 @@ export default function ProfilePage(props) {
 
   const currentUser = React.useContext(CurrentUserContext);
   const { name, email } = currentUser;
-  const { values, handleChange } = useFormWithValidator(currentUser);
+  const { values, isValid, handleChange } = useFormWithValidator(currentUser);
   const navigate = useNavigate();
 
   function handleSubmit(e) {
@@ -56,6 +56,7 @@ export default function ProfilePage(props) {
           className="button profile__button profile__button_type_submit"
           aria-label="Редактировать"
           type="submit"
+          disabled={!isValid}
           onClick={handleOnUpdateUser}
         >
           Редактировать
