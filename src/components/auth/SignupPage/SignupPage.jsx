@@ -4,10 +4,10 @@ import FormContainer from '../FormContainer/FormContainer';
 import InputTypeName from '../../inputs/InputTypeName';
 import InputTypeEmail from '../../inputs/InputTypeEmail';
 import InputTypePassword from '../../inputs/InputTypePassword';
-import { useForm } from '../../../hooks/useForm';
+import { useFormWithValidator } from '../../../hooks/useForm';
 
 export default function SignupPage() {
-  const { values, handleChange } = useForm({ name: '', email: '', password: '' });
+  const { values, handleChange } = useFormWithValidator({ name: '', email: '', password: '' });
   const navigate = useNavigate();
 
   function handleSubmit(e) {

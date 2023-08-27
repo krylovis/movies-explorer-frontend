@@ -3,12 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import FormContainer from '../FormContainer/FormContainer';
 import InputTypeEmail from '../../inputs/InputTypeEmail';
 import InputTypePassword from '../../inputs/InputTypePassword';
-import { useForm } from '../../../hooks/useForm';
+import { useFormWithValidator } from '../../../hooks/useForm';
 import { authorize } from '../../../utils/Auth';
 
 export default function SigninPage(props) {
   const { handleSetLoggedIn, setCurrentUser } = props;
-  const { values, handleChange } = useForm({ email: '', password: '' });
+  const { values, handleChange } = useFormWithValidator({ email: '', password: '' });
   const navigate = useNavigate();
 
   function handleSubmit(e) {

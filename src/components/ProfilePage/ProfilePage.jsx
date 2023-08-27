@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import InputTypeName from '../../components/inputs/InputTypeName';
 import InputTypeEmail from '../../components/inputs/InputTypeEmail';
-import { useForm } from '../../hooks/useForm';
+import { useFormWithValidator } from '../../hooks/useForm';
 
 import { logout } from '../../utils/Auth';
 
@@ -13,7 +13,7 @@ export default function ProfilePage(props) {
 
   const currentUser = React.useContext(CurrentUserContext);
   const { name, email } = currentUser;
-  const { values, handleChange } = useForm(currentUser);
+  const { values, handleChange } = useFormWithValidator(currentUser);
   const navigate = useNavigate();
 
   function handleSubmit(e) {

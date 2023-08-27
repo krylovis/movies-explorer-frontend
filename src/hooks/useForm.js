@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { regexForEmail, regexForName, regexForQuery } from '../utils/constants';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
@@ -14,15 +14,20 @@ export function useForm(inputValues = {}) {
 
 export function useFormWithValidator(inputValues = {}) {
   const [values, setValues] = React.useState(inputValues);
-  const [error, setError] = React.useState(inputValues);
+  const [errors, setErrors] = React.useState(inputValues);
   const [isValid, setIsValid] = React.useState(false);
 
   const handleChange = (event) => {
-    const { value, name, type } = event.target;
+    const { target } = event;
+    const { value, name, id, validationMessage } = target;
+
     setValues({ ...values, [name]: value });
+    setErrors({ ...errors, [id]: validationMessage });
+    setIsValid(target.closest('form').checkValidity());
+
+    const inputErrorMessage = target.closest(`[for=${id}]`).querySelector('.input__error-message');
+    inputErrorMessage.textContent = validationMessage;
   };
 
-  const currentUser = React.useContext(CurrentUserContext);
-
-  return { values, handleChange, setValues };
+  return { values, errors, isValid, handleChange, setValues, setIsValid };
 };
