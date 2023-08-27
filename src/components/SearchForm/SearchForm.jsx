@@ -20,6 +20,8 @@ export default function SearchForm(props) {
     return () => window.removeEventListener("resize", resize);
   }, [setIsMobile]);
 
+  React.useEffect(() => { }, [values]);
+
   const switchContainer = () => (
     <div className="search-form__switch-container">
       <label className="search-form__switch">
@@ -43,7 +45,7 @@ export default function SearchForm(props) {
         <form
           action="queryAction"
           onSubmit={handleSubmit}
-          name="profile"
+          name="query"
           className="search-form__form"
         >
           <label className="search-form__label" htmlFor="inputTypeQuery">
