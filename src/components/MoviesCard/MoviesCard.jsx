@@ -9,8 +9,8 @@ export default function MoviesCard(props) {
   const { card, isLike, updateSavedMoviesList } = props;
   const { image, nameRU, duration } = card;
   const { pathname } = useLocation();
-  const isMovies = pathname === '/movies';
 
+  const isMovies = pathname === '/movies';
   const moviePosterUrl = isMovies ? `${MOVIES_BASE_URL}${image.url}` : card.image;
 
   const hours = Math.floor(duration / 60);
@@ -22,6 +22,8 @@ export default function MoviesCard(props) {
   const btnLikeText = `${isLike ? 'Убрать' : 'Поставить'} лайк`;
   const btnLDeleteText = 'Удалить фильм из списка';
   const btnTitle = `${isMovies ? btnLikeText : btnLDeleteText}`;
+
+  const openTrailerLink = () => window.open(card.trailerLink, '_blank').focus();
 
   const toggleCardLike = () => {
     if (isMovies && !isLike) {
@@ -55,7 +57,13 @@ export default function MoviesCard(props) {
 
   return (
     <li className="movies-card">
-      <img className="movies-card__poster" src={moviePosterUrl} alt={`Кадр из фильма: ${nameRU}`} />
+      <img
+        className="movies-card__poster"
+        src={moviePosterUrl}
+        alt={`Кадр из фильма: ${nameRU}`}
+        title="Открыть трейлер фильма"
+        onClick={openTrailerLink}
+      />
       <div className="movies-card__container">
         <h3 className="movies-card__title">{nameRU}</h3>
         <button
