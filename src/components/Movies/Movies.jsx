@@ -40,7 +40,7 @@ export default function Movies() {
   }, [setDefaultMoviesCounter, setHowMuchToAdd, isLargeScreen, isMediumScreen, isSmallScreen, issMobileScreen]);
 
   const getAndSetMovies = () => {
-    if (!moviesList.length) {
+    if (!moviesList.length && !partOfMoviesList.length) {
       setIsLoading(true);
       setIsError(false);
       getMoviesApi()
