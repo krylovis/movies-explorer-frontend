@@ -1,10 +1,13 @@
+import React from 'react';
+
 import { useLocation } from 'react-router-dom';
 import { MOVIES_BASE_URL } from '../../utils/constants';
 
 import { mainApi } from '../../utils/MainApi';
 
-export default function MoviesCard({ card }) {
-  const { image, nameRU, duration, like } = card;
+export default function MoviesCard(props) {
+  const { card, isLike, updateSavedMoviesList } = props;
+  const { image, nameRU, duration } = card;
   const { pathname } = useLocation();
   const isMovies = pathname === '/movies';
 
@@ -14,9 +17,9 @@ export default function MoviesCard({ card }) {
   const minutes = duration % 60;
   const movieTime = `${hours ? `${hours}ч ` : ''}${minutes}м`;
 
-  const likeBtnClass = `button movies-card__button movies-card__button_type_like ${like ? 'active' : ''}`;
+  const likeBtnClass = `button movies-card__button movies-card__button_type_like ${isLike ? 'active' : ''}`;
   const deleteBtnClass = `button  movies-card__button movies-button_type_delete`;
-  const btnLikeText = 'Поставить/убрать лайк';
+  const btnLikeText = `${isLike ? 'Убрать' : 'Поставить'} лайк`;
   const btnLDeleteText = 'Удалить фильм из списка';
   const btnTitle = `${isMovies ? btnLikeText : btnLDeleteText}`;
 
@@ -36,7 +39,9 @@ export default function MoviesCard({ card }) {
     };
 
     mainApi.saveMovie(cardForSave)
-      .then((data) => console.log(data))
+      .then((data) => {
+        if (data) updateSavedMoviesList();
+      })
       .catch(console.error);
   };
 

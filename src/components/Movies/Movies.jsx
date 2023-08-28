@@ -85,7 +85,7 @@ export default function Movies({ isSavedMovies }) {
 
   React.useEffect(() => {
     getSavedMovies();
-  }, []);
+  }, [setSavedMoviesList]);
 
   React.useEffect(() => {
     const lastMoviesData = JSON.parse(localStorage.getItem(localStorageItem));
@@ -145,6 +145,7 @@ export default function Movies({ isSavedMovies }) {
     });
   };
 
+  const updateSavedMoviesList = () => getSavedMovies();
   const isShowMoreMoviesBtn = filterMoviesList.length > partOfMoviesList.length;
 
   return (
@@ -163,7 +164,9 @@ export default function Movies({ isSavedMovies }) {
         isLoading={isLoading}
         isError={isError}
         isShowMoreMoviesBtn={isShowMoreMoviesBtn}
+        savedMoviesList={savedMoviesList}
         showMoreMovies={showMoreMovies}
+        updateSavedMoviesList={updateSavedMoviesList}
       />
     </main>
   )

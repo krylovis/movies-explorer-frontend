@@ -4,7 +4,7 @@ import SectionContainer from '../../components/SectionContainer/SectionContainer
 import MoviesCard from '../MoviesCard/MoviesCard';
 
 export default function MoviesCardList(props) {
-  const { partOfMoviesList, showMoreMovies, isShowMoreMoviesBtn, isLoading, isError } = props;
+  const { partOfMoviesList, savedMoviesList, updateSavedMoviesList, showMoreMovies, isShowMoreMoviesBtn, isLoading, isError } = props;
 
   const moviesListInfo = () => {
     let infoText = '';
@@ -26,12 +26,17 @@ export default function MoviesCardList(props) {
   const moviesList = () => (
     <>
       <ul className="list movies-list">
-        {partOfMoviesList.map((card) => (
-          <MoviesCard
-            key={card.id || card._id}
-            card={card}
-          />
-        ))}
+        {partOfMoviesList.map((card) => {
+          const isLike = savedMoviesList.find(movie => movie.movieId === card.id);
+          return (
+            <MoviesCard
+              key={card.id || card._id}
+              card={card}
+              updateSavedMoviesList={updateSavedMoviesList}
+              isLike={!!isLike}
+            />
+          )
+        })}
       </ul>
 
       {isShowMoreMoviesBtn &&
