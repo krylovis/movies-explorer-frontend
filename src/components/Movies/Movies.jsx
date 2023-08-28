@@ -118,8 +118,6 @@ export default function Movies() {
   };
 
   const isShowMoreMoviesBtn = filterMoviesList.length > partOfMoviesList.length;
-  const toggleCardLike = () => console.log('toggleCardLike');
-
 
   return (
     <main className="main">
@@ -137,7 +135,6 @@ export default function Movies() {
         isError={isError}
         isShowMoreMoviesBtn={isShowMoreMoviesBtn}
         showMoreMovies={showMoreMovies}
-        toggleCardLike={toggleCardLike}
       />
     </main>
   )

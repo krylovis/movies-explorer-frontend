@@ -31,7 +31,16 @@ class Api {
     })
   }
 
-  getFilms() {
+  saveMovie(movie) {
+    return this._request(this._baseUrl + '/movies', {
+      method: 'POST',
+      headers: this._headers,
+      body: JSON.stringify(movie),
+      credentials: 'include',
+    })
+  }
+
+  getMovies() {
     return this._request(this._baseUrl + '/movies', {
       headers: this._headers,
       credentials: 'include',

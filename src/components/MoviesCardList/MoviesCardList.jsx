@@ -4,7 +4,7 @@ import SectionContainer from '../../components/SectionContainer/SectionContainer
 import MoviesCard from '../MoviesCard/MoviesCard';
 
 export default function MoviesCardList(props) {
-  const { partOfMoviesList, toggleCardLike, showMoreMovies, isShowMoreMoviesBtn, isLoading, isError } = props;
+  const { partOfMoviesList, showMoreMovies, isShowMoreMoviesBtn, isLoading, isError } = props;
 
   const moviesListInfo = () => {
     let infoText = '';
@@ -30,7 +30,6 @@ export default function MoviesCardList(props) {
           <MoviesCard
             key={card.id}
             card={card}
-            onBtnClick={toggleCardLike}
           />
         ))}
       </ul>
