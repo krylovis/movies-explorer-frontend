@@ -33,6 +33,7 @@ export default function ProfilePage(props) {
         setCurrentUser(user);
         handleSetLoggedOut();
         navigate('/signin');
+        localStorage.removeItem('last-movies-data');
       })
       .catch(err => console.log(err));
   };
