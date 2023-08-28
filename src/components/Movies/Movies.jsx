@@ -5,8 +5,7 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import { useFormWithValidator } from '../../hooks/useForm';
 import { getMoviesApi } from '../../utils/MoviesApi';
 
-export default function Movies(props) {
-  // const { } = props;
+export default function Movies() {
 
   const [moviesList, setMoviesList] = React.useState([]);
   const { values, isValid, setValues, handleChange } = useFormWithValidator({ query: '' });

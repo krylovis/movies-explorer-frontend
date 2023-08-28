@@ -50,8 +50,7 @@ export default function MoviesCardList(props) {
 
   return (
     <SectionContainer type="type_movies-list">
-      {((partOfMoviesList.length === 0) || isLoading || isError) && moviesListInfo()}
-      {((partOfMoviesList.length > 0) && (!isLoading && !isError)) && moviesList()}
+      {(isLoading || isError || !partOfMoviesList.length) ? moviesListInfo() : moviesList()}
     </SectionContainer>
   )
 }
