@@ -1,6 +1,4 @@
-import React, { useCallback } from 'react';
-import { regexForEmail, regexForName, regexForQuery } from '../utils/constants';
-import { CurrentUserContext } from '../contexts/CurrentUserContext';
+import React from 'react';
 
 export function useForm(inputValues = {}) {
   const [values, setValues] = React.useState(inputValues);

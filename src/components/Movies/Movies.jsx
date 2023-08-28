@@ -139,9 +139,11 @@ export default function Movies({ isSavedMovies }) {
   };
 
   const filteringMoviesList = (list, query, isShort) => {
-    if (isShort) return list.filter(item => item.nameRU.includes(query) && item.duration <= 40);
     return list.filter((item) => {
-      return item.nameRU.toLowerCase().includes(query.toLowerCase());
+      const { nameRU, nameEN, duration } = item;
+
+      if (isShort) return (nameRU.toLowerCase().includes(query.toLowerCase()) || nameEN.toLowerCase().includes(query.toLowerCase())) && duration <= 40;
+      return nameRU.toLowerCase().includes(query.toLowerCase()) || nameEN.toLowerCase().includes(query.toLowerCase());
     });
   };
 
