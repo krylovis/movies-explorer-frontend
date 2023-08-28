@@ -17,32 +17,40 @@ export default function MoviesCard(props) {
   const minutes = duration % 60;
   const movieTime = `${hours ? `${hours}ч ` : ''}${minutes}м`;
 
-  const likeBtnClass = `button movies-card__button movies-card__button_type_like ${isLike ? 'active' : ''}`;
+  const likeBtnClass = `button movies-card__button movies-card__button_type_like ${!!isLike ? 'active' : ''}`;
   const deleteBtnClass = `button  movies-card__button movies-button_type_delete`;
   const btnLikeText = `${isLike ? 'Убрать' : 'Поставить'} лайк`;
   const btnLDeleteText = 'Удалить фильм из списка';
   const btnTitle = `${isMovies ? btnLikeText : btnLDeleteText}`;
 
   const toggleCardLike = () => {
-    const cardForSave = {
-      country: card.country,
-      director: card.director,
-      duration: card.duration,
-      year: card.year,
-      description: card.description,
-      image: `${MOVIES_BASE_URL}${card.image.url}`,
-      trailerLink: card.trailerLink,
-      thumbnail: `${MOVIES_BASE_URL}${card.image.formats.thumbnail.url}`,
-      movieId: card.id,
-      nameRU: card.nameRU,
-      nameEN: card.nameEN,
-    };
+    if (isMovies && !isLike) {
+      const cardForSave = {
+        country: card.country,
+        director: card.director,
+        duration: card.duration,
+        year: card.year,
+        description: card.description,
+        image: `${MOVIES_BASE_URL}${card.image.url}`,
+        trailerLink: card.trailerLink,
+        thumbnail: `${MOVIES_BASE_URL}${card.image.formats.thumbnail.url}`,
+        movieId: card.id,
+        nameRU: card.nameRU,
+        nameEN: card.nameEN,
+      };
 
-    mainApi.saveMovie(cardForSave)
-      .then((data) => {
-        if (data) updateSavedMoviesList();
-      })
-      .catch(console.error);
+      mainApi.saveMovie(cardForSave)
+        .then((data) => {
+          if (data) updateSavedMoviesList();
+        })
+        .catch(console.error);
+    } else {
+      mainApi.deleteMovie((isLike && isLike._id) || card._id)
+        .then((data) => {
+          if (data) updateSavedMoviesList();
+        })
+        .catch(console.error);
+    }
   };
 
   return (

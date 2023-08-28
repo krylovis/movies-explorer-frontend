@@ -33,7 +33,7 @@ export default function MoviesCardList(props) {
               key={card.id || card._id}
               card={card}
               updateSavedMoviesList={updateSavedMoviesList}
-              isLike={!!isLike}
+              isLike={isLike}
             />
           )
         })}

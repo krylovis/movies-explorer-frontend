@@ -40,6 +40,15 @@ class Api {
     })
   }
 
+  deleteMovie(id) {
+    console.log('id', id);
+    return this._request(this._baseUrl + '/movies/' + id, {
+      method: 'DELETE',
+      headers: this._headers,
+      credentials: 'include',
+    })
+  }
+
   getMovies() {
     return this._request(this._baseUrl + '/movies', {
       headers: this._headers,
