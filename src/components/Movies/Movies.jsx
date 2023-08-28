@@ -14,6 +14,7 @@ export default function Movies(props) {
   const [isError, setIsError] = React.useState(false);
   const [isShortFilm, setIsShortFilm] = React.useState(false);
   const [howMuchToAdd, setHowMuchToAdd] = React.useState(0);
+  const [filterMoviesList, setFilterMoviesList] = React.useState([]);
   const [partOfMoviesList, setPartOfMoviesList] = React.useState([]);
   const [defaultMoviesCounter, setDefaultMoviesCounter] = React.useState(0);
 
@@ -47,6 +48,7 @@ export default function Movies(props) {
         .then((data) => {
           setMoviesList(data);
           const filterData = filteringMoviesList(data, values.query, isShortFilm);
+          setFilterMoviesList(filterData);
           setPartOfMoviesList(filterData.slice(0, defaultMoviesCounter));
         })
         .catch((error) => {
@@ -56,6 +58,7 @@ export default function Movies(props) {
         .finally(setIsLoading(false));
     } else {
       const filterData = filteringMoviesList(moviesList, values.query, isShortFilm);
+      setFilterMoviesList(filterData);
       setPartOfMoviesList(filterData.slice(0, defaultMoviesCounter));
     }
   };
@@ -115,6 +118,7 @@ export default function Movies(props) {
     });
   };
 
+  const isShowMoreMoviesBtn = filterMoviesList.length > partOfMoviesList.length;
   const toggleCardLike = () => console.log('toggleCardLike');
 
 
@@ -132,6 +136,7 @@ export default function Movies(props) {
         partOfMoviesList={partOfMoviesList}
         isLoading={isLoading}
         isError={isError}
+        isShowMoreMoviesBtn={isShowMoreMoviesBtn}
         showMoreMovies={showMoreMovies}
         toggleCardLike={toggleCardLike}
       />
