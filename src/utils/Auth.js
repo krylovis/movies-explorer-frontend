@@ -1,5 +1,4 @@
-// const BASE_URL = 'api.movies.krylovis.nomoreparties.sbs';
-const BASE_URL = 'http://localhost:3000';
+import { MAIN_BASE_URL } from '../utils/constants';
 
 const headers = {
   'Content-Type': 'application/json'
@@ -14,7 +13,7 @@ const defaultOptions = (name, email, password) => {
 };
 
 const request = (url, options) => {
-  return fetch(`${BASE_URL}/${url}`, options).then(getResponse)
+  return fetch(`${MAIN_BASE_URL}/${url}`, options).then(getResponse)
 };
 
 const getResponse = (res) => {
