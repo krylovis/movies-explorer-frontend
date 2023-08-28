@@ -10,6 +10,7 @@ export default function Movies({ isSavedMovies }) {
   const localStorageItem = 'last-movies-data';
 
   const [moviesList, setMoviesList] = React.useState([]);
+  const [savedMoviesList, setSavedMoviesList] = React.useState([]);
   const { values, isValid, setValues, handleChange } = useFormWithValidator({ query: '' });
   const [isLoading, setIsLoading] = React.useState(false);
   const [isError, setIsError] = React.useState(false);
@@ -64,28 +65,27 @@ export default function Movies({ isSavedMovies }) {
     }
   };
 
-  const getAndSetSavedMovies = () => {
-    setIsLoading(true);
-    setIsError(false);
+  const getSavedMovies = () => {
     mainApi.getMovies()
-      .then((data) => {
-        setMoviesList(data);
-        const filterData = filteringMoviesList(data, values.query, isShortFilm);
-        setFilterMoviesList(filterData);
-        setPartOfMoviesList(filterData.slice(0, defaultMoviesCounter));
-      })
-      .catch((error) => {
-        console.error(error);
-        setIsError(true);
-      })
-      .finally(setIsLoading(false));
+      .then(setSavedMoviesList)
+      .catch(console.error);
+  };
+
+  const filterSavedMovies = () => {
+    const filterData = filteringMoviesList(savedMoviesList, values.query, isShortFilm);
+    setFilterMoviesList(filterData);
+    setPartOfMoviesList(filterData.slice(0, defaultMoviesCounter));
   };
 
 
   const moviesApi = () => {
-    if (isSavedMovies) return getAndSetSavedMovies();
+    if (isSavedMovies) return filterSavedMovies();
     return getAndSetMovies();
   }
+
+  React.useEffect(() => {
+    getSavedMovies();
+  }, []);
 
   React.useEffect(() => {
     const lastMoviesData = JSON.parse(localStorage.getItem(localStorageItem));
@@ -100,11 +100,11 @@ export default function Movies({ isSavedMovies }) {
         setPartOfMoviesList(filterData.slice(0, defaultMoviesCounter));
       };
     }
-  }, [setValues, defaultMoviesCounter, localStorageItem]);
+  }, [setValues, defaultMoviesCounter, localStorageItem, savedMoviesList]);
 
   React.useEffect(() => {
     if (values.query || isSavedMovies) moviesApi();
-  }, [defaultMoviesCounter, isShortFilm, isSavedMovies]);
+  }, [defaultMoviesCounter, isShortFilm, isSavedMovies, savedMoviesList]);
 
 
   const handleSubmit = (event) => {
@@ -124,12 +124,14 @@ export default function Movies({ isSavedMovies }) {
     setIsShortFilm(event.target.checked);
 
     moviesApi();
-    const data = {
-      query: values.query,
-      isShort: event.target.checked,
-      list: moviesList,
-    };
-    localStorage.setItem(localStorageItem, JSON.stringify(data));
+    if (!isSavedMovies) {
+      const data = {
+        query: values.query,
+        isShort: event.target.checked,
+        list: moviesList,
+      };
+      localStorage.setItem(localStorageItem, JSON.stringify(data));
+    }
   }
 
   const showMoreMovies = () => {
