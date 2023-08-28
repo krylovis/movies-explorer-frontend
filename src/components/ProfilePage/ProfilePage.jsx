@@ -12,14 +12,9 @@ export default function ProfilePage(props) {
   const { setCurrentUser, onUpdateUser, handleSetLoggedOut } = props;
 
   const currentUser = React.useContext(CurrentUserContext);
-  const { name, email } = currentUser;
+  const { name } = currentUser;
   const { values, isValid, handleChange } = useFormWithValidator(currentUser);
   const navigate = useNavigate();
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    console.log('values', values);
-  };
 
   function handleOnUpdateUser(e) {
     e.preventDefault();
@@ -44,7 +39,6 @@ export default function ProfilePage(props) {
 
       <form
         action="profileAction"
-        onSubmit={handleSubmit}
         name="profile"
         className="profile__content"
       >
