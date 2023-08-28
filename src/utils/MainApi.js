@@ -41,7 +41,6 @@ class Api {
   }
 
   deleteMovie(id) {
-    console.log('id', id);
     return this._request(this._baseUrl + '/movies/' + id, {
       method: 'DELETE',
       headers: this._headers,
