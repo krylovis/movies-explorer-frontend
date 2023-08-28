@@ -8,7 +8,7 @@ export default function MoviesCard({ card }) {
   const { pathname } = useLocation();
   const isMovies = pathname === '/movies';
 
-  const moviePosterUrl = `${MOVIES_BASE_URL}${image.url}`;
+  const moviePosterUrl = isMovies ? `${MOVIES_BASE_URL}${image.url}` : card.image;
 
   const hours = Math.floor(duration / 60);
   const minutes = duration % 60;

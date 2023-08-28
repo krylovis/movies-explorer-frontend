@@ -28,7 +28,7 @@ export default function MoviesCardList(props) {
       <ul className="list movies-list">
         {partOfMoviesList.map((card) => (
           <MoviesCard
-            key={card.id}
+            key={card.id || card._id}
             card={card}
           />
         ))}

@@ -4,8 +4,10 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import { useFormWithValidator } from '../../hooks/useForm';
 import { getMoviesApi } from '../../utils/MoviesApi';
+import { mainApi } from '../../utils/MainApi';
 
-export default function Movies() {
+export default function Movies({ isSavedMovies }) {
+  const localStorageItem = 'last-movies-data';
 
   const [moviesList, setMoviesList] = React.useState([]);
   const { values, isValid, setValues, handleChange } = useFormWithValidator({ query: '' });
@@ -62,48 +64,72 @@ export default function Movies() {
     }
   };
 
-  React.useEffect(() => {
-    const lastMoviesData = JSON.parse(localStorage.getItem('last-movies-data'));
-    if (lastMoviesData) {
-      const { query, isShort, list } = lastMoviesData;
+  const getAndSetSavedMovies = () => {
+    setIsLoading(true);
+    setIsError(false);
+    mainApi.getMovies()
+      .then((data) => {
+        setMoviesList(data);
+        const filterData = filteringMoviesList(data, values.query, isShortFilm);
+        setFilterMoviesList(filterData);
+        setPartOfMoviesList(filterData.slice(0, defaultMoviesCounter));
+      })
+      .catch((error) => {
+        console.error(error);
+        setIsError(true);
+      })
+      .finally(setIsLoading(false));
+  };
 
+
+  const moviesApi = () => {
+    if (isSavedMovies) return getAndSetSavedMovies();
+    return getAndSetMovies();
+  }
+
+  React.useEffect(() => {
+    const lastMoviesData = JSON.parse(localStorage.getItem(localStorageItem));
+    if (lastMoviesData && !isSavedMovies) {
+      const { query, isShort, list } = lastMoviesData;
       if (query) setValues({ query });
       if (isShort) setIsShortFilm(isShort);
       if (list && list.length) {
         setMoviesList(list);
         const filterData = filteringMoviesList(list, query, isShort);
+        setFilterMoviesList(filterData);
         setPartOfMoviesList(filterData.slice(0, defaultMoviesCounter));
       };
     }
-  }, [setValues, defaultMoviesCounter]);
+  }, [setValues, defaultMoviesCounter, localStorageItem]);
 
   React.useEffect(() => {
-    if (values.query) getAndSetMovies();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [defaultMoviesCounter, isShortFilm]);
+    if (values.query || isSavedMovies) moviesApi();
+  }, [defaultMoviesCounter, isShortFilm, isSavedMovies]);
 
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    getAndSetMovies();
-    const data = {
-      query: values.query,
-      isShort: isShortFilm,
-      list: moviesList,
-    };
-    localStorage.setItem('last-movies-data', JSON.stringify(data));
+    moviesApi();
+    if (!isSavedMovies) {
+      const data = {
+        query: values.query,
+        isShort: isShortFilm,
+        list: moviesList,
+      };
+      localStorage.setItem(localStorageItem, JSON.stringify(data));
+    }
   }
 
   const checkboxChange = (event) => {
     setIsShortFilm(event.target.checked);
 
-    getAndSetMovies();
+    moviesApi();
     const data = {
       query: values.query,
       isShort: event.target.checked,
       list: moviesList,
     };
-    localStorage.setItem('last-movies-data', JSON.stringify(data));
+    localStorage.setItem(localStorageItem, JSON.stringify(data));
   }
 
   const showMoreMovies = () => {
@@ -124,6 +150,7 @@ export default function Movies() {
       <SearchForm
         values={values}
         isValid={isValid}
+        isRequired={isSavedMovies}
         isShortFilm={isShortFilm}
         handleChange={handleChange}
         handleSubmit={handleSubmit}

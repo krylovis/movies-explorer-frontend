@@ -6,7 +6,6 @@ import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
 import AboutProjectPage from '../AboutProjectPage/AboutProjectPage';
 import Movies from '../Movies/Movies';
-import SavedMovies from '../SavedMovies/SavedMovies';
 import ProfilePage from '../ProfilePage/ProfilePage';
 import Footer from '../Footer/Footer';
 
@@ -27,7 +26,7 @@ export default function Main(props) {
       <Routes>
         <Route exact path='/' element={<AboutProjectPage />} />
         <Route exact path='/movies' element={<Movies />} />
-        <Route exact path='/saved-movies' element={<SavedMovies />} />
+        <Route exact path='/saved-movies' element={<Movies isSavedMovies={true} />} />
         <Route exact path='/profile' element={<ProfilePage
           handleSetLoggedOut={handleSetLoggedOut}
           setCurrentUser={setCurrentUser}
