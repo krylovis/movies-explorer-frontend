@@ -52,18 +52,12 @@ export default function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <Routes>
 
-        <Route
-          path="/*"
-          element={<ProtectedRoute
-            loggedIn={loggedIn}
-            element={() => (
-              <Main
-                loggedIn={loggedIn}
-                setCurrentUser={setCurrentUser}
-                onUpdateUser={onUpdateUser}
-                handleSetLoggedOut={handleSetLoggedOut}
-              />
-            )} />} />
+        <Route exact path='/*' element={<Main
+          loggedIn={loggedIn}
+          setCurrentUser={setCurrentUser}
+          onUpdateUser={onUpdateUser}
+          handleSetLoggedOut={handleSetLoggedOut}
+        />} />
 
         <Route exact path='/signup' element={<SignupPage />} />
         <Route exact path='/signin' element={<SigninPage handleSetLoggedIn={handleSetLoggedIn} setCurrentUser={setCurrentUser} />} />

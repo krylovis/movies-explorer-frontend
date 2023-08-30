@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
 
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
 import AboutProjectPage from '../AboutProjectPage/AboutProjectPage';
@@ -25,13 +26,24 @@ export default function Main(props) {
 
       <Routes>
         <Route exact path='/' element={<AboutProjectPage />} />
-        <Route exact path='/movies' element={<Movies />} />
-        <Route exact path='/saved-movies' element={<Movies isSavedMovies={true} />} />
-        <Route exact path='/profile' element={<ProfilePage
-          handleSetLoggedOut={handleSetLoggedOut}
-          setCurrentUser={setCurrentUser}
-          onUpdateUser={onUpdateUser}
-        />} />
+
+        <Route path="/movies" element={
+          <ProtectedRoute loggedIn={loggedIn} element={() => (<Movies />)} />
+        } />
+
+        <Route path="/saved-movies" element={
+          <ProtectedRoute loggedIn={loggedIn} element={() => (<Movies isSavedMovies={true} />)} />
+        } />
+
+        <Route path="/profile" element={
+          <ProtectedRoute loggedIn={loggedIn} element={() => (
+            <ProfilePage
+              handleSetLoggedOut={handleSetLoggedOut}
+              setCurrentUser={setCurrentUser}
+              onUpdateUser={onUpdateUser}
+            />
+          )} />
+        } />
       </Routes>
 
       {!isProfilePage && <Footer />}
