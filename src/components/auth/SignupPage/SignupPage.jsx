@@ -6,7 +6,9 @@ import InputTypeEmail from '../../inputs/InputTypeEmail';
 import InputTypePassword from '../../inputs/InputTypePassword';
 import { useFormWithValidator } from '../../../hooks/useForm';
 
-export default function SignupPage() {
+export default function SignupPage(props) {
+  const { handleSetLoggedIn, setCurrentUser } = props;
+
   const { values, isValid, handleChange } = useFormWithValidator({ name: '', email: '', password: '' });
   const navigate = useNavigate();
 
@@ -14,7 +16,9 @@ export default function SignupPage() {
     e.preventDefault();
     register(values)
       .then((data) => {
-        navigate('/signin');
+        setCurrentUser(data);
+        handleSetLoggedIn();
+        navigate('/movies');
       })
       .catch(console.error);
   };

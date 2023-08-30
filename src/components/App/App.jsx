@@ -59,7 +59,7 @@ export default function App() {
           handleSetLoggedOut={handleSetLoggedOut}
         />} />
 
-        <Route exact path='/signup' element={<SignupPage />} />
+        <Route exact path='/signup' element={<SignupPage handleSetLoggedIn={handleSetLoggedIn} setCurrentUser={setCurrentUser} />} />
         <Route exact path='/signin' element={<SigninPage handleSetLoggedIn={handleSetLoggedIn} setCurrentUser={setCurrentUser} />} />
 
         <Route exact path='*' element={<NotFoundPage />} />

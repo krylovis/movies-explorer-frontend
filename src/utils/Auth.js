@@ -9,6 +9,7 @@ const defaultOptions = (name, email, password) => {
     method: 'POST',
     headers: headers,
     body: JSON.stringify({ name, email, password }),
+    credentials: 'include',
   }
 };
 
