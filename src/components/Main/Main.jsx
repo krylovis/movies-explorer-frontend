@@ -11,7 +11,7 @@ import ProfilePage from '../ProfilePage/ProfilePage';
 import Footer from '../Footer/Footer';
 
 export default function Main(props) {
-  const { loggedIn, setCurrentUser, onUpdateUser, handleSetLoggedOut } = props;
+  const { loggedIn, setCurrentUser, handleSetLoggedOut } = props;
 
   const [menuIsOpen, setMenuIsOpen] = React.useState(false);
   const handleOpenMenu = () => setMenuIsOpen(true);
@@ -40,7 +40,6 @@ export default function Main(props) {
             <ProfilePage
               handleSetLoggedOut={handleSetLoggedOut}
               setCurrentUser={setCurrentUser}
-              onUpdateUser={onUpdateUser}
             />
           )} />
         } />

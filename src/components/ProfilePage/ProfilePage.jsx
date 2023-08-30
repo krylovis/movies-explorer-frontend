@@ -6,10 +6,11 @@ import InputTypeName from '../../components/inputs/InputTypeName';
 import InputTypeEmail from '../../components/inputs/InputTypeEmail';
 import { useFormWithValidator } from '../../hooks/useForm';
 
+import { mainApi } from '../../utils/MainApi';
 import { logout } from '../../utils/Auth';
 
 export default function ProfilePage(props) {
-  const { setCurrentUser, onUpdateUser, handleSetLoggedOut } = props;
+  const { setCurrentUser, handleSetLoggedOut } = props;
 
   const currentUser = React.useContext(CurrentUserContext);
   const { name, email } = currentUser;
@@ -24,13 +25,24 @@ export default function ProfilePage(props) {
     if (values.email === email) setIsValid(false);
   }, [setIsValid, values.email, email]);
 
-  function handleOnUpdateUser(e) {
-    e.preventDefault();
-    onUpdateUser(values);
+  React.useEffect(() => { }, [setRequestMessage]);
+
+  function onUpdateUser(event) {
+    event.preventDefault();
+    mainApi
+      .editUserInfo(values)
+      .then((data) => {
+        setCurrentUser(data);
+        setRequestMessage('Профиль успешно обновлён');
+      })
+      .catch((error) => {
+        console.error('error', error);
+        setRequestMessage(error);
+      });
   };
 
-  function handleLogout(e) {
-    e.preventDefault();
+  function handleLogout(event) {
+    event.preventDefault();
     logout()
       .then((user) => {
         setCurrentUser(user);
