@@ -64,9 +64,6 @@
 /* --------------- SearchForm --------------- */
 @import './components/SearchForm/SearchForm.css';
 
-/* --------------- SavedMovies --------------- */
-@import './components/SavedMovies/SavedMovies.css';
-
 /* --------------- ProfilePage --------------- */
 @import './components/ProfilePage/ProfilePage.css';
 
