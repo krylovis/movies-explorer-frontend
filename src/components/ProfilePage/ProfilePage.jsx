@@ -12,9 +12,17 @@ export default function ProfilePage(props) {
   const { setCurrentUser, onUpdateUser, handleSetLoggedOut } = props;
 
   const currentUser = React.useContext(CurrentUserContext);
-  const { name } = currentUser;
-  const { values, isValid, handleChange } = useFormWithValidator(currentUser);
+  const { name, email } = currentUser;
+  const { values, isValid, setIsValid, handleChange } = useFormWithValidator(currentUser);
   const navigate = useNavigate();
+
+  React.useEffect(() => {
+    if (values.name === name) setIsValid(false);
+  }, [setIsValid, values.name, name]);
+
+  React.useEffect(() => {
+    if (values.email === email) setIsValid(false);
+  }, [setIsValid, values.email, email]);
 
   function handleOnUpdateUser(e) {
     e.preventDefault();
