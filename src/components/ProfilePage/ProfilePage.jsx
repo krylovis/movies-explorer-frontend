@@ -27,7 +27,7 @@ export default function ProfilePage(props) {
       .then((user) => {
         setCurrentUser(user);
         handleSetLoggedOut();
-        navigate('/signin');
+        navigate('/');
         localStorage.removeItem('last-movies-data');
       })
       .catch(err => console.log(err));
