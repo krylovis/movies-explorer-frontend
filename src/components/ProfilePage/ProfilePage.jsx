@@ -15,6 +15,7 @@ export default function ProfilePage(props) {
   const currentUser = React.useContext(CurrentUserContext);
   const { name, email } = currentUser;
   const { values, isValid, setIsValid, handleChange } = useFormWithValidator(currentUser);
+  const [requestMessage, setRequestMessage] = React.useState('');
   const navigate = useNavigate();
 
   React.useEffect(() => {
@@ -67,12 +68,13 @@ export default function ProfilePage(props) {
           <InputTypeEmail values={values} handleChange={handleChange} isProfile={true} />
         </div>
 
+        <span className="profile__request-message">{requestMessage}</span>
         <button
           className="button profile__button profile__button_type_submit"
           aria-label="Редактировать"
           type="submit"
           disabled={!isValid}
-          onClick={handleOnUpdateUser}
+          onClick={onUpdateUser}
         >
           Редактировать
         </button>

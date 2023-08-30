@@ -55,6 +55,16 @@
   margin-top: auto;
 }
 
+.profile__request-message {
+  padding-bottom: 20px;
+  color: #FF004C;
+  text-align: center;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
 @media screen and (max-width: 768px) {
   .profile {
     justify-content: center;
