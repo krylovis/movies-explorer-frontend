@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate, useLocation } from 'react-router-dom';
 
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { tokenVerification } from '../../utils/Auth';
@@ -15,6 +15,8 @@ export default function App() {
   const [requestMessage, setRequestMessage] = React.useState({ message: '', type: '' });
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const { pathname } = location;
 
   const [loggedIn, setLoggedIn] = React.useState(false);
   const handleSetLoggedIn = () => setLoggedIn(true);
@@ -48,7 +50,8 @@ export default function App() {
         if (data._id) {
           setCurrentUser(data);
           setLoggedIn(true);
-          navigate('/');
+          const isAuthPath = pathname === '/signup' || pathname === '/signin';
+          isAuthPath ? navigate('/movies') : navigate(pathname);
         } else {
           setLoggedIn(false);
           setCurrentUser({});
