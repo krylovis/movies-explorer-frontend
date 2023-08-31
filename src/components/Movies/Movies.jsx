@@ -154,6 +154,7 @@ export default function Movies({ isSavedMovies }) {
 
   const updateSavedMoviesList = () => getSavedMovies();
   const isShowMoreMoviesBtn = filterMoviesList.length > partOfMoviesList.length;
+  const isNotFound = moviesList.length && !partOfMoviesList.length;
 
   return (
     <main className="main">
@@ -168,6 +169,7 @@ export default function Movies({ isSavedMovies }) {
       />
       <MoviesCardList
         partOfMoviesList={partOfMoviesList}
+        isNotFound={isNotFound}
         isLoading={isLoading}
         isError={isError}
         isShowMoreMoviesBtn={isShowMoreMoviesBtn}

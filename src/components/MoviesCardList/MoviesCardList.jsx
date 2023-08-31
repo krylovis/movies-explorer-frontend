@@ -4,7 +4,7 @@ import SectionContainer from '../../components/SectionContainer/SectionContainer
 import MoviesCard from '../MoviesCard/MoviesCard';
 
 export default function MoviesCardList(props) {
-  const { partOfMoviesList, savedMoviesList, updateSavedMoviesList, showMoreMovies, isShowMoreMoviesBtn, isLoading, isError } = props;
+  const { isNotFound, partOfMoviesList, savedMoviesList, updateSavedMoviesList, showMoreMovies, isShowMoreMoviesBtn, isLoading, isError } = props;
 
   const moviesListInfo = () => {
     let infoText = '';
@@ -54,7 +54,7 @@ export default function MoviesCardList(props) {
 
   return (
     <SectionContainer type="type_movies-list">
-      {(isLoading || isError || !partOfMoviesList.length) ? moviesListInfo() : moviesList()}
+      {(isLoading || isError || isNotFound) ? moviesListInfo() : moviesList()}
     </SectionContainer>
   )
 }
