@@ -3,6 +3,7 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { tokenVerification } from '../../utils/Auth';
+import { mainApi } from '../../utils/MainApi';
 
 import Main from '../Main/Main';
 import SignupPage from '../auth/SignupPage/SignupPage';
@@ -11,6 +12,7 @@ import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
 export default function App() {
   const [currentUser, setCurrentUser] = React.useState({ name: '', email: '' });
+  const [requestMessage, setRequestMessage] = React.useState({ message: '', type: '' });
 
   const navigate = useNavigate();
 
@@ -18,10 +20,27 @@ export default function App() {
   const handleSetLoggedIn = () => setLoggedIn(true);
   const handleSetLoggedOut = () => setLoggedIn(false);
 
-  React.useEffect(() => {
-    handleTokenCheck();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  function handleSetRequestMessage(message) {
+    const isError = message.toLowerCase().includes('ошибка');
+
+    if (isError) {
+      console.error(message);
+      setRequestMessage({ message, type: 'error' });
+    } else {
+      setRequestMessage({ message, type: 'success' });
+    }
+    setTimeout(() => setRequestMessage({ message: '', type: '' }), 3000);
+  };
+
+  function onUpdateUser(userInfo) {
+    mainApi
+      .editUserInfo(userInfo)
+      .then((data) => {
+        setCurrentUser(data);
+        handleSetRequestMessage('Профиль обнавлён');
+      })
+      .catch(handleSetRequestMessage);
+  };
 
   function handleTokenCheck() {
     tokenVerification()
@@ -39,13 +58,21 @@ export default function App() {
       .catch(err => console.log(err));
   };
 
+  React.useEffect(() => {
+    handleTokenCheck();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <Routes>
 
         <Route exact path='/*' element={<Main
           loggedIn={loggedIn}
+          setRequestMessage={setRequestMessage}
+          requestMessage={requestMessage}
           setCurrentUser={setCurrentUser}
+          onUpdateUser={onUpdateUser}
           handleSetLoggedOut={handleSetLoggedOut}
         />} />
 

@@ -6,40 +6,23 @@ import InputTypeName from '../../components/inputs/InputTypeName';
 import InputTypeEmail from '../../components/inputs/InputTypeEmail';
 import { useFormWithValidator } from '../../hooks/useForm';
 
-import { mainApi } from '../../utils/MainApi';
 import { logout } from '../../utils/Auth';
 
 export default function ProfilePage(props) {
-  const { setCurrentUser, handleSetLoggedOut } = props;
+  const { requestMessage, setCurrentUser, onUpdateUser, handleSetLoggedOut } = props;
 
   const currentUser = React.useContext(CurrentUserContext);
-  const { name, email } = currentUser;
-  const { values, isValid, setIsValid, handleChange } = useFormWithValidator(currentUser);
-  const [requestMessage, setRequestMessage] = React.useState('');
+  const { name } = currentUser;
+  const { values, isValid, handleChange } = useFormWithValidator(currentUser);
+
+  const { message, type } = requestMessage;
+  const requestMessageClass = `profile__request-message ${type === 'error' ? 'profile__request-message_type_error' : ''}`
+
   const navigate = useNavigate();
 
-  React.useEffect(() => {
-    if (values.name === name) setIsValid(false);
-  }, [setIsValid, values.name, name]);
-
-  React.useEffect(() => {
-    if (values.email === email) setIsValid(false);
-  }, [setIsValid, values.email, email]);
-
-  React.useEffect(() => { }, [setRequestMessage]);
-
-  function onUpdateUser(event) {
+  function handleOnUpdateUser(event) {
     event.preventDefault();
-    mainApi
-      .editUserInfo(values)
-      .then((data) => {
-        setCurrentUser(data);
-        setRequestMessage('Профиль успешно обновлён');
-      })
-      .catch((error) => {
-        console.error('error', error);
-        setRequestMessage(error);
-      });
+    onUpdateUser(values);
   };
 
   function handleLogout(event) {
@@ -51,7 +34,7 @@ export default function ProfilePage(props) {
         navigate('/');
         localStorage.removeItem('last-movies-data');
       })
-      .catch(err => console.log(err));
+      .catch(err => console.error(err));
   };
 
   return (
@@ -68,13 +51,13 @@ export default function ProfilePage(props) {
           <InputTypeEmail values={values} handleChange={handleChange} isProfile={true} />
         </div>
 
-        <span className="profile__request-message">{requestMessage}</span>
+        <span className={requestMessageClass}>{message}</span>
         <button
           className="button profile__button profile__button_type_submit"
           aria-label="Редактировать"
           type="submit"
           disabled={!isValid}
-          onClick={onUpdateUser}
+          onClick={handleOnUpdateUser}
         >
           Редактировать
         </button>

@@ -11,7 +11,7 @@ import ProfilePage from '../ProfilePage/ProfilePage';
 import Footer from '../Footer/Footer';
 
 export default function Main(props) {
-  const { loggedIn, setCurrentUser, handleSetLoggedOut } = props;
+  const { loggedIn, requestMessage, setRequestMessage, setCurrentUser, onUpdateUser, handleSetLoggedOut } = props;
 
   const [menuIsOpen, setMenuIsOpen] = React.useState(false);
   const handleOpenMenu = () => setMenuIsOpen(true);
@@ -38,8 +38,11 @@ export default function Main(props) {
         <Route path="/profile" element={
           <ProtectedRoute loggedIn={loggedIn} element={() => (
             <ProfilePage
+              requestMessage={requestMessage}
+              setRequestMessage={setRequestMessage}
               handleSetLoggedOut={handleSetLoggedOut}
               setCurrentUser={setCurrentUser}
+              onUpdateUser={onUpdateUser}
             />
           )} />
         } />
