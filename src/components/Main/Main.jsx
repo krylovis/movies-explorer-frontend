@@ -9,6 +9,7 @@ import AboutProjectPage from '../AboutProjectPage/AboutProjectPage';
 import Movies from '../Movies/Movies';
 import ProfilePage from '../ProfilePage/ProfilePage';
 import Footer from '../Footer/Footer';
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
 export default function Main(props) {
   const { loggedIn, requestMessage, setRequestMessage, setCurrentUser, onUpdateUser, handleSetLoggedOut } = props;
@@ -19,13 +20,16 @@ export default function Main(props) {
 
   const { pathname } = useLocation();
   const isProfilePage = pathname === '/profile';
+  const routeName = ['/', '/movies', '/saved-movies', '/profile'];
+  const isNotFoundPage = routeName.includes(pathname);
 
   return (
     <>
-      <Header loggedIn={loggedIn} handleOpenMenu={handleOpenMenu} handleCloseMenu={handleCloseMenu} />
+      {isNotFoundPage && <Header loggedIn={loggedIn} handleOpenMenu={handleOpenMenu} handleCloseMenu={handleCloseMenu} />}
 
       <Routes>
         <Route exact path='/' element={<AboutProjectPage />} />
+        <Route exact path='*' element={<NotFoundPage />} />
 
         <Route path="/movies" element={
           <ProtectedRoute loggedIn={loggedIn} element={() => (<Movies />)} />
@@ -48,7 +52,7 @@ export default function Main(props) {
         } />
       </Routes>
 
-      {!isProfilePage && <Footer />}
+      {(!isProfilePage && isNotFoundPage) && <Footer />}
       <Navigation menuIsOpen={menuIsOpen} handleCloseMenu={handleCloseMenu} />
     </>
   )

@@ -8,7 +8,6 @@ import { mainApi } from '../../utils/MainApi';
 import Main from '../Main/Main';
 import SignupPage from '../auth/SignupPage/SignupPage';
 import SigninPage from '../auth/SigninPage/SigninPage';
-import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
 export default function App() {
   const [currentUser, setCurrentUser] = React.useState({ name: '', email: '' });
@@ -70,19 +69,18 @@ export default function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <Routes>
 
-        <Route exact path='/*' element={<Main
-          loggedIn={loggedIn}
-          setRequestMessage={setRequestMessage}
-          requestMessage={requestMessage}
-          setCurrentUser={setCurrentUser}
-          onUpdateUser={onUpdateUser}
-          handleSetLoggedOut={handleSetLoggedOut}
-        />} />
+        <Route exact path='/*' element={
+          <Main
+            loggedIn={loggedIn}
+            setRequestMessage={setRequestMessage}
+            requestMessage={requestMessage}
+            setCurrentUser={setCurrentUser}
+            onUpdateUser={onUpdateUser}
+            handleSetLoggedOut={handleSetLoggedOut}
+          />} />
 
         <Route exact path='/signup' element={<SignupPage handleSetLoggedIn={handleSetLoggedIn} setCurrentUser={setCurrentUser} />} />
         <Route exact path='/signin' element={<SigninPage handleSetLoggedIn={handleSetLoggedIn} setCurrentUser={setCurrentUser} />} />
-
-        <Route exact path='*' element={<NotFoundPage />} />
       </Routes>
     </CurrentUserContext.Provider>
   );
