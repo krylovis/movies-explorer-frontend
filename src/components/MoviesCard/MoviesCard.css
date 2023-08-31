@@ -81,6 +81,12 @@
   }
 }
 
+@media screen and (max-width: 500px) {
+  .movies-button_type_delete {
+    opacity: 1;
+  }
+}
+
 @media screen and (max-width: 320px) {
   .movies-card__container {
     padding: 10px 0 20px;
