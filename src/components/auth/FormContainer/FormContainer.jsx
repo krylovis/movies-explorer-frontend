@@ -26,7 +26,9 @@ export default function FormContainer(props) {
   return (
     <section className="form-container">
       <div className="form-container__header">
-        <img src={logo} alt="Логотип: Movies Explorer" className="form-container__logo" />
+        <NavLink className="header__link-logo" to="/">
+          <img src={logo} alt="Логотип: Movies Explorer" className="form-container__logo" />
+        </NavLink>
         <h2 className="form-container__title">{formTitle}</h2>
       </div>
       <form
