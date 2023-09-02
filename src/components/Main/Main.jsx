@@ -7,6 +7,7 @@ import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
 import AboutProjectPage from '../AboutProjectPage/AboutProjectPage';
 import Movies from '../Movies/Movies';
+import SavedMovies from '../SavedMovies/SavedMovies';
 import ProfilePage from '../ProfilePage/ProfilePage';
 import Footer from '../Footer/Footer';
 import NotFoundPage from '../NotFoundPage/NotFoundPage';
@@ -36,7 +37,7 @@ export default function Main(props) {
         } />
 
         <Route path="/saved-movies" element={
-          <ProtectedRoute loggedIn={loggedIn} element={() => (<Movies isSavedMovies={true} />)} />
+          <ProtectedRoute loggedIn={loggedIn} element={() => (<SavedMovies />)} />
         } />
 
         <Route path="/profile" element={
