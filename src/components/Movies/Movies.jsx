@@ -6,11 +6,10 @@ import { useFormWithValidator } from '../../hooks/useForm';
 import { getMoviesApi } from '../../utils/MoviesApi';
 
 export default function Movies(props) {
-  const { isSavedMovies, savedMoviesList, toggleCardLike } = props;
+  const { isSavedMovies, toggleCardLike } = props;
   const localStorageItem = 'last-movies-data';
 
   const [moviesList, setMoviesList] = React.useState([]);
-  const [savedFilterList, setSavedFilterList] = React.useState([]);
   const { values, isValid, setValues, handleChange } = useFormWithValidator({ query: '' });
   const [isLoading, setIsLoading] = React.useState(false);
   const [isError, setIsError] = React.useState(false);
@@ -49,12 +48,8 @@ export default function Movies(props) {
 
   const filterList = (movies) => {
     const filterData = filteringMoviesList(movies, values.query, isShortFilm);
-    if (isSavedMovies) {
-      setSavedFilterList(filterData);
-    } else {
-      setFilterMoviesList(filterData);
-      setPartOfMoviesList(filterData.slice(0, defaultMoviesCounter));
-    }
+    setFilterMoviesList(filterData);
+    setPartOfMoviesList(filterData.slice(0, defaultMoviesCounter));
   }
 
   React.useEffect(() => {
@@ -85,13 +80,11 @@ export default function Movies(props) {
   }, []);
 
   const getAndSetMovies = () => {
-    if (!isSavedMovies) {
-      const lastMoviesData = JSON.parse(localStorage.getItem(localStorageItem));
-      if (!lastMoviesData && !moviesList.length) {
-        getMoviesAsync();
-      } else {
-        getMoviesFromStorage(lastMoviesData);
-      }
+    const lastMoviesData = JSON.parse(localStorage.getItem(localStorageItem));
+    if (!lastMoviesData && !moviesList.length) {
+      getMoviesAsync();
+    } else {
+      getMoviesFromStorage(lastMoviesData);
     }
   }
 
@@ -110,14 +103,14 @@ export default function Movies(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    !isSavedMovies ? filterList(moviesList) : filterList(savedMoviesList);
-    if (!isSavedMovies) saveDataToStorage(isShortFilm);
+    filterList(moviesList);
+    saveDataToStorage(isShortFilm);
   }
 
   const checkboxChange = (event) => {
     setIsShortFilm(event.target.checked);
-    !isSavedMovies ? filterList(moviesList) : filterList(savedMoviesList);
-    if (!isSavedMovies) saveDataToStorage(event.target.checked);
+    filterList(moviesList);
+    saveDataToStorage(event.target.checked);
   }
 
   const showMoreMovies = () => {
@@ -154,7 +147,6 @@ export default function Movies(props) {
         isLoading={isLoading}
         isError={isError}
         isShowMoreMoviesBtn={isShowMoreMoviesBtn}
-        savedMoviesList={savedMoviesList}
         toggleCardLike={toggleCardLike}
         showMoreMovies={showMoreMovies}
       />

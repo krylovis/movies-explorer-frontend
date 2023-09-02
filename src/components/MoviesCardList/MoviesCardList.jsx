@@ -2,11 +2,11 @@ import React from 'react';
 
 import SectionContainer from '../../components/SectionContainer/SectionContainer';
 import MoviesCard from '../MoviesCard/MoviesCard';
+import { SavedMoviesListContext } from '../../contexts/SavedMoviesListContext';
 
 export default function MoviesCardList(props) {
-  const { isNotFound, isSavedMovies, partOfMoviesList, savedMoviesList, toggleCardLike, showMoreMovies, isShowMoreMoviesBtn, isLoading, isError } = props;
-  const cardList = isSavedMovies ? savedMoviesList : partOfMoviesList;
-
+  const { isNotFound, isSavedMovies, partOfMoviesList, toggleCardLike, showMoreMovies, isShowMoreMoviesBtn, isLoading, isError } = props;
+  const savedMoviesList = React.useContext(SavedMoviesListContext);
   const moviesListInfo = () => {
     let infoText = '';
     if (isLoading) {
@@ -28,7 +28,7 @@ export default function MoviesCardList(props) {
   const moviesList = () => (
     <>
       <ul className="list movies-list">
-        {cardList.map((card) => {
+        {partOfMoviesList.map((card) => {
           const isLike = savedMoviesList.find(movie => movie.movieId === card.id);
           return (
             <MoviesCard

@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
 import { mainApi } from '../../utils/MainApi';
+import { SavedMoviesListContext } from '../../contexts/SavedMoviesListContext';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import Header from '../Header/Header';
@@ -14,11 +15,10 @@ import Footer from '../Footer/Footer';
 import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
 export default function Main(props) {
-  const { loggedIn, requestMessage, setRequestMessage, setCurrentUser, onUpdateUser, handleSetLoggedOut } = props;
+  const { loggedIn, requestMessage, setSavedMoviesList, setRequestMessage, setCurrentUser, onUpdateUser, handleSetLoggedOut } = props;
 
   const [menuIsOpen, setMenuIsOpen] = React.useState(false);
-
-  const [savedMoviesList, setSavedMoviesList] = React.useState([]);
+  const savedMoviesList = React.useContext(SavedMoviesListContext);
   const [isError, setIsError] = React.useState(false);
 
   const handleOpenMenu = () => setMenuIsOpen(true);
@@ -43,7 +43,6 @@ export default function Main(props) {
   };
 
   const toggleCardLike = (card, isDelete = false) => {
-    console.log(card);
     if (!isDelete) {
       mainApi.saveMovie(card)
         .then((newCard) => {
@@ -74,7 +73,6 @@ export default function Main(props) {
         <Route path="/movies" element={
           <ProtectedRoute loggedIn={loggedIn} element={() => (
             <Movies
-              savedMoviesList={savedMoviesList}
               toggleCardLike={toggleCardLike}
             />)} />
         } />
