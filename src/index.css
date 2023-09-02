@@ -13,11 +13,14 @@
 /* --------------- list --------------- */
 @import './blocks/list/list.css';
 
-/* --------------- linkToProfile --------------- */
-@import './components/LinkToProfile/LinkToProfile.css';
-
 /* --------------- link --------------- */
 @import './blocks/link/link.css';
+
+/* --------------- input --------------- */
+@import './blocks/loader/loader.css';
+
+/* --------------- linkToProfile --------------- */
+@import './components/LinkToProfile/LinkToProfile.css';
 
 /* --------------- input --------------- */
 @import './components/inputs/input.css';
