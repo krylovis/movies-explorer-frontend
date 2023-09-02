@@ -150,6 +150,7 @@ export default function Movies({ isSavedMovies }) {
       />
       <MoviesCardList
         partOfMoviesList={partOfMoviesList}
+        isSavedMovies={isSavedMovies}
         isNotFound={isNotFound}
         isLoading={isLoading}
         isError={isError}
