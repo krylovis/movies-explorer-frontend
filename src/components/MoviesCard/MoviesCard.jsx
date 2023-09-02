@@ -43,7 +43,7 @@ export default function MoviesCard(props) {
 
       toggleCardLike(cardForSave);
     } else {
-      toggleCardLike(((isLike && isLike._id) || card._id), true);
+      toggleCardLike((isLike || card), true);
     }
   };
 

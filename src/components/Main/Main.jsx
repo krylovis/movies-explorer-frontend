@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
+import { mainApi } from '../../utils/MainApi';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import Header from '../Header/Header';
@@ -16,6 +17,10 @@ export default function Main(props) {
   const { loggedIn, requestMessage, setRequestMessage, setCurrentUser, onUpdateUser, handleSetLoggedOut } = props;
 
   const [menuIsOpen, setMenuIsOpen] = React.useState(false);
+
+  const [savedMoviesList, setSavedMoviesList] = React.useState([]);
+  const [isError, setIsError] = React.useState(false);
+
   const handleOpenMenu = () => setMenuIsOpen(true);
   const handleCloseMenu = () => setMenuIsOpen(false);
 
@@ -23,6 +28,40 @@ export default function Main(props) {
   const isProfilePage = pathname === '/profile';
   const routeName = ['/', '/movies', '/saved-movies', '/profile'];
   const isNotFoundPage = routeName.includes(pathname);
+
+  const setErrors = (error) => {
+    console.error(error);
+    setIsError(true);
+  };
+
+  const getSavedMoviesAsync = () => {
+    mainApi.getMovies()
+      .then(movies => {
+        setSavedMoviesList(movies);
+      })
+      .catch(setErrors);
+  };
+
+  const toggleCardLike = (card, isDelete = false) => {
+    console.log(card);
+    if (!isDelete) {
+      mainApi.saveMovie(card)
+        .then((newCard) => {
+          setSavedMoviesList((list) => [newCard, ...list]);
+        })
+        .catch(console.error);
+    } else {
+      mainApi.deleteMovie(card._id)
+        .then((newCard) => {
+          setSavedMoviesList((list) => list.filter((oldCard) => oldCard._id !== newCard._id));
+        })
+        .catch(console.error);
+    }
+  };
+
+  React.useEffect(() => {
+    getSavedMoviesAsync();
+  }, []);
 
   return (
     <>
@@ -33,11 +72,19 @@ export default function Main(props) {
         <Route exact path='*' element={<NotFoundPage />} />
 
         <Route path="/movies" element={
-          <ProtectedRoute loggedIn={loggedIn} element={() => (<Movies />)} />
+          <ProtectedRoute loggedIn={loggedIn} element={() => (
+            <Movies
+              savedMoviesList={savedMoviesList}
+              toggleCardLike={toggleCardLike}
+            />)} />
         } />
 
         <Route path="/saved-movies" element={
-          <ProtectedRoute loggedIn={loggedIn} element={() => (<SavedMovies />)} />
+          <ProtectedRoute loggedIn={loggedIn} element={() => (
+            <SavedMovies
+              savedMoviesList={savedMoviesList}
+              toggleCardLike={toggleCardLike}
+            />)} />
         } />
 
         <Route path="/profile" element={

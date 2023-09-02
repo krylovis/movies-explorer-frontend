@@ -4,13 +4,12 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import { useFormWithValidator } from '../../hooks/useForm';
 import { getMoviesApi } from '../../utils/MoviesApi';
-import { mainApi } from '../../utils/MainApi';
 
-export default function Movies({ isSavedMovies }) {
+export default function Movies(props) {
+  const { isSavedMovies, savedMoviesList, toggleCardLike } = props;
   const localStorageItem = 'last-movies-data';
 
   const [moviesList, setMoviesList] = React.useState([]);
-  const [savedMoviesList, setSavedMoviesList] = React.useState([]);
   const [savedFilterList, setSavedFilterList] = React.useState([]);
   const { values, isValid, setValues, handleChange } = useFormWithValidator({ query: '' });
   const [isLoading, setIsLoading] = React.useState(false);
@@ -20,15 +19,6 @@ export default function Movies({ isSavedMovies }) {
   const [filterMoviesList, setFilterMoviesList] = React.useState([]);
   const [partOfMoviesList, setPartOfMoviesList] = React.useState([]);
   const [defaultMoviesCounter, setDefaultMoviesCounter] = React.useState(0);
-
-  const getSavedMoviesAsync = () => {
-    mainApi.getMovies()
-      .then(movies => {
-        setSavedMoviesList(movies);
-        filterList(movies);
-      })
-      .catch(setErrors);
-  };
 
   const getMoviesAsync = () => {
     setIsLoading(true);
@@ -94,22 +84,6 @@ export default function Movies({ isSavedMovies }) {
     return () => window.removeEventListener("resize", resize);
   }, []);
 
-  const toggleCardLike = (card, isDelete = false) => {
-    if (!isDelete) {
-      mainApi.saveMovie(card)
-        .then((newCard) => {
-          setSavedMoviesList((list) => list.map((oldCard) => oldCard._id === card._id ? newCard : oldCard));
-        })
-        .catch(console.error);
-    } else {
-      mainApi.deleteMovie(card)
-        .then((newCard) => {
-          setSavedMoviesList((list) => list.filter((oldCard) => oldCard._id === card._id ? newCard : oldCard));
-        })
-        .catch(console.error);
-    }
-  };
-
   const getAndSetMovies = () => {
     if (!isSavedMovies) {
       const lastMoviesData = JSON.parse(localStorage.getItem(localStorageItem));
@@ -119,7 +93,6 @@ export default function Movies({ isSavedMovies }) {
         getMoviesFromStorage(lastMoviesData);
       }
     }
-    getSavedMoviesAsync();
   }
 
   React.useEffect(() => {
@@ -181,7 +154,7 @@ export default function Movies({ isSavedMovies }) {
         isLoading={isLoading}
         isError={isError}
         isShowMoreMoviesBtn={isShowMoreMoviesBtn}
-        savedMoviesList={savedFilterList}
+        savedMoviesList={savedMoviesList}
         toggleCardLike={toggleCardLike}
         showMoreMovies={showMoreMovies}
       />
