@@ -1,7 +1,8 @@
 .loader-dual-ring {
   display: inline-block;
-  width: 80px;
-  height: 80px;
+  align-self: center;
+  width: 60px;
+  height: 60px;
 }
 
 .loader-dual-ring:after {
