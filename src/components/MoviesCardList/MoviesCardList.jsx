@@ -4,9 +4,9 @@ import SectionContainer from '../../components/SectionContainer/SectionContainer
 import MoviesCard from '../MoviesCard/MoviesCard';
 
 export default function MoviesCardList(props) {
-  const { isNotFound, isSavedMovies, partOfMoviesList, savedMoviesList, updateSavedMoviesList, showMoreMovies, isShowMoreMoviesBtn, isLoading, isError } = props;
-
+  const { isNotFound, isSavedMovies, partOfMoviesList, savedMoviesList, toggleCardLike, showMoreMovies, isShowMoreMoviesBtn, isLoading, isError } = props;
   const cardList = isSavedMovies ? savedMoviesList : partOfMoviesList;
+
   const moviesListInfo = () => {
     let infoText = '';
     if (isLoading) {
@@ -34,7 +34,7 @@ export default function MoviesCardList(props) {
             <MoviesCard
               key={card.id || card._id}
               card={card}
-              updateSavedMoviesList={updateSavedMoviesList}
+              toggleCardLike={toggleCardLike}
               isLike={isLike}
             />
           )

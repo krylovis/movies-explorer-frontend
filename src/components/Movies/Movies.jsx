@@ -20,19 +20,25 @@ export default function Movies({ isSavedMovies }) {
   const [partOfMoviesList, setPartOfMoviesList] = React.useState([]);
   const [defaultMoviesCounter, setDefaultMoviesCounter] = React.useState(0);
 
-  const getDataAsync = (api) => {
-    console.log('getDataAsync');
+  const getSavedMoviesAsync = () => {
+    mainApi.getMovies()
+      .then(movies => {
+        setSavedMoviesList(movies);
+      })
+      .catch(setErrors);
+  };
+
+  const getMoviesAsync = () => {
     setIsLoading(true);
-    api.then(setMovies)
+    getMoviesApi()
+      .then(movies => {
+        setMoviesList(movies);
+      })
       .catch(setErrors)
       .finally(() => { setTimeout(() => { setIsLoading(false); }, 1000); });
   };
 
-  const getSavedMoviesAsync = () => getDataAsync(mainApi.getMovies());
-  const getMoviesApiAsync = () => getDataAsync(getMoviesApi());
-
   const getMoviesFromStorage = ({ query, isShort, list }) => {
-    console.log('getMoviesFromStorage');
     if (query) setValues({ query });
     if (isShort) setIsShortFilm(isShort);
     if (list && list.length) setMovies(list);
@@ -44,7 +50,7 @@ export default function Movies({ isSavedMovies }) {
   };
 
   const setMovies = (movies) => {
-    isSavedMovies ? setSavedMoviesList(movies) : setMoviesList(movies);
+    setMoviesList(movies);
     filterList(movies);
   };
 
@@ -55,14 +61,11 @@ export default function Movies({ isSavedMovies }) {
   }
 
   const getAndSetMovies = () => {
-    console.log('getAndSetMovies');
-
     if (!isSavedMovies) {
       const lastMoviesData = JSON.parse(localStorage.getItem(localStorageItem));
-      if (lastMoviesData) getMoviesFromStorage(lastMoviesData);
-      else getMoviesApiAsync();
-    } else {
-      getSavedMoviesAsync();
+      if (lastMoviesData && !moviesList.length) getMoviesFromStorage(lastMoviesData);
+      else if (moviesList.length) filterList(moviesList);
+      else getMoviesAsync();
     }
   }
 
@@ -93,15 +96,35 @@ export default function Movies({ isSavedMovies }) {
     return () => window.removeEventListener("resize", resize);
   }, []);
 
+  const toggleCardLike = (card, isDelete = false) => {
+    if (!isDelete) {
+      mainApi.saveMovie(card)
+        .then((newCard) => {
+          setSavedMoviesList((list) => list.map((oldCard) => oldCard._id === card._id ? newCard : oldCard));
+        })
+        .catch(console.error);
+    } else {
+      mainApi.deleteMovie(card)
+        .then((newCard) => {
+          setSavedMoviesList((list) => list.filter((oldCard) => oldCard._id === card._id ? newCard : oldCard));
+        })
+        .catch(console.error);
+    }
+  };
+
   React.useEffect(() => {
     getAndSetMovies();
   }, [defaultMoviesCounter, isShortFilm]);
 
-  const saveDataToStorage = (isShort = isShortFilm) => {
+  React.useEffect(() => {
+    getSavedMoviesAsync();
+  }, [setSavedMoviesList]);
+
+  const saveDataToStorage = (isShortFilm) => {
     if (!isSavedMovies) {
       const data = {
         query: values.query,
-        isShort,
+        isShort: isShortFilm,
         list: moviesList,
       };
       localStorage.setItem(localStorageItem, JSON.stringify(data));
@@ -133,7 +156,6 @@ export default function Movies({ isSavedMovies }) {
     });
   };
 
-  const updateSavedMoviesList = () => getSavedMoviesAsync();
   const isShowMoreMoviesBtn = filterMoviesList.length > partOfMoviesList.length;
   const isNotFound = moviesList.length && !partOfMoviesList.length;
 
@@ -156,8 +178,8 @@ export default function Movies({ isSavedMovies }) {
         isError={isError}
         isShowMoreMoviesBtn={isShowMoreMoviesBtn}
         savedMoviesList={savedMoviesList}
+        toggleCardLike={toggleCardLike}
         showMoreMovies={showMoreMovies}
-        updateSavedMoviesList={updateSavedMoviesList}
       />
     </main>
   )
