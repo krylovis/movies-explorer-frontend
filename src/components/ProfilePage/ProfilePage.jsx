@@ -9,7 +9,7 @@ import { useFormWithValidator } from '../../hooks/useForm';
 import { logout } from '../../utils/Auth';
 
 export default function ProfilePage(props) {
-  const { requestMessage, setCurrentUser, onUpdateUser, handleSetLoggedOut } = props;
+  const { requestMessage, setCurrentUser, setSavedMoviesList, onUpdateUser, handleSetLoggedOut } = props;
 
   const currentUser = React.useContext(CurrentUserContext);
   const { name } = currentUser;
@@ -30,9 +30,11 @@ export default function ProfilePage(props) {
     logout()
       .then((user) => {
         setCurrentUser(user);
+        setSavedMoviesList([]);
         handleSetLoggedOut();
         navigate('/');
-        localStorage.removeItem('last-movies-data');
+        localStorage.removeItem('last-movies-list');
+        localStorage.removeItem('last-movies-query');
       })
       .catch(err => console.error(err));
   };
