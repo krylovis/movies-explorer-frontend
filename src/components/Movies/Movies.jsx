@@ -153,7 +153,7 @@ export default function Movies({ isSavedMovies }) {
   };
 
   const updateSavedMoviesList = () => getSavedMovies();
-  const isShowMoreMoviesBtn = filterMoviesList.length > partOfMoviesList.length;
+  const isShowMoreMoviesBtn = filterMoviesList.length > partOfMoviesList.length && !isSavedMovies;
   const isNotFound = moviesList.length && !partOfMoviesList.length;
 
   return (
@@ -168,7 +168,7 @@ export default function Movies({ isSavedMovies }) {
         checkboxChange={checkboxChange}
       />
       <MoviesCardList
-        partOfMoviesList={partOfMoviesList}
+        partOfMoviesList={isSavedMovies ? savedMoviesList : partOfMoviesList}
         isNotFound={isNotFound}
         isLoading={isLoading}
         isError={isError}
