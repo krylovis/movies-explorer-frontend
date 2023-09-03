@@ -1,4 +1,5 @@
 import React from 'react';
+import debounce from 'lodash.debounce';
 
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
@@ -30,10 +31,13 @@ export default function Movies(props) {
       .finally(() => { setTimeout(() => { setIsLoading(false); }, 1000); });
   };
 
-  const getMoviesFromStorage = ({ query, isShort, list }) => {
-    if (query) setValues({ query });
-    if (isShort) setIsShortFilm(isShort);
-    if (list && list.length) setMovies(list);
+  const getMoviesFromStorage = (localStorageItem) => {
+    if (localStorageItem) {
+      const { query, isShort, list } = localStorageItem;
+      if (query) setValues({ query });
+      if (isShort) setIsShortFilm(isShort);
+      if (list && list.length) setMovies(list);
+    }
   }
 
   const setErrors = (error) => {
@@ -74,9 +78,10 @@ export default function Movies(props) {
         setHowMuchToAdd(2);
       }
     };
-    resize();
-    window.addEventListener('resize', resize);
-    return () => window.removeEventListener("resize", resize);
+    const debouncedResize = debounce(resize, 500);
+    debouncedResize();
+    window.addEventListener('resize', debouncedResize);
+    return () => window.removeEventListener("resize", debouncedResize);
   }, []);
 
   const getAndSetMovies = () => {
