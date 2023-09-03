@@ -11,10 +11,10 @@ export default function InputTypePassword(props) {
         value={values.password}
         onChange={handleChange}
         minLength="6"
-        maxLength="200"
+        maxLength="20"
         required
       />
-      <span className="input__error-message inputTypePassword-error">Что-то пошло не так...</span>
+      <span className="input__error-message inputTypePassword-error"></span>
     </label>
   )
 }

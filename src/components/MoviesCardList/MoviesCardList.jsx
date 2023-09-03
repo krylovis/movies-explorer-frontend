@@ -1,32 +1,61 @@
+import React from 'react';
+
 import SectionContainer from '../../components/SectionContainer/SectionContainer';
 import MoviesCard from '../MoviesCard/MoviesCard';
-import { cardList } from '../../utils/cardList';
 
-export default function MoviesCardList() {
+export default function MoviesCardList(props) {
+  const { isNotFound, partOfMoviesList, savedMoviesList, updateSavedMoviesList, showMoreMovies, isShowMoreMoviesBtn, isLoading, isError } = props;
 
-  const toggleCardLike = () => console.log('toggleCardLike');
-  const showMoreMovies = () => console.log('moreFilms');
+  const moviesListInfo = () => {
+    let infoText = '';
+    if (isLoading) {
+      infoText = 'Идёт загрузка...';
+    } else if (isError) {
+      infoText = 'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз';
+    } else {
+      infoText = 'Ничего не найдено';
+    }
+
+    return (
+      <>
+        <p className='movies-list__info'>{infoText}</p>
+        {isLoading && <div className="loader-dual-ring" />}
+      </>
+    )
+  };
+
+  const moviesList = () => (
+    <>
+      <ul className="list movies-list">
+        {partOfMoviesList.map((card) => {
+          const isLike = savedMoviesList.find(movie => movie.movieId === card.id);
+          return (
+            <MoviesCard
+              key={card.id || card._id}
+              card={card}
+              updateSavedMoviesList={updateSavedMoviesList}
+              isLike={isLike}
+            />
+          )
+        })}
+      </ul>
+
+      {isShowMoreMoviesBtn &&
+        <button className="button section-container__button"
+          type="button"
+          aria-label="Показать больше фильмов"
+          title="Показать больше фильмов"
+          onClick={showMoreMovies}
+        >
+          Ещё
+        </button>
+      }
+    </>
+  );
 
   return (
     <SectionContainer type="type_movies-list">
-      <ul className="list movies-list">
-        {cardList.map((card) => (
-          <MoviesCard key={card._id}
-            card={card}
-            onBtnClick={toggleCardLike}
-          />
-        ))}
-      </ul>
-
-      <button
-        className="button section-container__button"
-        type="button"
-        aria-label="Показать больше фильмов"
-        title="Показать больше фильмов"
-        onClick={showMoreMovies}
-      >
-        Ещё
-      </button>
+      {(isLoading || isError || isNotFound) ? moviesListInfo() : moviesList()}
     </SectionContainer>
   )
 }

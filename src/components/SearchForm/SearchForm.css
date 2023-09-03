@@ -24,9 +24,14 @@
 }
 
 .search-form__label {
+  position: relative;
   display: flex;
   align-items: center;
   width: 100%;
+}
+
+.search-form__label .input__error-message {
+  bottom: -12px;
 }
 
 .search-form__input {

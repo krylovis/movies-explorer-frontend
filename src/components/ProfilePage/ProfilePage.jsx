@@ -4,23 +4,37 @@ import { useNavigate } from 'react-router-dom';
 
 import InputTypeName from '../../components/inputs/InputTypeName';
 import InputTypeEmail from '../../components/inputs/InputTypeEmail';
-import { useForm } from '../../hooks/useForm';
+import { useFormWithValidator } from '../../hooks/useForm';
 
-export default function ProfilePage() {
+import { logout } from '../../utils/Auth';
+
+export default function ProfilePage(props) {
+  const { requestMessage, setCurrentUser, onUpdateUser, handleSetLoggedOut } = props;
+
   const currentUser = React.useContext(CurrentUserContext);
-  const { name, email } = currentUser;
-  const { values, handleChange } = useForm(currentUser);
+  const { name } = currentUser;
+  const { values, isValid, handleChange } = useFormWithValidator(currentUser);
+
+  const { message, type } = requestMessage;
+  const requestMessageClass = `profile__request-message ${type === 'error' ? 'profile__request-message_type_error' : ''}`
+
   const navigate = useNavigate();
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    console.log('values', values);
+  function handleOnUpdateUser(event) {
+    event.preventDefault();
+    onUpdateUser(values);
   };
 
-  function handleLogout(e) {
-    e.preventDefault();
-    navigate('/signin');
-    console.log('handleLogout');
+  function handleLogout(event) {
+    event.preventDefault();
+    logout()
+      .then((user) => {
+        setCurrentUser(user);
+        handleSetLoggedOut();
+        navigate('/');
+        localStorage.removeItem('last-movies-data');
+      })
+      .catch(err => console.error(err));
   };
 
   return (
@@ -29,7 +43,6 @@ export default function ProfilePage() {
 
       <form
         action="profileAction"
-        onSubmit={handleSubmit}
         name="profile"
         className="profile__content"
       >
@@ -38,11 +51,15 @@ export default function ProfilePage() {
           <InputTypeEmail values={values} handleChange={handleChange} isProfile={true} />
         </div>
 
+        <span className={requestMessageClass}>{message}</span>
         <button
           className="button profile__button profile__button_type_submit"
           aria-label="Редактировать"
           type="submit"
-        >Редактировать
+          disabled={!isValid}
+          onClick={handleOnUpdateUser}
+        >
+          Редактировать
         </button>
       </form>
 
@@ -50,7 +67,8 @@ export default function ProfilePage() {
         className="button profile__button profile__button_type_logout"
         aria-label="Выйти из аккаунта"
         type="button"
-        onClick={handleLogout}>
+        onClick={handleLogout}
+      >
         Выйти из аккаунта
       </button>
     </section >

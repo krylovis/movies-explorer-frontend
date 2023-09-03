@@ -3,7 +3,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import logo from '../../../images/logo.svg';
 
 export default function FormContainer(props) {
-  const { formTitle, formName, onSubmit, inactiveButton, buttonText, children } = props;
+  const { formTitle, formName, onSubmit, inactiveButton, buttonText, isValid, children } = props;
   const btnClassName = `button form-container__submit-button ${inactiveButton ? "form-container__submit-button_inactive" : ''}`
 
   const location = useLocation();
@@ -26,7 +26,9 @@ export default function FormContainer(props) {
   return (
     <section className="form-container">
       <div className="form-container__header">
-        <img src={logo} alt="Логотип: Movies Explorer" className="form-container__logo" />
+        <NavLink className="header__link-logo" to="/">
+          <img src={logo} alt="Логотип: Movies Explorer" className="form-container__logo" />
+        </NavLink>
         <h2 className="form-container__title">{formTitle}</h2>
       </div>
       <form
@@ -40,6 +42,7 @@ export default function FormContainer(props) {
           className={btnClassName}
           type="submit"
           aria-label={buttonText}
+          disabled={!isValid}
         >
           {buttonText}
         </button>

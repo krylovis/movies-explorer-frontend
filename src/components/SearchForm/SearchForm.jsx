@@ -1,22 +1,10 @@
 import React from 'react';
-import { useForm } from '../../hooks/useForm';
 import SectionContainer from '../../components/SectionContainer/SectionContainer';
 import iconSearch from '../../images/interface/icon-search.svg';
 
-export default function SearchForm() {
-  const { values, handleChange } = useForm({ query: '' });
-  const [isShortFilm, setIsShortFilm] = React.useState(false);
+export default function SearchForm(props) {
+  const { values, isValid, isShortFilm, isRequired, handleSubmit, handleChange, checkboxChange } = props;
   const [isMobile, setIsMobile] = React.useState(false);
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    console.log('values', values);
-  };
-
-  function checkboxChange(event) {
-    setIsShortFilm(event.target.checked);
-    console.log('checked', event.target.checked);
-  };
 
   React.useEffect(() => {
     const resize = () => {
@@ -31,6 +19,8 @@ export default function SearchForm() {
     window.addEventListener('resize', resize);
     return () => window.removeEventListener("resize", resize);
   }, [setIsMobile]);
+
+  React.useEffect(() => { }, [values]);
 
   const switchContainer = () => (
     <div className="search-form__switch-container">
@@ -55,7 +45,7 @@ export default function SearchForm() {
         <form
           action="queryAction"
           onSubmit={handleSubmit}
-          name="profile"
+          name="query"
           className="search-form__form"
         >
           <label className="search-form__label" htmlFor="inputTypeQuery">
@@ -68,14 +58,16 @@ export default function SearchForm() {
               value={values.query}
               onChange={handleChange}
               placeholder="Фильм"
-              required
+              required={!isRequired}
             />
+            <span className="input__error-message inputTypeName-error" />
           </label>
 
           <button
             className="button search-form__button"
             aria-label="Найти фильм"
             type="submit"
+            disabled={!isValid}
           >
             Найти
           </button>

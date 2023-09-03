@@ -1,2 +1,7 @@
-export const pathsForHeader = ["/", "/movies", "/saved-movies", "/profile"];
-export const emailPattern = '[a-zA-Z0-9._\\-]{3,}@[a-zA-Z0-9.\\-]{3,}\\.[a-zA-Z]{2,4}';
+export const MAIN_BASE_URL = 'https://api.movies.krylovis.nomoreparties.sbs';
+export const MOVIES_BASE_URL = 'https://api.nomoreparties.co';
+
+export const emailPattern = "^[a-z0-9._%+\\-]+@[a-z0-9.\\-]+\\.[a-z]{2,4}$";
+
+export const regexForName = /^[a-zа-яё -]+/i;
+export const regexForQuery = /^[a-zа-яё -\d]+/i;

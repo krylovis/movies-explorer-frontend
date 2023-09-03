@@ -16,8 +16,7 @@ export default function InputTypeEmail(props) {
         pattern={emailPattern}
         value={values.email}
         onChange={handleChange}
-        minLength="2"
-        maxLength="40"
+        maxLength="50"
         required
       />
       <span className="input__error-message inputTypeEmail-error" />
