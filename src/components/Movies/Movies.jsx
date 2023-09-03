@@ -84,8 +84,8 @@ export default function Movies({ isSavedMovies }) {
 
 
   const moviesApi = () => {
-    if (isSavedMovies) return filterSavedMovies();
-    return getAndSetMovies();
+    if (isSavedMovies) filterSavedMovies();
+    else getAndSetMovies();
   }
 
   React.useEffect(() => {
@@ -168,7 +168,7 @@ export default function Movies({ isSavedMovies }) {
         checkboxChange={checkboxChange}
       />
       <MoviesCardList
-        partOfMoviesList={isSavedMovies ? savedMoviesList : partOfMoviesList}
+        partOfMoviesList={isSavedMovies ? filterMoviesList : partOfMoviesList}
         isNotFound={isNotFound}
         isLoading={isLoading}
         isError={isError}
