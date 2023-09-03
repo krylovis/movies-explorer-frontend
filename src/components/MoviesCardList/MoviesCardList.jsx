@@ -1,12 +1,31 @@
 import React from 'react';
 
+import useResizeWindow from '../../hooks/useResizeWindow';
 import SectionContainer from '../../components/SectionContainer/SectionContainer';
 import MoviesCard from '../MoviesCard/MoviesCard';
-import { SavedMoviesListContext } from '../../contexts/SavedMoviesListContext';
 
 export default function MoviesCardList(props) {
-  const { isNotFound, isSavedMovies, partOfMoviesList, toggleCardLike, showMoreMovies, isShowMoreMoviesBtn, isLoading, isError } = props;
-  const savedMoviesList = React.useContext(SavedMoviesListContext);
+  const { isSavedMovies, isNotFound, list, savedMoviesList, toggleCardLike, isLoading, isError } = props;
+  // const { howMuchToAdd, defaultMoviesCounter, setDefaultMoviesCounter } = useResizeWindow();
+
+  // console.log('defaultMoviesCounter', defaultMoviesCounter);
+  // const [partOfMoviesList, setPartOfMoviesList] = React.useState([]);
+
+  // setSavedMoviesList((list) => [newCard, ...list]);
+  // const isShowMoreMoviesBtn = list.length > partOfMoviesList.length;
+  const isShowMoreMoviesBtn = list.length > [];
+
+  const showMoreMovies = (e) => {
+    e.preventDefault();
+    // setDefaultMoviesCounter(defaultMoviesCounter + howMuchToAdd);
+  };
+
+  // React.useEffect(() => {
+  //   setPartOfMoviesList([...list.slice(0, defaultMoviesCounter)]);
+  // }, []);
+
+  // console.log('partOfMoviesList', partOfMoviesList)
+
   const moviesListInfo = () => {
     let infoText = '';
     if (isLoading) {
@@ -28,7 +47,7 @@ export default function MoviesCardList(props) {
   const moviesList = () => (
     <>
       <ul className="list movies-list">
-        {partOfMoviesList.map((card) => {
+        {(list).map((card) => {
           const isLike = savedMoviesList.find(movie => movie.movieId === card.id);
           return (
             <MoviesCard

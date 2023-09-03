@@ -1,8 +1,7 @@
 import React from 'react';
 
-import SectionContainer from '../../components/SectionContainer/SectionContainer';
 import SearchForm from '../SearchForm/SearchForm';
-import MoviesCard from '../MoviesCard/MoviesCard';
+import MoviesCardList from '../MoviesCardList/MoviesCardList';
 
 import { useFormWithValidator } from '../../hooks/useForm';
 
@@ -50,19 +49,13 @@ export default function SavedMovies(props) {
         handleSubmit={handleSubmit}
         checkboxChange={checkboxChange}
       />
-      <SectionContainer type="type_movies-list">
-        <ul className="list movies-list">
-          {list.map((card) => {
-            return (
-              <MoviesCard
-                key={card.id || card._id}
-                card={card}
-                toggleCardLike={toggleCardLike}
-              />
-            )
-          })}
-        </ul>
-      </SectionContainer>
+
+      <MoviesCardList
+        list={list}
+        isSavedMovies={true}
+        savedMoviesList={savedMoviesList}
+        toggleCardLike={toggleCardLike}
+      />
 
     </main>
   )

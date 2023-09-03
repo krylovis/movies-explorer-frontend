@@ -3,8 +3,6 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { MOVIES_BASE_URL } from '../../utils/constants';
 
-// import { mainApi } from '../../utils/MainApi';
-
 export default function MoviesCard(props) {
   const { card, isLike, toggleCardLike } = props;
   const { image, nameRU, duration } = card;
@@ -25,7 +23,8 @@ export default function MoviesCard(props) {
 
   const openTrailerLink = () => window.open(card.trailerLink, '_blank').focus();
 
-  const handleToggleCardLike = () => {
+  const handleToggleCardLike = (e) => {
+    e.preventDefault();
     if (isMovies && !isLike) {
       const cardForSave = {
         country: card.country,
