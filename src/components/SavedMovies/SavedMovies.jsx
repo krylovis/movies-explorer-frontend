@@ -39,10 +39,6 @@ export default function SavedMovies(props) {
 
   const list = (savedFilterList.length ? savedFilterList : savedMoviesList);
 
-  // React.useEffect(() => {
-
-  // }, [savedMoviesList]);
-
   return (
     <main className="main">
       <SearchForm
