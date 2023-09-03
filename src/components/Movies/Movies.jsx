@@ -19,6 +19,7 @@ export default function Movies({ isSavedMovies }) {
   const [filterMoviesList, setFilterMoviesList] = React.useState([]);
   const [partOfMoviesList, setPartOfMoviesList] = React.useState([]);
   const [defaultMoviesCounter, setDefaultMoviesCounter] = React.useState(0);
+  const [moviesCounter, setMoviesCounter] = React.useState(0);
 
   React.useEffect(() => {
     const resize = () => {
@@ -30,15 +31,19 @@ export default function Movies({ isSavedMovies }) {
 
       if (isLargeScreen) {
         setDefaultMoviesCounter(16);
+        setMoviesCounter(16);
         setHowMuchToAdd(4);
       } else if (isMediumScreen) {
         setDefaultMoviesCounter(12);
+        setMoviesCounter(12);
         setHowMuchToAdd(3);
       } else if (isSmallScreen) {
         setDefaultMoviesCounter(8);
+        setMoviesCounter(8);
         setHowMuchToAdd(2);
       } else if (issMobileScreen) {
         setDefaultMoviesCounter(5);
+        setMoviesCounter(5);
         setHowMuchToAdd(2);
       }
     };
@@ -114,6 +119,7 @@ export default function Movies({ isSavedMovies }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setDefaultMoviesCounter(moviesCounter);
     moviesApi();
     if (!isSavedMovies) {
       const data = {
@@ -127,7 +133,7 @@ export default function Movies({ isSavedMovies }) {
 
   const checkboxChange = (event) => {
     setIsShortFilm(event.target.checked);
-
+    setDefaultMoviesCounter(moviesCounter);
     moviesApi();
     if (!isSavedMovies) {
       const data = {
