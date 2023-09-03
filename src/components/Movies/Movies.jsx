@@ -62,7 +62,7 @@ export default function Movies({ isSavedMovies }) {
           console.error(error);
           setIsError(true);
         })
-        .finally(setIsLoading(false));
+        .finally(setTimeout(() => { setIsLoading(false) }, 1000));
     } else {
       const filterData = filteringMoviesList(moviesList, values.query, isShortFilm);
       setFilterMoviesList(filterData);
